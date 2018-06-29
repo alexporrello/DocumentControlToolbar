@@ -22,7 +22,6 @@ Now, in the toolbar in Microsoft Word, you should see a _Developer_ tab:
 
 1. Visit the _release_ tab on the GitHub repository page.
 ![](readme_screenshots/releases.PNG)
-<br>
 2. Underneath _Assets_, click the _Source code (zip)_ link to download the macros.
 ![](readme_screenshots/release-page.PNG)
 **Note:** You can confirm that you are downloading the latest version by checking for the green box that says _Latest release_.
