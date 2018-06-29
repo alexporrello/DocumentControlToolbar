@@ -1,14 +1,14 @@
 Attribute VB_Name = "Boilerplate"
-Sub OpenUI()
+Private Sub OpenUI()
     BPUserForm.Show
 End Sub
-Sub InsertTableCrossreference()
+Private Sub InsertTableCrossreference()
     selection.InsertCaption Label:="Table", titleAutoText:="InsertCaption2", _
         Title:="", Position:=wdCaptionPositionAbove, ExcludeLabel:=0
     selection.TypeText text:=vbTab
     selection.Style = ActiveDocument.Styles("2016_Marking")
 End Sub
-Sub FormatTableCaptions()
+Private Sub FormatTableCaptions()
     Call InitializeCrossreferenceReplace("#TABLE#")
     
     Dim lastPos As Long
@@ -30,7 +30,7 @@ Private Sub InitializeCrossreferenceReplace(strTextToFind As String)
         .Forward = True
         .Wrap = wdFindContinue
         .Format = False
-        .MatchCase = False
+        .matchCase = False
         .MatchWholeWord = False
         .MatchWildcards = False
         .MatchSoundsLike = False
@@ -53,7 +53,7 @@ Private Sub InsertCrossreference(strTextToFind As String, crType As String)
         .Forward = True
         .Wrap = wdFindContinue
         .Format = False
-        .MatchCase = False
+        .matchCase = False
         .MatchWholeWord = False
         .MatchWildcards = False
         .MatchSoundsLike = False
@@ -73,7 +73,7 @@ Private Sub InsertCrossreference(strTextToFind As String, crType As String)
             selection.Style = ActiveDocument.Styles("2016_Marking")
     End With
 End Sub
-Sub FormatAllTables()
+Private Sub FormatAllTables()
     System.Cursor = wdCursorWait
     Application.ScreenUpdating = False
 
@@ -84,7 +84,7 @@ Sub FormatAllTables()
     Application.ScreenUpdating = True
     System.Cursor = wdCursorNormal
 End Sub
-Sub FormatTables(i As Long)
+Private Function FormatTables(i As Long)
     ' Apply the MasterTable style.
     
     ActiveDocument.Tables(i).Style = ActiveDocument.Styles("MasterTable")
@@ -99,4 +99,4 @@ Sub FormatTables(i As Long)
     ActiveDocument.Tables(i).Rows(1).Select
     selection.Rows.HeadingFormat = wdToggle
     selection.Style = ActiveDocument.Styles("2016_TableHeader | 10pt bold")
-End Sub
+End Function

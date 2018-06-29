@@ -1,5 +1,9 @@
 Attribute VB_Name = "Acronyms"
-Sub acronymBlackMagic()
+Sub RunAcronymTableMacro()
+    Call acronymBlackMagic
+End Sub
+Private Sub acronymBlackMagic()
+Attribute acronymBlackMagic.VB_ProcData.VB_Invoke_Func = "Normal.Acronyms.acronymBlackMagic"
     System.Cursor = wdCursorWait
     Application.ScreenUpdating = False
     
@@ -67,7 +71,12 @@ Private Function MarkUnusedAcronyms() As collection
             ChkTxt = selection.text
             ChkTxt = Left(ChkTxt, Len(ChkTxt) - 2) 'Remove end of cell markers
             
-            highlightIfUnused (ChkTxt)
+            Dim checkCase As Boolean
+            checkCase = True
+            
+            If K = 2 Then checkCase = False
+            
+            Call highlightIfUnused(ChkTxt, checkCase)
             
             If K = 1 Then recordedAcronyms.Add (ChkTxt)
         Next K
@@ -76,7 +85,7 @@ Private Function MarkUnusedAcronyms() As collection
     Set MarkUnusedAcronyms = recordedAcronyms
 End Function
 
-Private Function highlightIfUnused(toFind As String)
+Private Function highlightIfUnused(toFind As String, matchCase As Boolean)
 
 Dim iCount As Integer
 Dim strSearch As String
@@ -87,7 +96,7 @@ With ActiveDocument.Content.find
     .text = toFind
     .Format = False
     .Wrap = wdFindStop
-    .MatchCase = True
+    .matchCase = matchCase
     Do While .Execute
         iCount = iCount + 1
     Loop
@@ -180,19 +189,3 @@ End Function
 Private Function inDictionary(toCheck As String) As Boolean
     inDictionary = Application.checkSpelling(LCase(toCheck))
 End Function
-
-Sub TimeApp()
-    Dim StartTime As Double
-    Dim SecondsElapsed As Double
-
-    'Remember time when macro starts
-    StartTime = Timer
-    
-    Call acronymBlackMagic
-    
-    'Determine how many seconds code took to run
-    SecondsElapsed = Round(Timer - StartTime, 2)
-
-    'Notify user in seconds
-    Debug.Print "This code ran successfully in " & SecondsElapsed & " seconds"
-End Sub
