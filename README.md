@@ -33,10 +33,9 @@ Now, in the toolbar in Microsoft Word, you should see a _Developer_ tab:
 1. Open Microsoft Word.
 2. Navigate to the _Developer_ tab.
 3. Click on _Visual Basic_ button to the far left of the ribbon.
-![](readme_screenshots/visual-basic-button.PNG)<br>
+![](readme_screenshots/visual-basic-button.PNG)
 This action opens Visual Basic for Applications (VBA):
 ![](readme_screenshots/word-vb.PNG)
-<br>
 4. In VBA, navigate to _File_ >> _Import File..._
 5. Browse to the directory where you unzipped the macros ( most likely your _Downloads_ directory):
 ![](readme_screenshots/import-file.PNG)
