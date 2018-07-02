@@ -2,6 +2,7 @@ Attribute VB_Name = "Acronyms"
 Sub RunAcronymTableMacro()
     Call acronymBlackMagic
 End Sub
+
 Private Sub acronymBlackMagic()
 Attribute acronymBlackMagic.VB_ProcData.VB_Invoke_Func = "Normal.Acronyms.acronymBlackMagic"
     System.Cursor = wdCursorWait
@@ -126,6 +127,7 @@ Private Function GetAllAcronymsInDocument() As collection
                     If Not wd.Font.Name = "Courier New" Then
                         If Not inCollection(coll, thisString) Then
                             coll.Add (thisString)
+                            Debug.Print thisString
                         End If
                     End If
                 End If
@@ -157,35 +159,52 @@ Private Function inCollection(thisCollection As collection, item As String) As B
     
 End Function
 
-Private Function inDudList(item As String) As Boolean
-    Dim duds As New collection
-        
-    duds.Add ("PDF")
-    duds.Add ("XX")
-    duds.Add ("MM")
-    duds.Add ("YY")
-    duds.Add ("DD")
-    duds.Add ("HH")
-    duds.Add ("MM")
-    duds.Add ("SS")
-    duds.Add ("TBD")
-    duds.Add ("JIRA")
-    duds.Add ("KAP")
-    duds.Add ("CDRL")
-    duds.Add ("KTCPRO")
-    duds.Add ("SDG")
-    duds.Add ("SR")
-    duds.Add ("IMG")
-    duds.Add ("GB")
-    duds.Add ("MB")
-    duds.Add ("PNL")
-    duds.Add ("PDU")
-    duds.Add ("RAM")
-    duds.Add ("RESETLOGS")
-    duds.Add ("WT")
-    
-    isDud = inCollection(duds, item)
-End Function
 Private Function inDictionary(toCheck As String) As Boolean
     inDictionary = Application.checkSpelling(LCase(toCheck))
+End Function
+
+Private Function inDudList(item As String) As Boolean
+    
+    Dim duds As String
+    duds = GetFromWebpage("https://raw.githubusercontent.com/alexporrello/TWBoilerplateMacros/master/lists/acronym-duds.txt")
+    
+    Dim dudList As New collection
+    
+    For Each dud In Split(duds, vbLf)
+        dudList.Add (dud)
+        Debug.Print dud
+    Next dud
+    
+    inDudList = inCollection(dudList, item)
+End Function
+
+Private Function GetFromWebpage(URL As String) As String
+On Error GoTo Err_GetFromWebpage
+
+    Dim objWeb As Object
+    Dim strXML As String
+
+    ' Instantiate an instance of the web object
+    Set objWeb = CreateObject("Microsoft.XMLHTTP")
+
+    ' Pass the URL to the web object, and send the request
+    objWeb.Open "GET", URL, False
+    objWeb.send
+
+    ' Look at the HTML string returned
+    strXML = objWeb.responsetext
+        
+    GetFromWebpage = strXML
+    
+End_GetFromWebpage:
+    
+    ' Clean up after ourselves!
+    Set objWeb = Nothing
+    Exit Function
+
+Err_GetFromWebpage:
+' Just in case there's an error!
+MsgBox Err.Description & " (" & Err.Number & ")"
+Resume End_GetFromWebpage
+
 End Function
