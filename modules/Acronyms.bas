@@ -1,13 +1,28 @@
 Attribute VB_Name = "Acronyms"
 Sub RunAcronymTableMacro()
-    Call acronymBlackMagic
-End Sub
-
-Private Sub acronymBlackMagic()
-Attribute acronymBlackMagic.VB_ProcData.VB_Invoke_Func = "Normal.Acronyms.acronymBlackMagic"
     System.Cursor = wdCursorWait
     Application.ScreenUpdating = False
     
+    For i = 1 To ActiveDocument.Tables.count
+        ActiveDocument.Tables(i).Cell(1, 1).Range.Select
+        
+        ChkTxt = selection.text
+        ChkTxt = Left(ChkTxt, Len(ChkTxt) - 2) 'Remove end of cell markers
+        
+        If ChkTxt = "Abbreviation" Or ChkTxt = "Abbreviations" Or ChkTxt = "Acronym" Or ChkTxt = "Acronyms" Then
+            Call acronymBlackMagic
+            Exit For
+        End If
+        
+        Debug.Print Table
+    Next i
+    
+    Application.ScreenUpdating = True
+    System.Cursor = wdCursorNormal
+End Sub
+
+Private Function acronymBlackMagic()
+Attribute acronymBlackMagic.VB_ProcData.VB_Invoke_Func = "Normal.Acronyms.acronymBlackMagic"
     For Each item In getAcronymsNotInTable()
         Dim acronym As String
         acronym = item
@@ -23,10 +38,7 @@ Attribute acronymBlackMagic.VB_ProcData.VB_Invoke_Func = "Normal.Acronyms.acrony
     Next item
     
     selection.Tables(1).SortAscending
-    
-    Application.ScreenUpdating = True
-    System.Cursor = wdCursorNormal
-End Sub
+End Function
 
 Private Function getAcronymsNotInTable() As collection
 
@@ -127,7 +139,6 @@ Private Function GetAllAcronymsInDocument() As collection
                     If Not wd.Font.Name = "Courier New" Then
                         If Not inCollection(coll, thisString) Then
                             coll.Add (thisString)
-                            Debug.Print thisString
                         End If
                     End If
                 End If

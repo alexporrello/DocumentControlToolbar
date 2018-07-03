@@ -1,14 +1,11 @@
 Attribute VB_Name = "Boilerplate"
-Private Sub OpenUI()
-    BPUserForm.Show
-End Sub
-Private Sub InsertTableCrossreference()
+Private Function InsertTableCrossreference()
     selection.InsertCaption Label:="Table", titleAutoText:="InsertCaption2", _
         Title:="", Position:=wdCaptionPositionAbove, ExcludeLabel:=0
     selection.TypeText text:=vbTab
     selection.Style = ActiveDocument.Styles("2016_Marking")
-End Sub
-Private Sub FormatTableCaptions()
+End Function
+Private Function FormatTableCaptions()
     Call InitializeCrossreferenceReplace("#TABLE#")
     
     Dim lastPos As Long
@@ -18,9 +15,9 @@ Private Sub FormatTableCaptions()
         Call InsertCrossreference("#TABLE#", "Table")
     Loop
 
-End Sub
+End Function
 'Kicks off the search for @InsertCrossreferences
-Private Sub InitializeCrossreferenceReplace(strTextToFind As String)
+Private Function InitializeCrossreferenceReplace(strTextToFind As String)
 
     selection.find.ClearFormatting
     selection.find.Replacement.ClearFormatting
@@ -38,13 +35,13 @@ Private Sub InitializeCrossreferenceReplace(strTextToFind As String)
     End With
     selection.Style = ActiveDocument.Styles("2016_Marking")
 
-End Sub
+End Function
 ' Replaces a tag (such as #TABLE#) with a cross reference.
 ' @crType can be one of three:
 '      1. "Table" for tables
 '      2. "Figure" for figures
 '      3. "Appendix" for appendices
-Private Sub InsertCrossreference(strTextToFind As String, crType As String)
+Private Function InsertCrossreference(strTextToFind As String, crType As String)
     selection.find.ClearFormatting
     selection.find.Replacement.ClearFormatting
     With selection.find
@@ -72,8 +69,8 @@ Private Sub InsertCrossreference(strTextToFind As String, crType As String)
             selection.TypeText text:=vbTab
             selection.Style = ActiveDocument.Styles("2016_Marking")
     End With
-End Sub
-Private Sub FormatAllTables()
+End Function
+Private Function FormatAllTables()
     System.Cursor = wdCursorWait
     Application.ScreenUpdating = False
 
@@ -83,7 +80,7 @@ Private Sub FormatAllTables()
     
     Application.ScreenUpdating = True
     System.Cursor = wdCursorNormal
-End Sub
+End Function
 Private Function FormatTables(i As Long)
     ' Apply the MasterTable style.
     
