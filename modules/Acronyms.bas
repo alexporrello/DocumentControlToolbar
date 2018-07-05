@@ -1,29 +1,30 @@
 Attribute VB_Name = "Acronyms"
 Sub RunAcronymTableMacro()
-    System.Cursor = wdCursorWait
+    
+    System.Cursor = wdCursorWait    'Set the cursor to spinning and turn of screen updating while this acronym runs
     Application.ScreenUpdating = False
     
+    'Look through all of the tables to find the Acronym or Abbreviations table
     For i = 1 To ActiveDocument.Tables.count
         ActiveDocument.Tables(i).Cell(1, 1).Range.Select
         
         ChkTxt = selection.text
         ChkTxt = Left(ChkTxt, Len(ChkTxt) - 2) 'Remove end of cell markers
-        
-        If ChkTxt = "Abbreviation" Or ChkTxt = "Abbreviations" Or ChkTxt = "Acronym" Or ChkTxt = "Acronyms" Then
-            Call acronymBlackMagic
+                
+        If ChkTxt = "Abbreviation" Or ChkTxt = "Abbreviations" Or ChkTxt = "Acronym" Or ChkTxt = "Acronyms" Then ' Check the top left cell of the table to see its name
+            Call removeOAndM
+            Call acronymBlackMagic  'If it is an acronyms/abbreviations table, start working
             Exit For
         End If
-        
-        Debug.Print Table
     Next i
     
-    Application.ScreenUpdating = True
+    Application.ScreenUpdating = True   'Set the cursor back to normal and update the screen
     System.Cursor = wdCursorNormal
 End Sub
 
 Private Function acronymBlackMagic()
 Attribute acronymBlackMagic.VB_ProcData.VB_Invoke_Func = "Normal.Acronyms.acronymBlackMagic"
-    For Each item In getAcronymsNotInTable()
+    For Each item In getAcronymsNotInTable()    'Gather all of the acronyms that are not in the acronyms table
         Dim acronym As String
         acronym = item
         
@@ -121,7 +122,7 @@ End If
 
 End Function
 
-Private Function GetAllAcronymsInDocument() As collection
+Public Function GetAllAcronymsInDocument() As collection
     Dim wd As Range
     Dim coll As New collection
     
@@ -129,12 +130,15 @@ Private Function GetAllAcronymsInDocument() As collection
     Set excelApp = CreateObject("Excel.Application")
     
     For Each wd In ActiveDocument.Words
-    
         Dim thisString As String
         thisString = Trim(wd.text)
 
         If Len(thisString) > 1 And Len(thisString) < 7 Then
-            If wd.text = UCase(thisString) Then
+            If isKnownAcronym(thisString) Then
+                If Not inCollection(coll, thisString) Then
+                    coll.Add (thisString)
+                End If
+            ElseIf wd.text = UCase(thisString) Then
                 If IsAlpha(thisString, excelApp) Then
                     If Not wd.Font.Name = "Courier New" Then
                         If Not inCollection(coll, thisString) Then
@@ -151,27 +155,13 @@ Private Function GetAllAcronymsInDocument() As collection
     Set GetAllAcronymsInDocument = coll
 End Function
 
-Private Function IsAlpha(strValue As String, excelApp As Object) As Boolean
-    IsAlpha = strValue Like excelApp.WorksheetFunction.Rept("[a-zA-Z]", Len(strValue))
-End Function
+Public Function isKnownAcronym(word As String) As Boolean
+    Dim firstLetter As Integer
+    firstLetter = Asc(LCase(Left(word, 1)))
 
-Private Function inCollection(thisCollection As collection, item As String) As Boolean
-    Dim toReturn As Boolean
-    toReturn = False
-    
-    For Each acronym In thisCollection
-        If (StrComp(acronym, item, vbTextCompare) = 0) Then
-            toReturn = True
-            Exit For
-        End If
-    Next acronym
-    
-    inCollection = toReturn
-    
-End Function
-
-Private Function inDictionary(toCheck As String) As Boolean
-    inDictionary = Application.checkSpelling(LCase(toCheck))
+    If Len(word) > 0 And firstLetter > 96 And firstLetter < 123 And UCase(word) = word Then
+        isKnownAcronym = Contains(readInTextFile(Left(word, 1) + ".csv"), UCase(word))
+    End If
 End Function
 
 Private Function inDudList(item As String) As Boolean
@@ -183,39 +173,21 @@ Private Function inDudList(item As String) As Boolean
     
     For Each dud In Split(duds, vbLf)
         dudList.Add (dud)
-        Debug.Print dud
     Next dud
     
     inDudList = inCollection(dudList, item)
 End Function
 
-Private Function GetFromWebpage(URL As String) As String
-On Error GoTo Err_GetFromWebpage
-
-    Dim objWeb As Object
-    Dim strXML As String
-
-    ' Instantiate an instance of the web object
-    Set objWeb = CreateObject("Microsoft.XMLHTTP")
-
-    ' Pass the URL to the web object, and send the request
-    objWeb.Open "GET", URL, False
-    objWeb.send
-
-    ' Look at the HTML string returned
-    strXML = objWeb.responsetext
-        
-    GetFromWebpage = strXML
-    
-End_GetFromWebpage:
-    
-    ' Clean up after ourselves!
-    Set objWeb = Nothing
-    Exit Function
-
-Err_GetFromWebpage:
-' Just in case there's an error!
-MsgBox Err.Description & " (" & Err.Number & ")"
-Resume End_GetFromWebpage
-
+Private Function removeOAndM()
+    selection.find.ClearFormatting
+    selection.find.Replacement.ClearFormatting
+    With selection.find
+        .text = "O&M"
+        .Replacement.text = "IOM"
+        .Forward = True
+        .Wrap = wdFindContinue
+    End With
+    selection.find.Execute replace:=wdReplaceAll
 End Function
+
+
