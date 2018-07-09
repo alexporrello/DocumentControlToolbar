@@ -1,4 +1,13 @@
 Attribute VB_Name = "NewMacros"
+Public Sub setAllKeyboardShortcuts()
+    With Application
+        .CustomizationContext = NormalTemplate
+        .KeyBindings.Add KeyCode:=BuildKeyCode(wdKeyControl, wdKeyD), KeyCategory:=wdKeyCategoryCommand, Command:="OpenDocumentControlToolsDialog"
+        .KeyBindings.Add KeyCode:=BuildKeyCode(wdKeyControl, wdKeyShift, wdKeyA), KeyCategory:=wdKeyCategoryCommand, Command:="AcceptThisChange"
+        .KeyBindings.Add KeyCode:=BuildKeyCode(wdKeyControl, wdKeyShift, wdKeyB), KeyCategory:=wdKeyCategoryCommand, Command:="ApplyBodyText"
+        .KeyBindings.Add KeyCode:=BuildKeyCode(wdKeyControl, wdKeyT), KeyCategory:=wdKeyCategoryCommand, Command:="FormatTable"
+    End With
+End Sub
 Public Sub KeepWithNext()
     With selection.ParagraphFormat
         .KeepWithNext = True
@@ -6,6 +15,7 @@ Public Sub KeepWithNext()
 End Sub
 
 Public Sub FormatTable()
+If selection.Information(wdWithInTable) Then
     Application.ScreenUpdating = False
     
     ' Apply the MasterTable style.
@@ -23,6 +33,7 @@ Public Sub FormatTable()
     selection.Style = ActiveDocument.Styles("2016_TableHeader | 10pt bold")
     
     Application.ScreenUpdating = True
+End If
 End Sub
 
 Private Sub formatBulletedList()
@@ -63,6 +74,15 @@ Private Sub GenericFindAndReplace()
     toFind.Add ("shall")
     toReplace.Add ("will")
     
+    toFind.Add ("toll booth")
+    toReplace.Add ("tollbooth")
+    
+    toFind.Add ("toll both")
+    toReplace.Add ("tollbooth")
+    
+    toFind.Add ("in depth")
+    toReplace.Add ("in-depth")
+    
     Dim arraySize As Integer
     arraySize = toFind.count
     
@@ -89,3 +109,9 @@ Attribute FindAndReplaceAll.VB_ProcData.VB_Invoke_Func = "Normal.NewMacros.FindA
     End With
     selection.find.Execute replace:=wdReplaceAll
 End Function
+Sub page_break_before()
+Attribute page_break_before.VB_ProcData.VB_Invoke_Func = "Normal.NewMacros.page_break_before"
+    With selection.ParagraphFormat
+        .PageBreakBefore = True
+    End With
+End Sub

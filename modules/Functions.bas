@@ -79,7 +79,6 @@ Public Function inCollection(thisCollection As collection, item As String) As Bo
     
 End Function
 
-
 Public Function TimeApp()
     Dim StartTime As Double
     Dim SecondsElapsed As Double
