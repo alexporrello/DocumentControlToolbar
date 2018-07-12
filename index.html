@@ -41,6 +41,10 @@
             margin-right:auto;
         }
         
+        .output-div {
+            font-family: Calibri;
+            font-size: 15px;
+        }
     </style>
     
     <script>
@@ -73,10 +77,13 @@
         let clfn = document.getElementById("clfn").value
         let clurl = document.getElementById("clurl").value
         
-        
-        
-        "" + '%0D%0A' + "" + '%0D%0A%0D%0A' + "" + '%0D%0A' + " ";
-        return makeHref(pdfDelName,pdfDelURL);
+        return "<b>" + client + " - " + docName + " " + docVer + "</b>" +
+            "<ul>" +
+            "<li><b>Working Doc:</b> " + makeHref(pdfDelName,pdfDelURL) + "</li>" +
+            "<li><b>Redline:</b> " + makeHref(rlfn,rlurl) + "</li>" +
+            "<li><b>Working Document:</b> " + makeHref(wdfn,wdurl) + "</li>" +
+            "<li><b>Comment Log:</b> " + makeHref(clfn,clurl) + "</li>" +
+            "</ul><br>Best,";
     }
     
     function makeHref(linkName, link) {
@@ -85,9 +92,7 @@
         
     /** Opens the default email client and fills out sender, subject, and body **/
     function email() {
-        let email = "mailto:Doc.Pro.Publishing.Group@ni.com?subject=" + emailSubject() + "&body=" + emailBody(); 
-        
-        window.open(email);
+        document.getElementById("output").innerHTML = emailBody()
     }
     
     /** Grabs the text from a field **/
@@ -125,11 +130,11 @@
     <div class="parent-border" id="deliverable">        
         <div class="table-style" style="width:49%">
             <p>PDF Deliverable Filename</p>
-            <input type="text" name="deliverableFilename" id="pdffn" value="TS_SUB_1103R2_Software Development Plan v1.2_2018-07-10.pdf">
+            <input type="text" name="deliverableFilename" id="pdffn" value="">
         </div>
         <div class="table-style" style="width:49%">
             <p>PDF Deliverable URL</p>
-            <input type="text" name="deliverableURL" id="pdfurl" value="https://kibsi-am.kapschtraffic.com/sales/MryldETC/DEL/12/Forms/AllItems.aspx?RootFolder=%2Fsales%2FMryldETC%2FDEL%2F12%2F3G%20%2D%20Phase%20I%20%2D%20Software%20Development%20and%20Integration%20Test%2FSoftware%20Development%20Plan&FolderCTID=0x012000E7872872FDBF2D40A73CA7BC92518C27&View=%7B39097FA2%2DF748%2D41AE%2DA656%2D55CC6973B1FB%7D&InitialTabId=Ribbon%2ERead&VisibilityContext=WSSTabPersistence">
+            <input type="text" name="deliverableURL" id="pdfurl" value="">
         </div>
     </div>
     
@@ -168,6 +173,10 @@
     
      <div class="parent-border" id="commentLog" onclick="email()">        
          <button>Generate Email</button>
+    </div>
+    
+    <div id="output" class="output-div">
+        
     </div>
     
 </body>
