@@ -1,1 +1,174 @@
-<h1>Hello!</h1>
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Document Control Email Generator</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+    <style>
+        p {
+            font-family: Arial;
+            font-size: 15px;
+            margin:0px;
+            padding:0px;
+        }
+        
+        h1 {
+            font-family: Arial;
+            font-size: 15px;
+        }
+        
+        div {
+            padding:.5%;
+        }
+        
+        input {
+            width: 100%;
+        }
+        
+        .table-style {
+            float: left;
+        }
+        
+        .parent-border {
+            padding-top: 25px;
+            width: 75%;
+            margin-left:auto;
+            margin-right:auto;
+        }
+        
+    </style>
+    
+    <script>
+    /** Generates the subject of the email **/
+    function emailSubject() {
+        let docName = document.getElementById("dn").value;
+        let client  = document.getElementById("ca").value;
+        let docVer  = document.getElementById("dv").value;
+        
+        let subject = "Document Ready: " + client + " " + docName + " " + docVer;
+        
+        return subject;
+    }
+    
+    /** Generates the email's body **/
+    function emailBody() {
+        let docName = document.getElementById("dn").value;
+        let client  = document.getElementById("ca").value;
+        let docVer  = document.getElementById("dv").value;
+        
+        let pdfDelName  = document.getElementById("pdffn").value;
+        let pdfDelURL   = document.getElementById("pdfurl").value;
+        
+        let rlfn = document.getElementById("rlfn").value
+        let rlurl = document.getElementById("rlurl").value
+        
+        let wdfn = document.getElementById("wdfn").value
+        let wdurl = document.getElementById("wdurl").value
+        
+        let clfn = document.getElementById("clfn").value
+        let clurl = document.getElementById("clurl").value
+        
+        
+        
+        "" + '%0D%0A' + "" + '%0D%0A%0D%0A' + "" + '%0D%0A' + " ";
+        return makeHref(pdfDelName,pdfDelURL);
+    }
+    
+    function makeHref(linkName, link) {
+        return "<a href=\"" + link + "\">" + linkName + "</a>";
+    }
+        
+    /** Opens the default email client and fills out sender, subject, and body **/
+    function email() {
+        let email = "mailto:Doc.Pro.Publishing.Group@ni.com?subject=" + emailSubject() + "&body=" + emailBody(); 
+        
+        window.open(email);
+    }
+    
+    /** Grabs the text from a field **/
+    function getText(id) {
+        return document.getElementById(id).value;
+    }
+    
+    /** Checks if a field is empty **/
+    function isEmpty(val) {
+        return (val === undefined || val == null || val.length <= 0) ? true : false;
+    }
+</script>
+    
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+    <div class="parent-border" id="document-info">        
+        <div class="table-style" style="width:49%">
+            <p>Document Name</p>
+            <input type="text" name="docName" id="dn" value="">
+        </div>
+        <div class="table-style" style="width:24%">
+            <p>Client Acronym</p>
+            <input type="text" name="clientAcronym" id="ca"value="">
+        </div>
+        <div class="table-style" style="width:24%">
+            <p>Document Version</p>
+            <input type="text" name="docVersion" id="dv" value="">
+        </div>
+    </div>
+    
+    <div class="parent-border" id="deliverable">        
+        <div class="table-style" style="width:49%">
+            <p>PDF Deliverable Filename</p>
+            <input type="text" name="deliverableFilename" id="pdffn" value="TS_SUB_1103R2_Software Development Plan v1.2_2018-07-10.pdf">
+        </div>
+        <div class="table-style" style="width:49%">
+            <p>PDF Deliverable URL</p>
+            <input type="text" name="deliverableURL" id="pdfurl" value="https://kibsi-am.kapschtraffic.com/sales/MryldETC/DEL/12/Forms/AllItems.aspx?RootFolder=%2Fsales%2FMryldETC%2FDEL%2F12%2F3G%20%2D%20Phase%20I%20%2D%20Software%20Development%20and%20Integration%20Test%2FSoftware%20Development%20Plan&FolderCTID=0x012000E7872872FDBF2D40A73CA7BC92518C27&View=%7B39097FA2%2DF748%2D41AE%2DA656%2D55CC6973B1FB%7D&InitialTabId=Ribbon%2ERead&VisibilityContext=WSSTabPersistence">
+        </div>
+    </div>
+    
+    <div class="parent-border" id="redline">        
+        <div class="table-style" style="width:49%">
+            <p>PDF Redline Filename</p>
+            <input type="text" name="redlineFilename" id="rlfn" value="">
+        </div>
+        <div class="table-style" style="width:49%">
+            <p>PDF Redline URL</p>
+            <input type="text" name="redlineURL" id="rlurl" value="">
+        </div>
+    </div>
+    
+    <div class="parent-border" id="workingDoc">        
+        <div class="table-style" style="width:49%">
+            <p>Working Doc Filename</p>
+            <input type="text" name="workingDocFilename" id="wdfn" value="">
+        </div>
+        <div class="table-style" style="width:49%">
+            <p>Working Doc URL</p>
+            <input type="text" name="workingDocURL" id="wdurl" value="">
+        </div>
+    </div>
+    
+    <div class="parent-border" id="commentLog">        
+        <div class="table-style" style="width:49%">
+            <p>Comment Log Filename</p>
+            <input type="text" name="commentLogFilename" id="clfn" value="">
+        </div>
+        <div class="table-style" style="width:49%">
+            <p>Comment Log URL</p>
+            <input type="text" name="commentLogURL" id="clurl" value="">
+        </div>
+    </div>
+    
+     <div class="parent-border" id="commentLog" onclick="email()">        
+         <button>Generate Email</button>
+    </div>
+    
+</body>
+</html>
