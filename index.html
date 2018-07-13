@@ -9,12 +9,13 @@
 
   <link rel="stylesheet" href="css/styles.css?v=1.0">
 
-    <style>
+    <style>        
         p {
             font-family: Arial;
             font-size: 15px;
             margin:0px;
             padding:0px;
+            padding-bottom: 5px;
         }
         
         h1 {
@@ -27,7 +28,28 @@
         }
         
         input {
+            border-radius: 4px;
             width: 100%;
+            box-sizing: border-box;
+            padding: 10px 15px;
+            border: 1px solid #ccc;
+        }
+        
+        button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 15px;
+            font-family: Arial;
+            cursor: pointer;
+            float: right;
+            margin-top:10px;
+            margin-right:.5%;
+            border-radius: 4px;
         }
         
         .table-style {
@@ -35,10 +57,14 @@
         }
         
         .parent-border {
-            padding-top: 25px;
             width: 75%;
             margin-left:auto;
             margin-right:auto;
+            max-width: 900px;
+            min-width: 550px;
+            display: block;
+            border-radius: 4px;
+            border: 1px solid #ccc;
         }
         
         .output-div {
@@ -77,13 +103,15 @@
         let clfn = document.getElementById("clfn").value
         let clurl = document.getElementById("clurl").value
         
-        return "<b>" + client + " - " + docName + " " + docVer + "</b>" +
+        return "<b>Project Manager Name</b><br><br>" +
+            "The " + client + " " + docName + " " + docVer + " is ready for delivery to the client. The final documents can be found on SharePoint:<br><br>" +
+            "<b>" + client + " - " + docName + " " + docVer + "</b>" +
             "<ul>" +
             "<li><b>Working Doc:</b> " + makeHref(pdfDelName,pdfDelURL) + "</li>" +
             "<li><b>Redline:</b> " + makeHref(rlfn,rlurl) + "</li>" +
             "<li><b>Working Document:</b> " + makeHref(wdfn,wdurl) + "</li>" +
             "<li><b>Comment Log:</b> " + makeHref(clfn,clurl) + "</li>" +
-            "</ul><br>Best,";
+            "</ul>Best,";
     }
     
     function makeHref(linkName, link) {
@@ -112,7 +140,7 @@
 </head>
 
 <body>
-    <div class="parent-border" id="document-info">        
+    <div class="parent-border" id="document-info" style="margin-top:10%;height:390px;">        
         <div class="table-style" style="width:49%">
             <p>Document Name</p>
             <input type="text" name="docName" id="dn" value="">
@@ -125,9 +153,7 @@
             <p>Document Version</p>
             <input type="text" name="docVersion" id="dv" value="">
         </div>
-    </div>
     
-    <div class="parent-border" id="deliverable">        
         <div class="table-style" style="width:49%">
             <p>PDF Deliverable Filename</p>
             <input type="text" name="deliverableFilename" id="pdffn" value="">
@@ -136,9 +162,7 @@
             <p>PDF Deliverable URL</p>
             <input type="text" name="deliverableURL" id="pdfurl" value="">
         </div>
-    </div>
-    
-    <div class="parent-border" id="redline">        
+        
         <div class="table-style" style="width:49%">
             <p>PDF Redline Filename</p>
             <input type="text" name="redlineFilename" id="rlfn" value="">
@@ -147,9 +171,7 @@
             <p>PDF Redline URL</p>
             <input type="text" name="redlineURL" id="rlurl" value="">
         </div>
-    </div>
     
-    <div class="parent-border" id="workingDoc">        
         <div class="table-style" style="width:49%">
             <p>Working Doc Filename</p>
             <input type="text" name="workingDocFilename" id="wdfn" value="">
@@ -158,9 +180,7 @@
             <p>Working Doc URL</p>
             <input type="text" name="workingDocURL" id="wdurl" value="">
         </div>
-    </div>
-    
-    <div class="parent-border" id="commentLog">        
+       
         <div class="table-style" style="width:49%">
             <p>Comment Log Filename</p>
             <input type="text" name="commentLogFilename" id="clfn" value="">
@@ -169,14 +189,21 @@
             <p>Comment Log URL</p>
             <input type="text" name="commentLogURL" id="clurl" value="">
         </div>
-    </div>
-    
-     <div class="parent-border" id="commentLog" onclick="email()">        
-         <button>Generate Email</button>
-    </div>
-    
-    <div id="output" class="output-div">
         
+        <button onclick="email()">Generate Email</button>
+    </div>
+    
+    <br>
+    
+    <div class="parent-border" id="commentLog">
+        <div id="output" class="output-div">
+            <p style="color: darkgray; text-align: center;">
+                This tool was designed by Alexander Porrello to generate the body text of document delivery emails at Kapsch. <br><Br>
+                To use this tool, fill in all of the fields above, and click the <i>Generate Email</i> Button. 
+                This box will then be populated with the email's body. 
+                Copy-and-paste the contents of this box into Outlook, add the correct recipients to the email, and send it off.
+            </p>
+        </div>
     </div>
     
 </body>
