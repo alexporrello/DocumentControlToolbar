@@ -1,0 +1,65 @@
+p {
+	font-family: Arial;
+	font-size: 15px;
+	margin:0px;
+	padding:0px;
+	padding-bottom: 5px;
+}
+
+h1 {
+	font-family: Arial;
+	font-size: 15px;
+}
+
+div {
+	padding:.5%;
+}
+
+input {
+	border-radius: 4px;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 10px 15px;
+	border: 1px solid #ccc;
+}
+
+button {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 10px 15px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 15px;
+	font-family: Arial;
+	cursor: pointer;
+	float: right;
+	margin-top:10px;
+	margin-right:.5%;
+	border-radius: 4px;
+}
+
+.table-style {
+	float: left;
+}
+
+.parent-border {
+	width: 75%;
+	margin-left:auto;
+	margin-right:auto;
+	max-width: 900px;
+	min-width: 600px;
+	display: block;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+}
+
+.output-div {
+	font-family: Calibri;
+	font-size: 15px;
+}
+
+.space-left {
+    padding-left:3px;
+}

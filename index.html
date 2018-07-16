@@ -7,72 +7,8 @@
   <meta name="description" content="The HTML5 Herald">
   <meta name="author" content="SitePoint">
 
-  <link rel="stylesheet" href="css/styles.css?v=1.0">
+  <link rel="stylesheet" href="style.css">
 
-    <style>        
-        p {
-            font-family: Arial;
-            font-size: 15px;
-            margin:0px;
-            padding:0px;
-            padding-bottom: 5px;
-        }
-        
-        h1 {
-            font-family: Arial;
-            font-size: 15px;
-        }
-        
-        div {
-            padding:.5%;
-        }
-        
-        input {
-            border-radius: 4px;
-            width: 100%;
-            box-sizing: border-box;
-            padding: 10px 15px;
-            border: 1px solid #ccc;
-        }
-        
-        button {
-            background-color: #4CAF50; /* Green */
-            border: none;
-            color: white;
-            padding: 10px 15px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 15px;
-            font-family: Arial;
-            cursor: pointer;
-            float: right;
-            margin-top:10px;
-            margin-right:.5%;
-            border-radius: 4px;
-        }
-        
-        .table-style {
-            float: left;
-        }
-        
-        .parent-border {
-            width: 75%;
-            margin-left:auto;
-            margin-right:auto;
-            max-width: 900px;
-            min-width: 550px;
-            display: block;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-        }
-        
-        .output-div {
-            font-family: Calibri;
-            font-size: 15px;
-        }
-    </style>
-    
     <script>
     /** Generates the subject of the email **/
     function emailSubject() {
@@ -84,12 +20,36 @@
         
         return subject;
     }
+        
+    function makeExample() {
+        let docName = document.getElementById("dn").value = "Software Development Plan";
+        let docAcr  = document.getElementById("da").value = "SDP"; 
+        let docVer  = document.getElementById("dv").value = "v1.2";
+        
+        let clientA = document.getElementById("ca").value = "MDTA";
+        let projMan = document.getElementById("pm").value = "John";
+        
+        let pdfDelName  = document.getElementById("pdffn").value = "TS_SUB_1103R2_Software Development Plan v1.2_2018-07-10.pdf";
+        let pdfDelURL   = document.getElementById("pdfurl").value = "https://kibsi-am.kapschtraffic.com/sales/MryldETC/DEL/12/Forms/AllItems.aspx?RootFolder=%2Fsales%2FMryldETC%2FDEL%2F12%2F3G%20%2D%20Phase%20I%20%2D%20Software%20Development%20and%20Integration%20Test%2FSoftware%20Development%20Plan&FolderCTID=0x012000E7872872FDBF2D40A73CA7BC92518C27&View=%7B39097FA2%2DF748%2D41AE%2DA656%2D55CC6973B1FB%7D&InitialTabId=Ribbon%2ERead&VisibilityContext=WSSTabPersistence";
+        
+        let rlfn = document.getElementById("rlfn").value = "20180710_Kapsch_MDTA_1103R2_Software Development Plan v1.1-1.2 Redline Comparison.pdf";
+        let rlurl = document.getElementById("rlurl").value = "https://kibsi-am.kapschtraffic.com/sales/MryldETC/DEL/12/Forms/AllItems.aspx?RootFolder=%2Fsales%2FMryldETC%2FDEL%2F12%2F3G%20%2D%20Phase%20I%20%2D%20Software%20Development%20and%20Integration%20Test%2FSoftware%20Development%20Plan&FolderCTID=0x012000E7872872FDBF2D40A73CA7BC92518C27&View=%7B39097FA2%2DF748%2D41AE%2DA656%2D55CC6973B1FB%7D&InitialTabId=Ribbon%2ERead&VisibilityContext=WSSTabPersistence"
+        
+        let wdfn = document.getElementById("wdfn").value = "MDTA_Software Development Plan.docx"
+        let wdurl = document.getElementById("wdurl").value = "https://kibsi-am.kapschtraffic.com/sales/MryldETC/DEL/06/Forms/AllItems.aspx?RootFolder=%2Fsales%2FMryldETC%2FDEL%2F06%2F12%20Software%20Development%20Plan%2FRev%203%2E0"
+        
+        let clfn = document.getElementById("clfn").value = "TS_SUB_1103_CDM SDP_Comment Log_Kapsch Response_2018-06-08.xlsx"
+        let clurl = document.getElementById("clurl").value = "https://kibsi-am.kapschtraffic.com/sales/MryldETC/DEL/12/Forms/AllItems.aspx?RootFolder=%2Fsales%2FMryldETC%2FDEL%2F12%2F3G%20%2D%20Phase%20I%20%2D%20Software%20Development%20and%20Integration%20Test%2FSoftware%20Development%20Plan&FolderCTID=0x012000E7872872FDBF2D40A73CA7BC92518C27&View=%7B39097FA2%2DF748%2D41AE%2DA656%2D55CC6973B1FB%7D&InitialTabId=Ribbon%2ERead&VisibilityContext=WSSTabPersistence"
+    }
     
     /** Generates the email's body **/
     function emailBody() {
         let docName = document.getElementById("dn").value;
-        let client  = document.getElementById("ca").value;
+        let docAcr  = document.getElementById("da").value; 
         let docVer  = document.getElementById("dv").value;
+        
+        let clientA = document.getElementById("ca").value;
+        let projMan = document.getElementById("pm").value;
         
         let pdfDelName  = document.getElementById("pdffn").value;
         let pdfDelURL   = document.getElementById("pdfurl").value;
@@ -103,15 +63,19 @@
         let clfn = document.getElementById("clfn").value
         let clurl = document.getElementById("clurl").value
         
-        return "<b>Project Manager Name</b><br><br>" +
-            "The " + client + " " + docName + " " + docVer + " is ready for delivery to the client. The final documents can be found on SharePoint:<br><br>" +
-            "<b>" + client + " - " + docName + " " + docVer + "</b>" +
+        return getVal("pm") + ",<br><br>" +
+            "The " + getVal("ca") + " " + getVal("da") + " " + getVal("dv") + " is ready for delivery to the client. The final documents can be found on SharePoint:<br><br>" +
+            "<b>" + getVal("ca") + " - " + getVal("dn") + " " + docVer + "</b>" +
             "<ul>" +
             "<li><b>Working Doc:</b> " + makeHref(pdfDelName,pdfDelURL) + "</li>" +
             "<li><b>Redline:</b> " + makeHref(rlfn,rlurl) + "</li>" +
             "<li><b>Working Document:</b> " + makeHref(wdfn,wdurl) + "</li>" +
             "<li><b>Comment Log:</b> " + makeHref(clfn,clurl) + "</li>" +
             "</ul>Best,";
+    }
+        
+    function getVal(id) {
+        return document.getElementById(id).value;
     }
     
     function makeHref(linkName, link) {
@@ -140,57 +104,69 @@
 </head>
 
 <body>
-    <div class="parent-border" id="document-info" style="margin-top:10%;height:390px;">        
-        <div class="table-style" style="width:49%">
-            <p>Document Name</p>
+    <div class="parent-border" id="document-info" style="margin-top:10%;height:390px;">    
+        <div class="table-style" style="width:29%">
+            <p class="space-left">Document Name</p>
             <input type="text" name="docName" id="dn" value="">
         </div>
-        <div class="table-style" style="width:24%">
-            <p>Client Acronym</p>
-            <input type="text" name="clientAcronym" id="ca"value="">
+        <div class="table-style" style="width:9%">
+            <p class="space-left">Acronym</p>
+            <input type="text" name="docAcronym" id="da" value="">
         </div>
-        <div class="table-style" style="width:24%">
-            <p>Document Version</p>
+        
+        <div class="table-style" style="width:9%">
+            <p class="space-left">Version</p>
             <input type="text" name="docVersion" id="dv" value="">
         </div>
+        
+        <div class="table-style" style="width:24%">
+            <p class="space-left">Client Acronym</p>
+            <input type="text" name="clientAcronym" id="ca" value="">
+        </div>
+        <div class="table-style" style="width:24%">
+            <p class="space-left">Project Manager</p>
+            <input type="text" name="Project Manager" id="pm" value="">
+        </div>
+
     
         <div class="table-style" style="width:49%">
             <p>PDF Deliverable Filename</p>
             <input type="text" name="deliverableFilename" id="pdffn" value="">
         </div>
         <div class="table-style" style="width:49%">
-            <p>PDF Deliverable URL</p>
+            <p class="space-left">PDF Deliverable URL</p>
             <input type="text" name="deliverableURL" id="pdfurl" value="">
         </div>
         
         <div class="table-style" style="width:49%">
-            <p>PDF Redline Filename</p>
+            <p class="space-left">PDF Redline Filename</p>
             <input type="text" name="redlineFilename" id="rlfn" value="">
         </div>
         <div class="table-style" style="width:49%">
-            <p>PDF Redline URL</p>
+            <p class="space-left">PDF Redline URL</p>
             <input type="text" name="redlineURL" id="rlurl" value="">
         </div>
     
         <div class="table-style" style="width:49%">
-            <p>Working Doc Filename</p>
+            <p class="space-left">Working Doc Filename</p>
             <input type="text" name="workingDocFilename" id="wdfn" value="">
         </div>
         <div class="table-style" style="width:49%">
-            <p>Working Doc URL</p>
+            <p class="space-left">Working Doc URL</p>
             <input type="text" name="workingDocURL" id="wdurl" value="">
         </div>
        
         <div class="table-style" style="width:49%">
-            <p>Comment Log Filename</p>
+            <p class="space-left">Comment Log Filename</p>
             <input type="text" name="commentLogFilename" id="clfn" value="">
         </div>
         <div class="table-style" style="width:49%">
-            <p>Comment Log URL</p>
+            <p class="space-left">Comment Log URL</p>
             <input type="text" name="commentLogURL" id="clurl" value="">
         </div>
         
         <button onclick="email()">Generate Email</button>
+        <button onclick="makeExample()" style="background-color: lightgray">Generate Example</button>
     </div>
     
     <br>
