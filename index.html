@@ -21,6 +21,30 @@
         return subject;
     }
         
+    function clearAll() {
+        document.getElementById("dn").value = '';
+        document.getElementById("da").value = ""; 
+        document.getElementById("dv").value = "";
+        document.getElementById("ca").value = "";
+        document.getElementById("pm").value = "";
+        document.getElementById("pdffn").value = "";
+        document.getElementById("pdfurl").value = "";
+        document.getElementById("rlfn").value = "";
+        document.getElementById("rlurl").value = "";
+        document.getElementById("wdfn").value = "";
+        document.getElementById("wdurl").value = "";
+        document.getElementById("clfn").value = "";
+        document.getElementById("clurl").value = "";
+        
+        document.getElementById("output").innerHTML = "<p style=\"color: darkgray; text-align: center;\">" + 
+                "This tool was designed by Alexander Porrello to generate the body text of document delivery emails at Kapsch. <br><br>" +
+                "To use this tool, fill in all of the fields above, and click the <i>Generate Email</i> Button. " +
+                "This box will then be populated with the email's body. " +
+                "Copy-and-paste the contents of this box into Outlook, add the correct recipients to the email, and send it off.</p>";
+            
+        console.log("Working...");
+    }
+        
     function makeExample() {
         let docName = document.getElementById("dn").value = "Software Development Plan";
         let docAcr  = document.getElementById("da").value = "SDP"; 
@@ -33,13 +57,13 @@
         let pdfDelURL   = document.getElementById("pdfurl").value = "https://kibsi-am.kapschtraffic.com/sales/MryldETC/DEL/12/Forms/AllItems.aspx?RootFolder=%2Fsales%2FMryldETC%2FDEL%2F12%2F3G%20%2D%20Phase%20I%20%2D%20Software%20Development%20and%20Integration%20Test%2FSoftware%20Development%20Plan&FolderCTID=0x012000E7872872FDBF2D40A73CA7BC92518C27&View=%7B39097FA2%2DF748%2D41AE%2DA656%2D55CC6973B1FB%7D&InitialTabId=Ribbon%2ERead&VisibilityContext=WSSTabPersistence";
         
         let rlfn = document.getElementById("rlfn").value = "20180710_Kapsch_MDTA_1103R2_Software Development Plan v1.1-1.2 Redline Comparison.pdf";
-        let rlurl = document.getElementById("rlurl").value = "https://kibsi-am.kapschtraffic.com/sales/MryldETC/DEL/12/Forms/AllItems.aspx?RootFolder=%2Fsales%2FMryldETC%2FDEL%2F12%2F3G%20%2D%20Phase%20I%20%2D%20Software%20Development%20and%20Integration%20Test%2FSoftware%20Development%20Plan&FolderCTID=0x012000E7872872FDBF2D40A73CA7BC92518C27&View=%7B39097FA2%2DF748%2D41AE%2DA656%2D55CC6973B1FB%7D&InitialTabId=Ribbon%2ERead&VisibilityContext=WSSTabPersistence"
+        let rlurl = document.getElementById("rlurl").value = "https://kibsi-am.kapschtraffic.com/sales/MryldETC/DEL/12/Forms/AllItems.aspx?RootFolder=%2Fsales%2FMryldETC%2FDEL%2F12%2F3G%20%2D%20Phase%20I%20%2D%20Software%20Development%20and%20Integration%20Test%2FSoftware%20Development%20Plan&FolderCTID=0x012000E7872872FDBF2D40A73CA7BC92518C27&View=%7B39097FA2%2DF748%2D41AE%2DA656%2D55CC6973B1FB%7D&InitialTabId=Ribbon%2ERead&VisibilityContext=WSSTabPersistence";
         
-        let wdfn = document.getElementById("wdfn").value = "MDTA_Software Development Plan.docx"
-        let wdurl = document.getElementById("wdurl").value = "https://kibsi-am.kapschtraffic.com/sales/MryldETC/DEL/06/Forms/AllItems.aspx?RootFolder=%2Fsales%2FMryldETC%2FDEL%2F06%2F12%20Software%20Development%20Plan%2FRev%203%2E0"
+        let wdfn = document.getElementById("wdfn").value = "MDTA_Software Development Plan.docx";
+        let wdurl = document.getElementById("wdurl").value = "https://kibsi-am.kapschtraffic.com/sales/MryldETC/DEL/06/Forms/AllItems.aspx?RootFolder=%2Fsales%2FMryldETC%2FDEL%2F06%2F12%20Software%20Development%20Plan%2FRev%203%2E0";
         
-        let clfn = document.getElementById("clfn").value = "TS_SUB_1103_CDM SDP_Comment Log_Kapsch Response_2018-06-08.xlsx"
-        let clurl = document.getElementById("clurl").value = "https://kibsi-am.kapschtraffic.com/sales/MryldETC/DEL/12/Forms/AllItems.aspx?RootFolder=%2Fsales%2FMryldETC%2FDEL%2F12%2F3G%20%2D%20Phase%20I%20%2D%20Software%20Development%20and%20Integration%20Test%2FSoftware%20Development%20Plan&FolderCTID=0x012000E7872872FDBF2D40A73CA7BC92518C27&View=%7B39097FA2%2DF748%2D41AE%2DA656%2D55CC6973B1FB%7D&InitialTabId=Ribbon%2ERead&VisibilityContext=WSSTabPersistence"
+        let clfn = document.getElementById("clfn").value = "TS_SUB_1103_CDM SDP_Comment Log_Kapsch Response_2018-06-08.xlsx";
+        let clurl = document.getElementById("clurl").value = "https://kibsi-am.kapschtraffic.com/sales/MryldETC/DEL/12/Forms/AllItems.aspx?RootFolder=%2Fsales%2FMryldETC%2FDEL%2F12%2F3G%20%2D%20Phase%20I%20%2D%20Software%20Development%20and%20Integration%20Test%2FSoftware%20Development%20Plan&FolderCTID=0x012000E7872872FDBF2D40A73CA7BC92518C27&View=%7B39097FA2%2DF748%2D41AE%2DA656%2D55CC6973B1FB%7D&InitialTabId=Ribbon%2ERead&VisibilityContext=WSSTabPersistence";
     }
     
     /** Generates the email's body **/
@@ -104,7 +128,9 @@
 </head>
 
 <body>
-    <div class="parent-border" id="document-info" style="margin-top:10%;height:390px;">    
+    <div class="parent-border" id="document-info" style="margin-top:7%;height:460px;">
+        <h1>Document Control Email Generator</h1>
+        
         <div class="table-style" style="width:29%">
             <p class="space-left">Document Name</p>
             <input type="text" name="docName" id="dn" value="">
@@ -166,15 +192,16 @@
         </div>
         
         <button onclick="email()">Generate Email</button>
-        <button onclick="makeExample()" style="background-color: lightgray">Generate Example</button>
+        <button onclick="clearAll()" style="margin-right:1%;background-color:lightcoral;">Clear</button>
+        <button onclick="makeExample()" style="margin-right:1%;background-color:lightgray;">Generate Example</button>
     </div>
     
     <br>
     
     <div class="parent-border" id="commentLog">
-        <div id="output" class="output-div">
+        <div id="output" class="output-div" id="emailArea">
             <p style="color: darkgray; text-align: center;">
-                This tool was designed by Alexander Porrello to generate the body text of document delivery emails at Kapsch. <br><Br>
+                This tool was designed by Alexander Porrello to generate the body text of document delivery emails at Kapsch. <br><br>
                 To use this tool, fill in all of the fields above, and click the <i>Generate Email</i> Button. 
                 This box will then be populated with the email's body. 
                 Copy-and-paste the contents of this box into Outlook, add the correct recipients to the email, and send it off.
