@@ -1,11 +1,11 @@
 Attribute VB_Name = "Boilerplate"
-Private Function InsertTableCrossreference()
+Public Function InsertTableCrossreference()
     selection.InsertCaption Label:="Table", titleAutoText:="InsertCaption2", _
         Title:="", Position:=wdCaptionPositionAbove, ExcludeLabel:=0
     selection.TypeText text:=vbTab
     selection.Style = ActiveDocument.Styles("2016_Marking")
 End Function
-Private Function FormatTableCaptions()
+Public Function FormatTableCaptions()
     Call InitializeCrossreferenceReplace("#TABLE#")
     
     Dim lastPos As Long
@@ -17,7 +17,7 @@ Private Function FormatTableCaptions()
 
 End Function
 'Kicks off the search for @InsertCrossreferences
-Private Function InitializeCrossreferenceReplace(strTextToFind As String)
+Public Function InitializeCrossreferenceReplace(strTextToFind As String)
 
     selection.find.ClearFormatting
     selection.find.Replacement.ClearFormatting
@@ -41,7 +41,7 @@ End Function
 '      1. "Table" for tables
 '      2. "Figure" for figures
 '      3. "Appendix" for appendices
-Private Function InsertCrossreference(strTextToFind As String, crType As String)
+Public Function InsertCrossreference(strTextToFind As String, crType As String)
     selection.find.ClearFormatting
     selection.find.Replacement.ClearFormatting
     With selection.find
@@ -70,7 +70,7 @@ Private Function InsertCrossreference(strTextToFind As String, crType As String)
             selection.Style = ActiveDocument.Styles("2016_Marking")
     End With
 End Function
-Private Function FormatAllTables()
+Public Function FormatAllTables()
     System.Cursor = wdCursorWait
     Application.ScreenUpdating = False
 
@@ -81,7 +81,7 @@ Private Function FormatAllTables()
     Application.ScreenUpdating = True
     System.Cursor = wdCursorNormal
 End Function
-Private Function FormatTables(i As Long)
+Public Function FormatTables(i As Long)
     ' Apply the MasterTable style.
     
     ActiveDocument.Tables(i).Style = ActiveDocument.Styles("MasterTable")

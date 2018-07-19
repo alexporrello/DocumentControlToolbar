@@ -6,6 +6,7 @@ Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} DocPropertiesUpdate
    ClientTop       =   465
    ClientWidth     =   7335
    OleObjectBlob   =   "DocPropertiesUpdate.frx":0000
+   ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
 Attribute VB_Name = "DocPropertiesUpdate"
@@ -51,34 +52,6 @@ Private Function WriteCustomProp(sProp As String, sValue As String)
         LinkToContent:=False, Type:=msoPropertyTypeString
     End If
 End Function
-
-Private Sub Client_Change()
-
-End Sub
-
-Private Sub ClientAcronym_Change()
-
-End Sub
-
-Private Sub DocAcronym_Change()
-
-End Sub
-
-Private Sub DocReleaseDate_Change()
-
-End Sub
-
-Private Sub DocStatus_Change()
-
-End Sub
-
-Private Sub DocTitle_Change()
-
-End Sub
-
-Private Sub DocVersion_Change()
-
-End Sub
 
 Private Sub Go_Click()
     
@@ -148,31 +121,8 @@ System.Cursor = wdCursorNormal
 
 End Sub
 
-Private Sub Label1_Click()
-
-End Sub
-
-Private Sub Label12_Click()
-
-End Sub
-
-Private Sub Label13_Click()
-
-End Sub
-
-Private Sub Label4_Click()
-
-End Sub
-
-Private Sub SolutionType_Change()
-
-End Sub
-
-Private Sub UserForm_Click()
-
-End Sub
 Private Sub UpdateAllFields()
-    Dim rngStory As Word.Range
+    Dim rngStory As word.Range
     Dim lngJunk As Long
     Dim oShp As Shape
     

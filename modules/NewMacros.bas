@@ -5,6 +5,8 @@ Public Sub setAllKeyboardShortcuts()
         .KeyBindings.Add KeyCode:=BuildKeyCode(wdKeyControl, wdKeyD), KeyCategory:=wdKeyCategoryCommand, Command:="OpenDocumentControlToolsDialog"
         .KeyBindings.Add KeyCode:=BuildKeyCode(wdKeyControl, wdKeyShift, wdKeyA), KeyCategory:=wdKeyCategoryCommand, Command:="AcceptThisChange"
         .KeyBindings.Add KeyCode:=BuildKeyCode(wdKeyControl, wdKeyShift, wdKeyB), KeyCategory:=wdKeyCategoryCommand, Command:="ApplyBodyText"
+        .KeyBindings.Add KeyCode:=BuildKeyCode(wdKeyControl, wdKeyShift, wdKeyC), KeyCategory:=wdKeyCategoryCommand, Command:="InsertBlankComment"
+        .KeyBindings.Add KeyCode:=BuildKeyCode(wdKeyControl, wdKeyShift, wdKeyI), KeyCategory:=wdKeyCategoryCommand, Command:="increaseHeading"
         .KeyBindings.Add KeyCode:=BuildKeyCode(wdKeyControl, wdKeyT), KeyCategory:=wdKeyCategoryCommand, Command:="FormatTable"
     End With
 End Sub
@@ -83,6 +85,12 @@ Private Sub GenericFindAndReplace()
     toFind.Add ("in depth")
     toReplace.Add ("in-depth")
     
+    toFind.Add ("job site")
+    toReplace.Add ("jobsite")
+
+    toFind.Add (".  ")
+    toReplace.Add (". ")
+    
     Dim arraySize As Integer
     arraySize = toFind.count
     
@@ -114,4 +122,51 @@ Attribute page_break_before.VB_ProcData.VB_Invoke_Func = "Normal.NewMacros.page_
     With selection.ParagraphFormat
         .PageBreakBefore = True
     End With
+End Sub
+Sub InsertBlankComment()
+Attribute InsertBlankComment.VB_ProcData.VB_Invoke_Func = "Normal.NewMacros.insert_blank_comment"
+    selection.Comments.Add Range:=selection.Range
+End Sub
+Sub size_image()
+Attribute size_image.VB_ProcData.VB_Invoke_Func = "Normal.NewMacros.size_image"
+    With selection.InlineShapes(1)
+        .Width = 300
+    End With
+End Sub
+Private Function increaseAllHeadingsByOne()
+    System.Cursor = wdCursorWait    'Set the cursor to spinning and turn of screen updating while this acronym runs
+    Application.ScreenUpdating = False
+    
+    Dim oPara As word.Paragraph
+    
+    For Each oPara In ActiveDocument.Paragraphs
+        If oPara.OutlineLevel > 0 And oPara.OutlineLevel < 6 Then
+            oPara.Range.Select
+            increaseHeading
+        End If
+    Next oPara
+    
+    Application.ScreenUpdating = True
+    System.Cursor = wdCursorNormal
+End Function
+
+Sub increaseHeading()
+        If selection.Style = ActiveDocument.Styles("Heading 1,2016_Überschrift 1,Headline 1") Then
+            selection.Style = ActiveDocument.Styles("Heading 2,2016_Überschrift 2,Headline 2")
+        ElseIf selection.Style = ActiveDocument.Styles("Heading 2,2016_Überschrift 2,Headline 2") Then
+            selection.Style = ActiveDocument.Styles("Heading 3,2016_Überschrift 3,Headline 3")
+        ElseIf selection.Style = ActiveDocument.Styles("Heading 3,2016_Überschrift 3,Headline 3") Then
+            selection.Style = ActiveDocument.Styles("Heading 4,2016_Überschrift 4,Headline 4")
+        ElseIf selection.Style = ActiveDocument.Styles("Heading 4,2016_Überschrift 4,Headline 4") Then
+            selection.Style = ActiveDocument.Styles("Heading 5,2016_Überschrift 5,Headline 5")
+        ElseIf selection.Style = ActiveDocument.Styles("Heading 5,2016_Überschrift 5,Headline 5") Then
+            ApplyBodyText
+            selection.Font.Bold = True
+        End If
+End Sub
+
+Sub AcceptThisChange()
+Attribute AcceptThisChange.VB_ProcData.VB_Invoke_Func = "Normal.NewMacros.AcceptThisChange"
+    selection.Range.Revisions.AcceptAll
+    selection.NextRevision (True)
 End Sub
