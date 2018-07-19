@@ -78,6 +78,26 @@ Public Function inCollection(thisCollection As collection, item As String) As Bo
     inCollection = toReturn
     
 End Function
+Public Function InsertFigureReference()
+    Application.ScreenUpdating = False
+    
+    selection.InsertCaption Label:="Figure", titleAutoText:="InsertCaption2", _
+        Title:="", Position:=wdCaptionPositionAbove, ExcludeLabel:=0
+    selection.TypeText text:=vbTab
+    selection.Style = ActiveDocument.Styles("2016_Marking")
+    
+    Application.ScreenUpdating = True
+End Function
+Public Function InsertTableReference()
+    Application.ScreenUpdating = False
+
+    selection.InsertCaption Label:="Table", titleAutoText:="InsertCaption2", _
+        Title:="", Position:=wdCaptionPositionAbove, ExcludeLabel:=0
+    selection.TypeText text:=vbTab
+    selection.Style = ActiveDocument.Styles("2016_Marking")
+    
+    Application.ScreenUpdating = True
+End Function
 
 Public Function TimeApp()
     Dim StartTime As Double

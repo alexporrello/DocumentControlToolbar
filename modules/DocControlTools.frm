@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} DocControlTools 
    Caption         =   "Document Control Tools"
-   ClientHeight    =   4800
+   ClientHeight    =   5505
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   4350
+   ClientWidth     =   4065
    OleObjectBlob   =   "DocControlTools.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
@@ -40,9 +40,6 @@ Private Sub applyBodyStyleButton_MouseUp(ByVal Button As Integer, ByVal Shift As
     applyBodyStyleButton.BackColor = &H8000000F
 End Sub
 
-Private Sub ClientNameField_Change()
-
-End Sub
 
 '==========================================================
 Private Sub formatTableButton_Click()
@@ -139,7 +136,31 @@ End Sub
 Private Sub h4_MouseUp(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
     h4.BackColor = &H8000000F
 End Sub
+'==========================================================
+Private Sub figureCrossRef_Click()
+    Call InsertFigureReference
+End Sub
 
+Private Sub figureCrossRef_MouseDown(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+    figureCrossRef.BackColor = &H8000000A
+End Sub
+
+Private Sub figureCrossRef_MouseUp(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+    figureCrossRef.BackColor = &H8000000F
+End Sub
+
+'========================================================== TODO
+Private Sub tableCrossRef_Click()
+    Call InsertTableReference
+End Sub
+
+Private Sub tableCrossRef_MouseDown(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+    tableCrossRef.BackColor = &H8000000A
+End Sub
+
+Private Sub tableCrossRef_MouseUp(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+    tableCrossRef.BackColor = &H8000000F
+End Sub
 '==========================================================
 Private Sub h5_Click()
     selection.Paragraphs(1).Range.Select
@@ -201,3 +222,6 @@ Private Sub Find_and_replace(find As String, replace As String)
     selection.find.Execute replace:=wdReplaceAll
 End Sub
 
+Private Sub UserForm_Click()
+
+End Sub
