@@ -17,5 +17,9 @@ namespace DocumentControlToolbar
         {
 
         }
+
+        private void docPropUpdater_Click(object sender, RibbonControlEventArgs e) {
+            new DocPropertiesEditor().Show();
+        }
     }
 }

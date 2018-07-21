@@ -111,6 +111,7 @@
             this.docPropUpdater.Name = "docPropUpdater";
             this.docPropUpdater.ScreenTip = "Opens a dialog by which users can easily update a document\'s metadata.";
             this.docPropUpdater.ShowImage = true;
+            this.docPropUpdater.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.docPropUpdater_Click);
             // 
             // boilerplateFormat
             // 
