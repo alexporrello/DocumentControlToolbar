@@ -12,5 +12,10 @@ namespace DocumentControlToolbar
         {
 
         }
+
+        private void button6_Click(object sender, RibbonControlEventArgs e)
+        {
+
+        }
     }
 }

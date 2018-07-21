@@ -34,30 +34,177 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DocumentControlRibbon));
             this.DocControl = this.Factory.CreateRibbonTab();
+            this.group1 = this.Factory.CreateRibbonGroup();
             this.acronymTableGroup = this.Factory.CreateRibbonGroup();
+            this.textToolsGroup = this.Factory.CreateRibbonGroup();
+            this.crossRefsGroup = this.Factory.CreateRibbonGroup();
+            this.docPropUpdater = this.Factory.CreateRibbonButton();
+            this.boilerplateFormat = this.Factory.CreateRibbonButton();
+            this.runAcronymTool = this.Factory.CreateRibbonButton();
+            this.updateWordlist = this.Factory.CreateRibbonButton();
+            this.applyBodyStyle = this.Factory.CreateRibbonButton();
+            this.keepWithNext = this.Factory.CreateRibbonButton();
+            this.figureRefButton = this.Factory.CreateRibbonButton();
+            this.tableRefButton = this.Factory.CreateRibbonButton();
+            this.updateDudsList = this.Factory.CreateRibbonButton();
+            this.headingsDropdown = this.Factory.CreateRibbonGallery();
+            this.h1 = this.Factory.CreateRibbonButton();
+            this.h2 = this.Factory.CreateRibbonButton();
+            this.h3 = this.Factory.CreateRibbonButton();
+            this.h4 = this.Factory.CreateRibbonButton();
+            this.h5 = this.Factory.CreateRibbonButton();
             this.DocControl.SuspendLayout();
+            this.group1.SuspendLayout();
+            this.acronymTableGroup.SuspendLayout();
+            this.textToolsGroup.SuspendLayout();
+            this.crossRefsGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // DocControl
             // 
+            this.DocControl.Groups.Add(this.group1);
             this.DocControl.Groups.Add(this.acronymTableGroup);
+            this.DocControl.Groups.Add(this.textToolsGroup);
+            this.DocControl.Groups.Add(this.crossRefsGroup);
             this.DocControl.Label = "Doc Control";
             this.DocControl.Name = "DocControl";
             // 
+            // group1
+            // 
+            this.group1.Items.Add(this.docPropUpdater);
+            this.group1.Items.Add(this.boilerplateFormat);
+            this.group1.Label = "General";
+            this.group1.Name = "group1";
+            // 
             // acronymTableGroup
             // 
+            this.acronymTableGroup.Items.Add(this.runAcronymTool);
+            this.acronymTableGroup.Items.Add(this.updateWordlist);
+            this.acronymTableGroup.Items.Add(this.updateDudsList);
             this.acronymTableGroup.Label = "Acronym Table";
             this.acronymTableGroup.Name = "acronymTableGroup";
             // 
-            // Ribbon1
+            // textToolsGroup
             // 
-            this.Name = "Ribbon1";
+            this.textToolsGroup.Items.Add(this.headingsDropdown);
+            this.textToolsGroup.Items.Add(this.applyBodyStyle);
+            this.textToolsGroup.Items.Add(this.keepWithNext);
+            this.textToolsGroup.Label = "Text Tools";
+            this.textToolsGroup.Name = "textToolsGroup";
+            // 
+            // crossRefsGroup
+            // 
+            this.crossRefsGroup.Items.Add(this.figureRefButton);
+            this.crossRefsGroup.Items.Add(this.tableRefButton);
+            this.crossRefsGroup.Label = "Cross-references";
+            this.crossRefsGroup.Name = "crossRefsGroup";
+            // 
+            // docPropUpdater
+            // 
+            this.docPropUpdater.Label = "Doc Properties Updater";
+            this.docPropUpdater.Name = "docPropUpdater";
+            this.docPropUpdater.ScreenTip = "Opens a dialog by which users can easily update a document\'s metadata.";
+            // 
+            // boilerplateFormat
+            // 
+            this.boilerplateFormat.Label = "Boilerplate Formatter";
+            this.boilerplateFormat.Name = "boilerplateFormat";
+            this.boilerplateFormat.ScreenTip = "Auto-formats boilerplate documents downloaded from our internal wiki.";
+            // 
+            // runAcronymTool
+            // 
+            this.runAcronymTool.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.runAcronymTool.Image = ((System.Drawing.Image)(resources.GetObject("runAcronymTool.Image")));
+            this.runAcronymTool.Label = "Run";
+            this.runAcronymTool.Name = "runAcronymTool";
+            this.runAcronymTool.ShowImage = true;
+            // 
+            // updateWordlist
+            // 
+            this.updateWordlist.Label = "Update Wordlist";
+            this.updateWordlist.Name = "updateWordlist";
+            // 
+            // applyBodyStyle
+            // 
+            this.applyBodyStyle.Label = "Apply Body Style";
+            this.applyBodyStyle.Name = "applyBodyStyle";
+            // 
+            // keepWithNext
+            // 
+            this.keepWithNext.Label = "Keep With Next";
+            this.keepWithNext.Name = "keepWithNext";
+            // 
+            // figureRefButton
+            // 
+            this.figureRefButton.Label = "Insert Figure Ref";
+            this.figureRefButton.Name = "figureRefButton";
+            // 
+            // tableRefButton
+            // 
+            this.tableRefButton.Label = "Insert Table Ref";
+            this.tableRefButton.Name = "tableRefButton";
+            // 
+            // updateDudsList
+            // 
+            this.updateDudsList.Label = "Update Duds List";
+            this.updateDudsList.Name = "updateDudsList";
+            // 
+            // headingsDropdown
+            // 
+            this.headingsDropdown.Buttons.Add(this.h1);
+            this.headingsDropdown.Buttons.Add(this.h2);
+            this.headingsDropdown.Buttons.Add(this.h3);
+            this.headingsDropdown.Buttons.Add(this.h4);
+            this.headingsDropdown.Buttons.Add(this.h5);
+            this.headingsDropdown.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.headingsDropdown.Image = ((System.Drawing.Image)(resources.GetObject("headingsDropdown.Image")));
+            this.headingsDropdown.Label = "Headings";
+            this.headingsDropdown.Name = "headingsDropdown";
+            this.headingsDropdown.ShowImage = true;
+            // 
+            // h1
+            // 
+            this.h1.Label = "Level 1";
+            this.h1.Name = "h1";
+            // 
+            // h2
+            // 
+            this.h2.Label = "Level 2";
+            this.h2.Name = "h2";
+            // 
+            // h3
+            // 
+            this.h3.Label = "Level 3";
+            this.h3.Name = "h3";
+            // 
+            // h4
+            // 
+            this.h4.Label = "Level 4";
+            this.h4.Name = "h4";
+            // 
+            // h5
+            // 
+            this.h5.Label = "Level 5";
+            this.h5.Name = "h5";
+            // 
+            // DocumentControlRibbon
+            // 
+            this.Name = "DocumentControlRibbon";
             this.RibbonType = "Microsoft.Word.Document";
             this.Tabs.Add(this.DocControl);
             this.Load += new Microsoft.Office.Tools.Ribbon.RibbonUIEventHandler(this.Ribbon1_Load);
             this.DocControl.ResumeLayout(false);
             this.DocControl.PerformLayout();
+            this.group1.ResumeLayout(false);
+            this.group1.PerformLayout();
+            this.acronymTableGroup.ResumeLayout(false);
+            this.acronymTableGroup.PerformLayout();
+            this.textToolsGroup.ResumeLayout(false);
+            this.textToolsGroup.PerformLayout();
+            this.crossRefsGroup.ResumeLayout(false);
+            this.crossRefsGroup.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -65,6 +212,24 @@
         #endregion
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup acronymTableGroup;
         internal Microsoft.Office.Tools.Ribbon.RibbonTab DocControl;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton updateWordlist;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup textToolsGroup;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton applyBodyStyle;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton keepWithNext;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup crossRefsGroup;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton figureRefButton;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton tableRefButton;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup group1;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton docPropUpdater;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton boilerplateFormat;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton runAcronymTool;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton updateDudsList;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGallery headingsDropdown;
+        private Microsoft.Office.Tools.Ribbon.RibbonButton h1;
+        private Microsoft.Office.Tools.Ribbon.RibbonButton h2;
+        private Microsoft.Office.Tools.Ribbon.RibbonButton h3;
+        private Microsoft.Office.Tools.Ribbon.RibbonButton h4;
+        private Microsoft.Office.Tools.Ribbon.RibbonButton h5;
     }
 
     partial class ThisRibbonCollection
