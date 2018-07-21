@@ -167,6 +167,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="DocumentControlRibbon.resx">
       <DependentUpon>DocumentControlRibbon.cs</DependentUpon>
@@ -196,6 +197,24 @@
       <DependentUpon>ThisAddIn.Designer.xml</DependentUpon>
     </Compile>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\apply-style-small-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\headings-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\format-icon-raw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\insert-ref-small-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\properties-icon-raw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\update-small-icon.png" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

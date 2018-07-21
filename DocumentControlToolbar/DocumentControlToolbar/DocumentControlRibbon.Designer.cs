@@ -44,10 +44,6 @@
             this.boilerplateFormat = this.Factory.CreateRibbonButton();
             this.runAcronymTool = this.Factory.CreateRibbonButton();
             this.updateWordlist = this.Factory.CreateRibbonButton();
-            this.applyBodyStyle = this.Factory.CreateRibbonButton();
-            this.keepWithNext = this.Factory.CreateRibbonButton();
-            this.figureRefButton = this.Factory.CreateRibbonButton();
-            this.tableRefButton = this.Factory.CreateRibbonButton();
             this.updateDudsList = this.Factory.CreateRibbonButton();
             this.headingsDropdown = this.Factory.CreateRibbonGallery();
             this.h1 = this.Factory.CreateRibbonButton();
@@ -55,6 +51,11 @@
             this.h3 = this.Factory.CreateRibbonButton();
             this.h4 = this.Factory.CreateRibbonButton();
             this.h5 = this.Factory.CreateRibbonButton();
+            this.applyBodyStyle = this.Factory.CreateRibbonButton();
+            this.keepWithNext = this.Factory.CreateRibbonButton();
+            this.figureRefButton = this.Factory.CreateRibbonButton();
+            this.tableRefButton = this.Factory.CreateRibbonButton();
+            this.updateAllFields = this.Factory.CreateRibbonButton();
             this.DocControl.SuspendLayout();
             this.group1.SuspendLayout();
             this.acronymTableGroup.SuspendLayout();
@@ -65,10 +66,10 @@
             // DocControl
             // 
             this.DocControl.Groups.Add(this.group1);
-            this.DocControl.Groups.Add(this.acronymTableGroup);
             this.DocControl.Groups.Add(this.textToolsGroup);
+            this.DocControl.Groups.Add(this.acronymTableGroup);
             this.DocControl.Groups.Add(this.crossRefsGroup);
-            this.DocControl.Label = "Doc Control";
+            this.DocControl.Label = "DOC CONTROL";
             this.DocControl.Name = "DocControl";
             // 
             // group1
@@ -98,58 +99,49 @@
             // 
             this.crossRefsGroup.Items.Add(this.figureRefButton);
             this.crossRefsGroup.Items.Add(this.tableRefButton);
+            this.crossRefsGroup.Items.Add(this.updateAllFields);
             this.crossRefsGroup.Label = "Cross-references";
             this.crossRefsGroup.Name = "crossRefsGroup";
             // 
             // docPropUpdater
             // 
-            this.docPropUpdater.Label = "Doc Properties Updater";
+            this.docPropUpdater.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.docPropUpdater.Image = global::DocumentControlToolbar.Properties.Resources.properties_icon_raw;
+            this.docPropUpdater.Label = "Document Properties Editor";
             this.docPropUpdater.Name = "docPropUpdater";
             this.docPropUpdater.ScreenTip = "Opens a dialog by which users can easily update a document\'s metadata.";
+            this.docPropUpdater.ShowImage = true;
             // 
             // boilerplateFormat
             // 
+            this.boilerplateFormat.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.boilerplateFormat.Image = global::DocumentControlToolbar.Properties.Resources.format_icon_raw;
             this.boilerplateFormat.Label = "Boilerplate Formatter";
             this.boilerplateFormat.Name = "boilerplateFormat";
             this.boilerplateFormat.ScreenTip = "Auto-formats boilerplate documents downloaded from our internal wiki.";
+            this.boilerplateFormat.ShowImage = true;
             // 
             // runAcronymTool
             // 
             this.runAcronymTool.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
             this.runAcronymTool.Image = ((System.Drawing.Image)(resources.GetObject("runAcronymTool.Image")));
-            this.runAcronymTool.Label = "Run";
+            this.runAcronymTool.Label = "Run Updater";
             this.runAcronymTool.Name = "runAcronymTool";
             this.runAcronymTool.ShowImage = true;
             // 
             // updateWordlist
             // 
-            this.updateWordlist.Label = "Update Wordlist";
+            this.updateWordlist.Image = global::DocumentControlToolbar.Properties.Resources.update_small_icon;
+            this.updateWordlist.Label = " Update Wordlist ";
             this.updateWordlist.Name = "updateWordlist";
-            // 
-            // applyBodyStyle
-            // 
-            this.applyBodyStyle.Label = "Apply Body Style";
-            this.applyBodyStyle.Name = "applyBodyStyle";
-            // 
-            // keepWithNext
-            // 
-            this.keepWithNext.Label = "Keep With Next";
-            this.keepWithNext.Name = "keepWithNext";
-            // 
-            // figureRefButton
-            // 
-            this.figureRefButton.Label = "Insert Figure Ref";
-            this.figureRefButton.Name = "figureRefButton";
-            // 
-            // tableRefButton
-            // 
-            this.tableRefButton.Label = "Insert Table Ref";
-            this.tableRefButton.Name = "tableRefButton";
+            this.updateWordlist.ShowImage = true;
             // 
             // updateDudsList
             // 
-            this.updateDudsList.Label = "Update Duds List";
+            this.updateDudsList.Image = global::DocumentControlToolbar.Properties.Resources.update_small_icon;
+            this.updateDudsList.Label = " Update Duds List ";
             this.updateDudsList.Name = "updateDudsList";
+            this.updateDudsList.ShowImage = true;
             // 
             // headingsDropdown
             // 
@@ -159,8 +151,8 @@
             this.headingsDropdown.Buttons.Add(this.h4);
             this.headingsDropdown.Buttons.Add(this.h5);
             this.headingsDropdown.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.headingsDropdown.Image = ((System.Drawing.Image)(resources.GetObject("headingsDropdown.Image")));
-            this.headingsDropdown.Label = "Headings";
+            this.headingsDropdown.Image = global::DocumentControlToolbar.Properties.Resources.headings_icon;
+            this.headingsDropdown.Label = "Apply Headings";
             this.headingsDropdown.Name = "headingsDropdown";
             this.headingsDropdown.ShowImage = true;
             // 
@@ -188,6 +180,41 @@
             // 
             this.h5.Label = "Level 5";
             this.h5.Name = "h5";
+            // 
+            // applyBodyStyle
+            // 
+            this.applyBodyStyle.Image = global::DocumentControlToolbar.Properties.Resources.apply_style_small_icon;
+            this.applyBodyStyle.Label = " Apply Body Style ";
+            this.applyBodyStyle.Name = "applyBodyStyle";
+            this.applyBodyStyle.ShowImage = true;
+            // 
+            // keepWithNext
+            // 
+            this.keepWithNext.Image = global::DocumentControlToolbar.Properties.Resources.apply_style_small_icon;
+            this.keepWithNext.Label = " Keep With Next ";
+            this.keepWithNext.Name = "keepWithNext";
+            this.keepWithNext.ShowImage = true;
+            // 
+            // figureRefButton
+            // 
+            this.figureRefButton.Image = global::DocumentControlToolbar.Properties.Resources.insert_ref_small_icon;
+            this.figureRefButton.Label = " Insert Figure Ref ";
+            this.figureRefButton.Name = "figureRefButton";
+            this.figureRefButton.ShowImage = true;
+            // 
+            // tableRefButton
+            // 
+            this.tableRefButton.Image = global::DocumentControlToolbar.Properties.Resources.insert_ref_small_icon;
+            this.tableRefButton.Label = " Insert Table Ref ";
+            this.tableRefButton.Name = "tableRefButton";
+            this.tableRefButton.ShowImage = true;
+            // 
+            // updateAllFields
+            // 
+            this.updateAllFields.Image = global::DocumentControlToolbar.Properties.Resources.update_small_icon;
+            this.updateAllFields.Label = "Update All Fields";
+            this.updateAllFields.Name = "updateAllFields";
+            this.updateAllFields.ShowImage = true;
             // 
             // DocumentControlRibbon
             // 
@@ -230,6 +257,7 @@
         private Microsoft.Office.Tools.Ribbon.RibbonButton h3;
         private Microsoft.Office.Tools.Ribbon.RibbonButton h4;
         private Microsoft.Office.Tools.Ribbon.RibbonButton h5;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton updateAllFields;
     }
 
     partial class ThisRibbonCollection
