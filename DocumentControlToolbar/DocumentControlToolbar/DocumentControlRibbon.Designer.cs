@@ -51,11 +51,11 @@
             this.applyBodyStyle = this.Factory.CreateRibbonButton();
             this.keepWithNext = this.Factory.CreateRibbonButton();
             this.runAcronymTool = this.Factory.CreateRibbonButton();
-            this.updateWordlist = this.Factory.CreateRibbonButton();
-            this.updateDudsList = this.Factory.CreateRibbonButton();
             this.figureRefButton = this.Factory.CreateRibbonButton();
             this.tableRefButton = this.Factory.CreateRibbonButton();
             this.updateAllFields = this.Factory.CreateRibbonButton();
+            this.updateWordlist = this.Factory.CreateRibbonButton();
+            this.updateDudsList = this.Factory.CreateRibbonButton();
             this.DocControl.SuspendLayout();
             this.group1.SuspendLayout();
             this.textToolsGroup.SuspendLayout();
@@ -121,7 +121,6 @@
             this.boilerplateFormat.Name = "boilerplateFormat";
             this.boilerplateFormat.ScreenTip = "Auto-formats boilerplate documents downloaded from our internal wiki.";
             this.boilerplateFormat.ShowImage = true;
-            this.boilerplateFormat.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.boilerplateFormat_Click);
             // 
             // headingsDropdown
             // 
@@ -167,6 +166,7 @@
             this.applyBodyStyle.Label = " Apply Body Style ";
             this.applyBodyStyle.Name = "applyBodyStyle";
             this.applyBodyStyle.ShowImage = true;
+            this.applyBodyStyle.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.applyBodyStyle_Click);
             // 
             // keepWithNext
             // 
@@ -174,6 +174,7 @@
             this.keepWithNext.Label = " Keep With Next ";
             this.keepWithNext.Name = "keepWithNext";
             this.keepWithNext.ShowImage = true;
+            this.keepWithNext.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.keepWithNext_Click);
             // 
             // runAcronymTool
             // 
@@ -183,6 +184,29 @@
             this.runAcronymTool.Name = "runAcronymTool";
             this.runAcronymTool.ShowImage = true;
             this.runAcronymTool.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.runAcronymTool_Click);
+            // 
+            // figureRefButton
+            // 
+            this.figureRefButton.Image = global::DocumentControlToolbar.Properties.Resources.insert_ref_small_icon;
+            this.figureRefButton.Label = " Insert Figure Ref ";
+            this.figureRefButton.Name = "figureRefButton";
+            this.figureRefButton.ShowImage = true;
+            this.figureRefButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.figureRefButton_Click);
+            // 
+            // tableRefButton
+            // 
+            this.tableRefButton.Image = global::DocumentControlToolbar.Properties.Resources.insert_ref_small_icon;
+            this.tableRefButton.Label = " Insert Table Ref ";
+            this.tableRefButton.Name = "tableRefButton";
+            this.tableRefButton.ShowImage = true;
+            this.tableRefButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.tableRefButton_Click);
+            // 
+            // updateAllFields
+            // 
+            this.updateAllFields.Image = global::DocumentControlToolbar.Properties.Resources.update_small_icon;
+            this.updateAllFields.Label = "Update All Fields";
+            this.updateAllFields.Name = "updateAllFields";
+            this.updateAllFields.ShowImage = true;
             // 
             // updateWordlist
             // 
@@ -197,27 +221,6 @@
             this.updateDudsList.Label = " Update Duds List ";
             this.updateDudsList.Name = "updateDudsList";
             this.updateDudsList.ShowImage = true;
-            // 
-            // figureRefButton
-            // 
-            this.figureRefButton.Image = global::DocumentControlToolbar.Properties.Resources.insert_ref_small_icon;
-            this.figureRefButton.Label = " Insert Figure Ref ";
-            this.figureRefButton.Name = "figureRefButton";
-            this.figureRefButton.ShowImage = true;
-            // 
-            // tableRefButton
-            // 
-            this.tableRefButton.Image = global::DocumentControlToolbar.Properties.Resources.insert_ref_small_icon;
-            this.tableRefButton.Label = " Insert Table Ref ";
-            this.tableRefButton.Name = "tableRefButton";
-            this.tableRefButton.ShowImage = true;
-            // 
-            // updateAllFields
-            // 
-            this.updateAllFields.Image = global::DocumentControlToolbar.Properties.Resources.update_small_icon;
-            this.updateAllFields.Label = "Update All Fields";
-            this.updateAllFields.Name = "updateAllFields";
-            this.updateAllFields.ShowImage = true;
             // 
             // DocumentControlRibbon
             // 
@@ -242,7 +245,6 @@
         #endregion
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup acronymTableGroup;
         internal Microsoft.Office.Tools.Ribbon.RibbonTab DocControl;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton updateWordlist;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup textToolsGroup;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton applyBodyStyle;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton keepWithNext;
@@ -253,7 +255,6 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton docPropUpdater;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton boilerplateFormat;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton runAcronymTool;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton updateDudsList;
         internal Microsoft.Office.Tools.Ribbon.RibbonGallery headingsDropdown;
         private Microsoft.Office.Tools.Ribbon.RibbonButton h1;
         private Microsoft.Office.Tools.Ribbon.RibbonButton h2;
@@ -261,6 +262,8 @@
         private Microsoft.Office.Tools.Ribbon.RibbonButton h4;
         private Microsoft.Office.Tools.Ribbon.RibbonButton h5;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton updateAllFields;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton updateWordlist;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton updateDudsList;
     }
 
     partial class ThisRibbonCollection
