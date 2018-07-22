@@ -37,14 +37,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DocumentControlRibbon));
             this.DocControl = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
-            this.acronymTableGroup = this.Factory.CreateRibbonGroup();
             this.textToolsGroup = this.Factory.CreateRibbonGroup();
+            this.acronymTableGroup = this.Factory.CreateRibbonGroup();
             this.crossRefsGroup = this.Factory.CreateRibbonGroup();
             this.docPropUpdater = this.Factory.CreateRibbonButton();
             this.boilerplateFormat = this.Factory.CreateRibbonButton();
-            this.runAcronymTool = this.Factory.CreateRibbonButton();
-            this.updateWordlist = this.Factory.CreateRibbonButton();
-            this.updateDudsList = this.Factory.CreateRibbonButton();
             this.headingsDropdown = this.Factory.CreateRibbonGallery();
             this.h1 = this.Factory.CreateRibbonButton();
             this.h2 = this.Factory.CreateRibbonButton();
@@ -53,13 +50,16 @@
             this.h5 = this.Factory.CreateRibbonButton();
             this.applyBodyStyle = this.Factory.CreateRibbonButton();
             this.keepWithNext = this.Factory.CreateRibbonButton();
+            this.runAcronymTool = this.Factory.CreateRibbonButton();
+            this.updateWordlist = this.Factory.CreateRibbonButton();
+            this.updateDudsList = this.Factory.CreateRibbonButton();
             this.figureRefButton = this.Factory.CreateRibbonButton();
             this.tableRefButton = this.Factory.CreateRibbonButton();
             this.updateAllFields = this.Factory.CreateRibbonButton();
             this.DocControl.SuspendLayout();
             this.group1.SuspendLayout();
-            this.acronymTableGroup.SuspendLayout();
             this.textToolsGroup.SuspendLayout();
+            this.acronymTableGroup.SuspendLayout();
             this.crossRefsGroup.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,14 +79,6 @@
             this.group1.Label = "General";
             this.group1.Name = "group1";
             // 
-            // acronymTableGroup
-            // 
-            this.acronymTableGroup.Items.Add(this.runAcronymTool);
-            this.acronymTableGroup.Items.Add(this.updateWordlist);
-            this.acronymTableGroup.Items.Add(this.updateDudsList);
-            this.acronymTableGroup.Label = "Acronym Table";
-            this.acronymTableGroup.Name = "acronymTableGroup";
-            // 
             // textToolsGroup
             // 
             this.textToolsGroup.Items.Add(this.headingsDropdown);
@@ -94,6 +86,14 @@
             this.textToolsGroup.Items.Add(this.keepWithNext);
             this.textToolsGroup.Label = "Text Tools";
             this.textToolsGroup.Name = "textToolsGroup";
+            // 
+            // acronymTableGroup
+            // 
+            this.acronymTableGroup.Items.Add(this.runAcronymTool);
+            this.acronymTableGroup.Items.Add(this.updateWordlist);
+            this.acronymTableGroup.Items.Add(this.updateDudsList);
+            this.acronymTableGroup.Label = "Acronym Table";
+            this.acronymTableGroup.Name = "acronymTableGroup";
             // 
             // crossRefsGroup
             // 
@@ -121,28 +121,7 @@
             this.boilerplateFormat.Name = "boilerplateFormat";
             this.boilerplateFormat.ScreenTip = "Auto-formats boilerplate documents downloaded from our internal wiki.";
             this.boilerplateFormat.ShowImage = true;
-            // 
-            // runAcronymTool
-            // 
-            this.runAcronymTool.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.runAcronymTool.Image = ((System.Drawing.Image)(resources.GetObject("runAcronymTool.Image")));
-            this.runAcronymTool.Label = "Run Updater";
-            this.runAcronymTool.Name = "runAcronymTool";
-            this.runAcronymTool.ShowImage = true;
-            // 
-            // updateWordlist
-            // 
-            this.updateWordlist.Image = global::DocumentControlToolbar.Properties.Resources.update_small_icon;
-            this.updateWordlist.Label = " Update Wordlist ";
-            this.updateWordlist.Name = "updateWordlist";
-            this.updateWordlist.ShowImage = true;
-            // 
-            // updateDudsList
-            // 
-            this.updateDudsList.Image = global::DocumentControlToolbar.Properties.Resources.update_small_icon;
-            this.updateDudsList.Label = " Update Duds List ";
-            this.updateDudsList.Name = "updateDudsList";
-            this.updateDudsList.ShowImage = true;
+            this.boilerplateFormat.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.boilerplateFormat_Click);
             // 
             // headingsDropdown
             // 
@@ -196,6 +175,29 @@
             this.keepWithNext.Name = "keepWithNext";
             this.keepWithNext.ShowImage = true;
             // 
+            // runAcronymTool
+            // 
+            this.runAcronymTool.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.runAcronymTool.Image = ((System.Drawing.Image)(resources.GetObject("runAcronymTool.Image")));
+            this.runAcronymTool.Label = "Run Updater";
+            this.runAcronymTool.Name = "runAcronymTool";
+            this.runAcronymTool.ShowImage = true;
+            this.runAcronymTool.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.runAcronymTool_Click);
+            // 
+            // updateWordlist
+            // 
+            this.updateWordlist.Image = global::DocumentControlToolbar.Properties.Resources.update_small_icon;
+            this.updateWordlist.Label = " Update Wordlist ";
+            this.updateWordlist.Name = "updateWordlist";
+            this.updateWordlist.ShowImage = true;
+            // 
+            // updateDudsList
+            // 
+            this.updateDudsList.Image = global::DocumentControlToolbar.Properties.Resources.update_small_icon;
+            this.updateDudsList.Label = " Update Duds List ";
+            this.updateDudsList.Name = "updateDudsList";
+            this.updateDudsList.ShowImage = true;
+            // 
             // figureRefButton
             // 
             this.figureRefButton.Image = global::DocumentControlToolbar.Properties.Resources.insert_ref_small_icon;
@@ -227,10 +229,10 @@
             this.DocControl.PerformLayout();
             this.group1.ResumeLayout(false);
             this.group1.PerformLayout();
-            this.acronymTableGroup.ResumeLayout(false);
-            this.acronymTableGroup.PerformLayout();
             this.textToolsGroup.ResumeLayout(false);
             this.textToolsGroup.PerformLayout();
+            this.acronymTableGroup.ResumeLayout(false);
+            this.acronymTableGroup.PerformLayout();
             this.crossRefsGroup.ResumeLayout(false);
             this.crossRefsGroup.PerformLayout();
             this.ResumeLayout(false);

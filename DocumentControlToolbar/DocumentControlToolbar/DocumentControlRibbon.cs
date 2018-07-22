@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,14 @@ namespace DocumentControlToolbar
 
         private void docPropUpdater_Click(object sender, RibbonControlEventArgs e) {
             new DocPropertiesEditor().Show();
+        }
+
+        private void runAcronymTool_Click(object sender, RibbonControlEventArgs e) {
+            new AcronymTableTool();
+        }
+
+        private void boilerplateFormat_Click(object sender, RibbonControlEventArgs e) {
+
         }
     }
 }
