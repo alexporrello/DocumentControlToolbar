@@ -45,5 +45,9 @@ namespace DocumentControlToolbar {
             Word.Application app = Globals.ThisAddIn.Application;
             app.Selection.ParagraphFormat.KeepWithNext = -1;
         }
+
+        private void headingsDropdown_Click(object sender, RibbonControlEventArgs e) {
+
+        }
     }
 }
