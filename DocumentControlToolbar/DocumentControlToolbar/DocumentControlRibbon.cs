@@ -10,24 +10,44 @@ using System.Diagnostics;
 namespace DocumentControlToolbar {
     public partial class DocumentControlRibbon {
 
-        private void Ribbon1_Load(object sender, RibbonUIEventArgs e) { 
+        private void Ribbon1_Load(object sender, RibbonUIEventArgs e) { }
 
-        }
+        /** ======================= General Group ======================= **/
 
         private void docPropUpdater_Click(object sender, RibbonControlEventArgs e) {
             new DocPropertiesEditor().Show();
         }
 
+        //TODO Boilerplate Formatter
+
+        /** ======================= Style Tools Group ======================= **/
+
+        private void applyBodyStyle_Click(object sender, RibbonControlEventArgs e) {
+            Tools.SetStyle("2016_Bodytext | 9pt");
+        }
+
+        private void keepWithNext_Click(object sender, RibbonControlEventArgs e) {
+            Word.Application app = Globals.ThisAddIn.Application;
+            app.Selection.ParagraphFormat.KeepWithNext = -1;
+        }
+
+        /** ======================= List Tools Group ======================= **/
+
+        private void defaultUL_Click(object sender, RibbonControlEventArgs e) {
+            Tools.SetStyle("Body Text enumeration Arrow 2016 black");
+        }
+
+        private void defaultOL_Click(object sender, RibbonControlEventArgs e) {
+            Tools.SetStyle("Body Text enumeration1 1. 2. 3.");
+        }
+
+        /** ======================= Acronym Table Group ======================= **/
+
         private void runAcronymTool_Click(object sender, RibbonControlEventArgs e) {
             new AcronymTableTool();
         }
 
-        private void applyBodyStyle_Click(object sender, RibbonControlEventArgs e) {
-            Word.Application app = Globals.ThisAddIn.Application;
-            Word.Document    doc = Globals.ThisAddIn.Application.ActiveDocument;
-
-            app.Selection.ParagraphFormat.set_Style(app.ActiveDocument.Styles["2016_Bodytext | 9pt"]);
-        }
+        /** ======================= Cross-references Group ======================= **/
 
         private void tableRefButton_Click(object sender, RibbonControlEventArgs e) {
             Word.Application app = Globals.ThisAddIn.Application;
@@ -41,13 +61,58 @@ namespace DocumentControlToolbar {
             app.Selection.ParagraphFormat.set_Style(app.ActiveDocument.Styles["2016_Marking"]);
         }
 
-        private void keepWithNext_Click(object sender, RibbonControlEventArgs e) {
-            Word.Application app = Globals.ThisAddIn.Application;
-            app.Selection.ParagraphFormat.KeepWithNext = -1;
+        private void updateAllFields_Click(object sender, RibbonControlEventArgs e) {
+            Tools.UpdateAllFields();
         }
 
-        private void headingsDropdown_Click(object sender, RibbonControlEventArgs e) {
+        /** ======================= Headings Dropdown ======================= **/
 
+        private void headingOne_Click(object sender, RibbonControlEventArgs e) {
+            Tools.SetStyle("Heading 1,2016_Überschrift 1,Headline 1");
+        }
+
+        private void headingTwo_Click(object sender, RibbonControlEventArgs e) {
+            Tools.SetStyle("Heading 2,2016_Überschrift 2,Headline 2");
+        }
+
+        private void headingThree_Click(object sender, RibbonControlEventArgs e) {
+            Tools.SetStyle("Heading 3,2016_Überschrift 3,Headline 3");
+        }
+
+        private void headingFour_Click(object sender, RibbonControlEventArgs e) {
+            Tools.SetStyle("Heading 4,2016_Überschrift 4,Headline 4");
+        }
+
+        private void headingFive_Click(object sender, RibbonControlEventArgs e) {
+            Tools.SetStyle("Heading 5,2016_Überschrift 5,Headline 5");
+        }
+
+        /** ======================= Ordered List Dropdown ======================= **/
+
+        private void levelOneO_Click(object sender, RibbonControlEventArgs e) {
+            Tools.SetStyle("Body Text enumeration1 1. 2. 3.");
+        }
+
+        private void levelTwoO_Click(object sender, RibbonControlEventArgs e) {
+            Tools.SetStyle("Body Text enumeration2 a)b)c)");
+        }
+
+        /** ======================= Unordered List Dropdown ======================= **/
+
+        private void levelOneU_Click(object sender, RibbonControlEventArgs e) {
+            Tools.SetStyle("Body Text enumeration Arrow 2016 black");
+        }
+
+        private void levelTwoU_Click(object sender, RibbonControlEventArgs e) {
+            Tools.SetStyle("Body Text enumeration Line1");
+        }
+
+        private void levelThreeU_Click(object sender, RibbonControlEventArgs e) {
+            Tools.SetStyle("Body Text enumeration Line3");
+        }
+
+        private void levelFourU_Click(object sender, RibbonControlEventArgs e) {
+            Tools.SetStyle("Body Text enumeration Point3");
         }
     }
 }

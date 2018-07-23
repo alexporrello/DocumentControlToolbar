@@ -41,13 +41,24 @@
             this.boilerplateFormat = this.Factory.CreateRibbonButton();
             this.textToolsGroup = this.Factory.CreateRibbonGroup();
             this.headingsDropdown = this.Factory.CreateRibbonGallery();
-            this.h1 = this.Factory.CreateRibbonButton();
-            this.h2 = this.Factory.CreateRibbonButton();
-            this.h3 = this.Factory.CreateRibbonButton();
-            this.h4 = this.Factory.CreateRibbonButton();
-            this.h5 = this.Factory.CreateRibbonButton();
+            this.headingOne = this.Factory.CreateRibbonButton();
+            this.headingTwo = this.Factory.CreateRibbonButton();
+            this.headingThree = this.Factory.CreateRibbonButton();
+            this.headingFour = this.Factory.CreateRibbonButton();
+            this.headingFive = this.Factory.CreateRibbonButton();
             this.applyBodyStyle = this.Factory.CreateRibbonButton();
             this.keepWithNext = this.Factory.CreateRibbonButton();
+            this.group2 = this.Factory.CreateRibbonGroup();
+            this.gallery2 = this.Factory.CreateRibbonGallery();
+            this.levelOneU = this.Factory.CreateRibbonButton();
+            this.levelTwoU = this.Factory.CreateRibbonButton();
+            this.levelThreeU = this.Factory.CreateRibbonButton();
+            this.levelFourU = this.Factory.CreateRibbonButton();
+            this.gallery1 = this.Factory.CreateRibbonGallery();
+            this.levelOneO = this.Factory.CreateRibbonButton();
+            this.levelTwoO = this.Factory.CreateRibbonButton();
+            this.defaultUL = this.Factory.CreateRibbonButton();
+            this.defaultOL = this.Factory.CreateRibbonButton();
             this.acronymTableGroup = this.Factory.CreateRibbonGroup();
             this.runAcronymTool = this.Factory.CreateRibbonButton();
             this.updateWordlist = this.Factory.CreateRibbonButton();
@@ -59,6 +70,7 @@
             this.DocControl.SuspendLayout();
             this.group1.SuspendLayout();
             this.textToolsGroup.SuspendLayout();
+            this.group2.SuspendLayout();
             this.acronymTableGroup.SuspendLayout();
             this.crossRefsGroup.SuspendLayout();
             this.SuspendLayout();
@@ -67,9 +79,10 @@
             // 
             this.DocControl.Groups.Add(this.group1);
             this.DocControl.Groups.Add(this.textToolsGroup);
+            this.DocControl.Groups.Add(this.group2);
             this.DocControl.Groups.Add(this.acronymTableGroup);
             this.DocControl.Groups.Add(this.crossRefsGroup);
-            this.DocControl.Label = "DOC CONTROL";
+            this.DocControl.Label = "Doc Control";
             this.DocControl.Name = "DocControl";
             // 
             // group1
@@ -103,47 +116,52 @@
             this.textToolsGroup.Items.Add(this.headingsDropdown);
             this.textToolsGroup.Items.Add(this.applyBodyStyle);
             this.textToolsGroup.Items.Add(this.keepWithNext);
-            this.textToolsGroup.Label = "Text Tools";
+            this.textToolsGroup.Label = "Style Tools";
             this.textToolsGroup.Name = "textToolsGroup";
             // 
             // headingsDropdown
             // 
-            this.headingsDropdown.Buttons.Add(this.h1);
-            this.headingsDropdown.Buttons.Add(this.h2);
-            this.headingsDropdown.Buttons.Add(this.h3);
-            this.headingsDropdown.Buttons.Add(this.h4);
-            this.headingsDropdown.Buttons.Add(this.h5);
+            this.headingsDropdown.Buttons.Add(this.headingOne);
+            this.headingsDropdown.Buttons.Add(this.headingTwo);
+            this.headingsDropdown.Buttons.Add(this.headingThree);
+            this.headingsDropdown.Buttons.Add(this.headingFour);
+            this.headingsDropdown.Buttons.Add(this.headingFive);
+            this.headingsDropdown.ColumnCount = 1;
             this.headingsDropdown.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
             this.headingsDropdown.Image = global::DocumentControlToolbar.Properties.Resources.headings_icon;
             this.headingsDropdown.Label = "Apply Headings";
             this.headingsDropdown.Name = "headingsDropdown";
             this.headingsDropdown.ShowImage = true;
-            this.headingsDropdown.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.headingsDropdown_Click);
             // 
-            // h1
+            // headingOne
             // 
-            this.h1.Label = "Level 1";
-            this.h1.Name = "h1";
+            this.headingOne.Label = "Level 1";
+            this.headingOne.Name = "headingOne";
+            this.headingOne.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.headingOne_Click);
             // 
-            // h2
+            // headingTwo
             // 
-            this.h2.Label = "Level 2";
-            this.h2.Name = "h2";
+            this.headingTwo.Label = "Level 2";
+            this.headingTwo.Name = "headingTwo";
+            this.headingTwo.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.headingTwo_Click);
             // 
-            // h3
+            // headingThree
             // 
-            this.h3.Label = "Level 3";
-            this.h3.Name = "h3";
+            this.headingThree.Label = "Level 3";
+            this.headingThree.Name = "headingThree";
+            this.headingThree.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.headingThree_Click);
             // 
-            // h4
+            // headingFour
             // 
-            this.h4.Label = "Level 4";
-            this.h4.Name = "h4";
+            this.headingFour.Label = "Level 4";
+            this.headingFour.Name = "headingFour";
+            this.headingFour.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.headingFour_Click);
             // 
-            // h5
+            // headingFive
             // 
-            this.h5.Label = "Level 5";
-            this.h5.Name = "h5";
+            this.headingFive.Label = "Level 5";
+            this.headingFive.Name = "headingFive";
+            this.headingFive.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.headingFive_Click);
             // 
             // applyBodyStyle
             // 
@@ -160,6 +178,91 @@
             this.keepWithNext.Name = "keepWithNext";
             this.keepWithNext.ShowImage = true;
             this.keepWithNext.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.keepWithNext_Click);
+            // 
+            // group2
+            // 
+            this.group2.Items.Add(this.gallery2);
+            this.group2.Items.Add(this.gallery1);
+            this.group2.Items.Add(this.defaultUL);
+            this.group2.Items.Add(this.defaultOL);
+            this.group2.Label = "List Tools";
+            this.group2.Name = "group2";
+            // 
+            // gallery2
+            // 
+            this.gallery2.Buttons.Add(this.levelOneU);
+            this.gallery2.Buttons.Add(this.levelTwoU);
+            this.gallery2.Buttons.Add(this.levelThreeU);
+            this.gallery2.Buttons.Add(this.levelFourU);
+            this.gallery2.ColumnCount = 1;
+            this.gallery2.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.gallery2.Image = global::DocumentControlToolbar.Properties.Resources.apply_list_large_icon;
+            this.gallery2.Label = "Apply Unorderd List";
+            this.gallery2.Name = "gallery2";
+            this.gallery2.ShowImage = true;
+            // 
+            // levelOneU
+            // 
+            this.levelOneU.Label = "Level 1";
+            this.levelOneU.Name = "levelOneU";
+            this.levelOneU.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.levelOneU_Click);
+            // 
+            // levelTwoU
+            // 
+            this.levelTwoU.Label = "Level 2";
+            this.levelTwoU.Name = "levelTwoU";
+            this.levelTwoU.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.levelTwoU_Click);
+            // 
+            // levelThreeU
+            // 
+            this.levelThreeU.Label = "Level 3";
+            this.levelThreeU.Name = "levelThreeU";
+            this.levelThreeU.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.levelThreeU_Click);
+            // 
+            // levelFourU
+            // 
+            this.levelFourU.Label = "Level 4";
+            this.levelFourU.Name = "levelFourU";
+            this.levelFourU.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.levelFourU_Click);
+            // 
+            // gallery1
+            // 
+            this.gallery1.Buttons.Add(this.levelOneO);
+            this.gallery1.Buttons.Add(this.levelTwoO);
+            this.gallery1.ColumnCount = 1;
+            this.gallery1.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.gallery1.Image = global::DocumentControlToolbar.Properties.Resources.apply_o_list_large_icon;
+            this.gallery1.Label = "Apply Orderd List";
+            this.gallery1.Name = "gallery1";
+            this.gallery1.ShowImage = true;
+            // 
+            // levelOneO
+            // 
+            this.levelOneO.Label = "Level 1";
+            this.levelOneO.Name = "levelOneO";
+            this.levelOneO.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.levelOneO_Click);
+            // 
+            // levelTwoO
+            // 
+            this.levelTwoO.Label = "Level 2";
+            this.levelTwoO.Name = "levelTwoO";
+            this.levelTwoO.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.levelTwoO_Click);
+            // 
+            // defaultUL
+            // 
+            this.defaultUL.Image = global::DocumentControlToolbar.Properties.Resources.apply_list_small_icon;
+            this.defaultUL.Label = "Apply Default UL";
+            this.defaultUL.Name = "defaultUL";
+            this.defaultUL.ShowImage = true;
+            this.defaultUL.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.defaultUL_Click);
+            // 
+            // defaultOL
+            // 
+            this.defaultOL.Image = global::DocumentControlToolbar.Properties.Resources.apply_o_list_small_icon;
+            this.defaultOL.Label = "Apply Default OL";
+            this.defaultOL.Name = "defaultOL";
+            this.defaultOL.ShowImage = true;
+            this.defaultOL.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.defaultOL_Click);
             // 
             // acronymTableGroup
             // 
@@ -222,6 +325,7 @@
             this.updateAllFields.Label = "Update All Fields";
             this.updateAllFields.Name = "updateAllFields";
             this.updateAllFields.ShowImage = true;
+            this.updateAllFields.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.updateAllFields_Click);
             // 
             // DocumentControlRibbon
             // 
@@ -235,6 +339,8 @@
             this.group1.PerformLayout();
             this.textToolsGroup.ResumeLayout(false);
             this.textToolsGroup.PerformLayout();
+            this.group2.ResumeLayout(false);
+            this.group2.PerformLayout();
             this.acronymTableGroup.ResumeLayout(false);
             this.acronymTableGroup.PerformLayout();
             this.crossRefsGroup.ResumeLayout(false);
@@ -244,7 +350,6 @@
         }
 
         #endregion
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup acronymTableGroup;
         internal Microsoft.Office.Tools.Ribbon.RibbonTab DocControl;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup textToolsGroup;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton applyBodyStyle;
@@ -256,15 +361,27 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton docPropUpdater;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton boilerplateFormat;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton runAcronymTool;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGallery headingsDropdown;
-        private Microsoft.Office.Tools.Ribbon.RibbonButton h1;
-        private Microsoft.Office.Tools.Ribbon.RibbonButton h2;
-        private Microsoft.Office.Tools.Ribbon.RibbonButton h3;
-        private Microsoft.Office.Tools.Ribbon.RibbonButton h4;
-        private Microsoft.Office.Tools.Ribbon.RibbonButton h5;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton updateAllFields;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton defaultUL;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton defaultOL;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup group2;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup acronymTableGroup;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton updateWordlist;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton updateDudsList;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGallery headingsDropdown;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton headingOne;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton headingTwo;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton headingThree;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton headingFour;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton headingFive;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGallery gallery1;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton levelOneO;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton levelTwoO;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGallery gallery2;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton levelOneU;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton levelTwoU;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton levelThreeU;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton levelFourU;
     }
 
     partial class ThisRibbonCollection

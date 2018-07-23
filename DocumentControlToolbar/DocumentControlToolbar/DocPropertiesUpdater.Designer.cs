@@ -29,30 +29,33 @@
         private void InitializeComponent()
         {
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.solutionAcronym = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.solutionType = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.roadName = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.clientAcronym = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.client = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.pm = new System.Windows.Forms.TextBox();
+            this.author = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.status = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.version = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.releaseDate = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.acronym = new System.Windows.Forms.TextBox();
+            this.title = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.updateButton = new System.Windows.Forms.Button();
+            this.sharePointID = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.demoButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label8
@@ -64,12 +67,12 @@
             this.label8.TabIndex = 18;
             this.label8.Text = "Solution Acronym";
             // 
-            // textBox8
+            // solutionAcronym
             // 
-            this.textBox8.Location = new System.Drawing.Point(269, 190);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(250, 20);
-            this.textBox8.TabIndex = 10;
+            this.solutionAcronym.Location = new System.Drawing.Point(269, 190);
+            this.solutionAcronym.Name = "solutionAcronym";
+            this.solutionAcronym.Size = new System.Drawing.Size(250, 20);
+            this.solutionAcronym.TabIndex = 11;
             // 
             // label9
             // 
@@ -80,12 +83,12 @@
             this.label9.TabIndex = 16;
             this.label9.Text = "Solution Type";
             // 
-            // textBox9
+            // solutionType
             // 
-            this.textBox9.Location = new System.Drawing.Point(12, 190);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(250, 20);
-            this.textBox9.TabIndex = 9;
+            this.solutionType.Location = new System.Drawing.Point(12, 190);
+            this.solutionType.Name = "solutionType";
+            this.solutionType.Size = new System.Drawing.Size(250, 20);
+            this.solutionType.TabIndex = 10;
             // 
             // label10
             // 
@@ -96,12 +99,12 @@
             this.label10.TabIndex = 20;
             this.label10.Text = "Road Name:";
             // 
-            // textBox10
+            // roadName
             // 
-            this.textBox10.Location = new System.Drawing.Point(12, 151);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(507, 20);
-            this.textBox10.TabIndex = 8;
+            this.roadName.Location = new System.Drawing.Point(12, 151);
+            this.roadName.Name = "roadName";
+            this.roadName.Size = new System.Drawing.Size(507, 20);
+            this.roadName.TabIndex = 9;
             // 
             // label11
             // 
@@ -113,12 +116,12 @@
             this.label11.Text = "Client Acronym:";
             this.label11.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // textBox11
+            // clientAcronym
             // 
-            this.textBox11.Location = new System.Drawing.Point(269, 229);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(250, 20);
-            this.textBox11.TabIndex = 12;
+            this.clientAcronym.Location = new System.Drawing.Point(269, 229);
+            this.clientAcronym.Name = "clientAcronym";
+            this.clientAcronym.Size = new System.Drawing.Size(250, 20);
+            this.clientAcronym.TabIndex = 13;
             // 
             // label12
             // 
@@ -129,12 +132,12 @@
             this.label12.TabIndex = 22;
             this.label12.Text = "Client:";
             // 
-            // textBox12
+            // client
             // 
-            this.textBox12.Location = new System.Drawing.Point(12, 229);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(250, 20);
-            this.textBox12.TabIndex = 11;
+            this.client.Location = new System.Drawing.Point(12, 229);
+            this.client.Name = "client";
+            this.client.Size = new System.Drawing.Size(250, 20);
+            this.client.TabIndex = 12;
             // 
             // label7
             // 
@@ -145,19 +148,19 @@
             this.label7.TabIndex = 12;
             this.label7.Text = "Author:";
             // 
-            // textBox6
+            // pm
             // 
-            this.textBox6.Location = new System.Drawing.Point(269, 103);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(250, 20);
-            this.textBox6.TabIndex = 7;
+            this.pm.Location = new System.Drawing.Point(269, 103);
+            this.pm.Name = "pm";
+            this.pm.Size = new System.Drawing.Size(250, 20);
+            this.pm.TabIndex = 8;
             // 
-            // textBox7
+            // author
             // 
-            this.textBox7.Location = new System.Drawing.Point(12, 103);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(250, 20);
-            this.textBox7.TabIndex = 6;
+            this.author.Location = new System.Drawing.Point(12, 103);
+            this.author.Name = "author";
+            this.author.Size = new System.Drawing.Size(250, 20);
+            this.author.TabIndex = 7;
             // 
             // label6
             // 
@@ -177,12 +180,12 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "Document Status:";
             // 
-            // textBox5
+            // status
             // 
-            this.textBox5.Location = new System.Drawing.Point(397, 64);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(122, 20);
-            this.textBox5.TabIndex = 5;
+            this.status.Location = new System.Drawing.Point(397, 64);
+            this.status.Name = "status";
+            this.status.Size = new System.Drawing.Size(122, 20);
+            this.status.TabIndex = 6;
             // 
             // label4
             // 
@@ -193,12 +196,12 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Document Version:";
             // 
-            // textBox4
+            // version
             // 
-            this.textBox4.Location = new System.Drawing.Point(269, 64);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(122, 20);
-            this.textBox4.TabIndex = 4;
+            this.version.Location = new System.Drawing.Point(269, 64);
+            this.version.Name = "version";
+            this.version.Size = new System.Drawing.Size(122, 20);
+            this.version.TabIndex = 5;
             // 
             // label3
             // 
@@ -209,12 +212,12 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Document Release Date:";
             // 
-            // textBox3
+            // releaseDate
             // 
-            this.textBox3.Location = new System.Drawing.Point(12, 64);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(250, 20);
-            this.textBox3.TabIndex = 3;
+            this.releaseDate.Location = new System.Drawing.Point(12, 64);
+            this.releaseDate.Name = "releaseDate";
+            this.releaseDate.Size = new System.Drawing.Size(250, 20);
+            this.releaseDate.TabIndex = 4;
             // 
             // label2
             // 
@@ -225,19 +228,19 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Document Acronym:";
             // 
-            // textBox2
+            // acronym
             // 
-            this.textBox2.Location = new System.Drawing.Point(269, 25);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(250, 20);
-            this.textBox2.TabIndex = 2;
+            this.acronym.Location = new System.Drawing.Point(269, 25);
+            this.acronym.Name = "acronym";
+            this.acronym.Size = new System.Drawing.Size(122, 20);
+            this.acronym.TabIndex = 2;
             // 
-            // textBox1
+            // title
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 25);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(250, 20);
-            this.textBox1.TabIndex = 1;
+            this.title.Location = new System.Drawing.Point(12, 25);
+            this.title.Name = "title";
+            this.title.Size = new System.Drawing.Size(250, 20);
+            this.title.TabIndex = 1;
             // 
             // label1
             // 
@@ -248,14 +251,41 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Document Title:";
             // 
-            // button1
+            // updateButton
             // 
-            this.button1.Location = new System.Drawing.Point(12, 264);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(507, 23);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Update";
-            this.button1.UseVisualStyleBackColor = true;
+            this.updateButton.Location = new System.Drawing.Point(12, 264);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(447, 23);
+            this.updateButton.TabIndex = 14;
+            this.updateButton.Text = "Update";
+            this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // sharePointID
+            // 
+            this.sharePointID.Location = new System.Drawing.Point(397, 25);
+            this.sharePointID.Name = "sharePointID";
+            this.sharePointID.Size = new System.Drawing.Size(122, 20);
+            this.sharePointID.TabIndex = 3;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(397, 9);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(76, 13);
+            this.label13.TabIndex = 26;
+            this.label13.Text = "SharePoint ID:";
+            // 
+            // demoButton
+            // 
+            this.demoButton.Location = new System.Drawing.Point(465, 264);
+            this.demoButton.Name = "demoButton";
+            this.demoButton.Size = new System.Drawing.Size(54, 23);
+            this.demoButton.TabIndex = 27;
+            this.demoButton.Text = "Demo";
+            this.demoButton.UseVisualStyleBackColor = true;
+            this.demoButton.Click += new System.EventHandler(this.demoButton_Click);
             // 
             // DocPropertiesEditor
             // 
@@ -263,19 +293,22 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(535, 301);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox11);
-            this.Controls.Add(this.textBox12);
-            this.Controls.Add(this.textBox10);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.demoButton);
+            this.Controls.Add(this.sharePointID);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.updateButton);
+            this.Controls.Add(this.clientAcronym);
+            this.Controls.Add(this.client);
+            this.Controls.Add(this.roadName);
+            this.Controls.Add(this.solutionAcronym);
+            this.Controls.Add(this.solutionType);
+            this.Controls.Add(this.pm);
+            this.Controls.Add(this.author);
+            this.Controls.Add(this.status);
+            this.Controls.Add(this.version);
+            this.Controls.Add(this.releaseDate);
+            this.Controls.Add(this.acronym);
+            this.Controls.Add(this.title);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label10);
@@ -306,29 +339,32 @@
         #endregion
 
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox solutionAcronym;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox solutionType;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox roadName;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox clientAcronym;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox client;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox pm;
+        private System.Windows.Forms.TextBox author;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox status;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox version;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox releaseDate;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox acronym;
+        private System.Windows.Forms.TextBox title;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button updateButton;
+        private System.Windows.Forms.TextBox sharePointID;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button demoButton;
     }
 }
