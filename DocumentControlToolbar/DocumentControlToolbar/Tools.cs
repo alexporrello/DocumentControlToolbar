@@ -8,8 +8,6 @@ using Word = Microsoft.Office.Interop.Word;
 
 namespace DocumentControlToolbar {
     class Tools {
-
-
         public static void SetStyle(String style) {
             //TODO confirm that style exists
             Word.Application app = Globals.ThisAddIn.Application;
@@ -39,6 +37,5 @@ namespace DocumentControlToolbar {
                 }
             }
         }
-
     }
 }

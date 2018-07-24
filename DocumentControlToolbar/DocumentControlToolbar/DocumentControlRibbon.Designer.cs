@@ -197,8 +197,9 @@
             this.gallery2.ColumnCount = 1;
             this.gallery2.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
             this.gallery2.Image = global::DocumentControlToolbar.Properties.Resources.apply_list_large_icon;
-            this.gallery2.Label = "Apply Unorderd List";
+            this.gallery2.Label = "Apply Unordered List";
             this.gallery2.Name = "gallery2";
+            this.gallery2.RowCount = 1;
             this.gallery2.ShowImage = true;
             // 
             // levelOneU
@@ -276,7 +277,7 @@
             // 
             this.runAcronymTool.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
             this.runAcronymTool.Image = ((System.Drawing.Image)(resources.GetObject("runAcronymTool.Image")));
-            this.runAcronymTool.Label = "Run Updater";
+            this.runAcronymTool.Label = "Run Acronym Tool";
             this.runAcronymTool.Name = "runAcronymTool";
             this.runAcronymTool.ShowImage = true;
             this.runAcronymTool.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.runAcronymTool_Click);

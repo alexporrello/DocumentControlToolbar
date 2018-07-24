@@ -58,6 +58,7 @@ namespace DocumentControlToolbar {
         /** Checks if the acronyms in the table appear in the rest of the document. **/
         private void CheckAcronymsInTable(Word.Table acronymTable) {
             ArrayList allWords = new ArrayList();
+
             foreach (Word.Range word in doc.Words) {
                 if (word.Text.Trim().Length > 1) {
                     allWords.Add(word.Text.Trim());
@@ -65,18 +66,44 @@ namespace DocumentControlToolbar {
             }
 
             for (int i = 2; i <= acronymTable.Rows.Count; i++) {
-                Word.Cell thisCell = acronymTable.Cell(i, 1);
+                Word.Cell leftCell = acronymTable.Cell(i, 1);
+                Word.Cell rightCell = acronymTable.Cell(i, 2);
 
-                String text = thisCell.Range.Text;
-                text = text.Remove(text.Length - 2);
+                String acronym = leftCell.Range.Text;
+                acronym = acronym.Remove(acronym.Length - 2);
+                SearchForEntry(leftCell, acronym);
 
-                acronymsInTable.Add(text);
+                String definition = rightCell.Range.Text;
+                definition = definition.Remove(definition.Length - 2);
+                SearchForEntry(rightCell, definition);
 
-                if (NumberOfInstances(allWords, text) == 1) {
-                    thisCell.Select();
-                    thisCell.Shading.ForegroundPatternColorIndex = Word.WdColorIndex.wdRed;
-                }
+                acronymsInTable.Add(acronym);
             }
+        }
+
+        /** Searches if this cell's acronym appears in the document **/
+        private void SearchForEntry(Word.Cell thisCell, String text) {
+            thisCell.Range.Text = "";
+
+            Debug.Print(text);
+
+            if (!Find(text, false)) {
+                thisCell.Shading.ForegroundPatternColorIndex = Word.WdColorIndex.wdRed;
+            }
+
+            thisCell.Range.Text = text;
+        }
+
+        /** Searches through the active document for a string. Returns true if found; else, false. **/
+        private Boolean Find(String text, Boolean matchCase) {
+            Word.Find thisFind = doc.Content.Find;
+            thisFind.Text = text;
+            thisFind.Format = false;
+            thisFind.Wrap = Word.WdFindWrap.wdFindContinue;
+            thisFind.MatchCase = matchCase;
+            thisFind.MatchWholeWord = true;
+
+            return thisFind.Execute();
         }
 
         /** Counts how many times a collection contains an object **/
@@ -97,7 +124,9 @@ namespace DocumentControlToolbar {
         private void GetAllAcronymsInDocument() {
             foreach (Word.Range word in doc.Words) {
                 if (IsValidWordFirstCheck(word.Text)) {
-                    foundAcronyms.Add(word.Text);
+                    if (!app.CheckSpelling(word.Text.ToLower())) {
+                        foundAcronyms.Add(word.Text);
+                    }
                 }
             }
         }
@@ -110,9 +139,12 @@ namespace DocumentControlToolbar {
 
         /** Adds all found acronyms (that are not already in the table) to the table; then, sort. **/
         private void AddFoundAcronymsToTable(Word.Table acronymTable) {
+            String dudsList = GetDudsList();
+
             foreach (String word in foundAcronyms) {
-                //TODO Also check duds list.
-                if (!acronymsInTable.Contains(word) && !app.CheckSpelling(word.ToLower())) {
+                String definition = "";
+                
+                if (!acronymsInTable.Contains(word) && !dudsList.Contains(word)) {
                     acronymTable.Rows.Add();
 
                     String wordList = DownloadWordlist(word.ToLower().Substring(0, 1));
@@ -122,12 +154,14 @@ namespace DocumentControlToolbar {
                             String[] split = s.Split(',');
 
                             if (split[0].Equals(word)) {
-                                Word.Cell defCell = acronymTable.Cell(acronymTable.Rows.Count, 2);
-                                defCell.Shading.ForegroundPatternColorIndex = Word.WdColorIndex.wdYellow;
-                                defCell.Range.Text = split[1];
+                                definition = split[1];
                             }
                         }
                     }
+
+                    Word.Cell defCell = acronymTable.Cell(acronymTable.Rows.Count, 2);
+                    defCell.Shading.ForegroundPatternColorIndex = Word.WdColorIndex.wdYellow;
+                    defCell.Range.Text = definition;
 
                     Word.Cell acronymCell = acronymTable.Cell(acronymTable.Rows.Count, 1);
                     acronymCell.Shading.ForegroundPatternColorIndex = Word.WdColorIndex.wdYellow;
@@ -149,14 +183,11 @@ namespace DocumentControlToolbar {
         }
 
         /** Downloads a wordlist from the online database **/
-        private Boolean InDudsList(String[] duds, String word) {
-            foreach (String s in duds) {
-                if (s.Trim().Equals(word.Trim())) {
-                    return true;
-                }
+        private String GetDudsList() {
+            using (WebClient client = new WebClient()) {
+                String url = "https://raw.githubusercontent.com/alexporrello/TWBoilerplateMacros/master/lists/acronym-duds.txt";
+                return client.DownloadString(url);
             }
-
-            return false;
         }
     }
 }
