@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Collections;
 using System.Net;
+using System.IO;
 
 namespace DocumentControlToolbar {
 
@@ -174,20 +175,24 @@ namespace DocumentControlToolbar {
 
         /** Downloads a wordlist from the online database **/
         private String DownloadWordlist(String beginningLetter) {
-            using (WebClient client = new WebClient()) {
-                String url = "https://raw.githubusercontent.com/alexporrello/TWBoilerplateMacros/master/lists/";
-                String toReturn = client.DownloadString(url + beginningLetter + ".csv");
+            String wordList = Path.Combine(WordList.Folder, beginningLetter + ".csv");
 
-                return toReturn;
+            if(!File.Exists(wordList)) {
+                WordList.DownloadDudsList();
             }
+
+            return System.IO.File.ReadAllText(wordList);
         }
 
         /** Downloads a wordlist from the online database **/
         private String GetDudsList() {
-            using (WebClient client = new WebClient()) {
-                String url = "https://raw.githubusercontent.com/alexporrello/TWBoilerplateMacros/master/lists/acronym-duds.txt";
-                return client.DownloadString(url);
+            String acronymDuds = Path.Combine(WordList.Folder, "acronym-duds.txt");
+
+            if (!File.Exists(acronymDuds)) {
+                WordList.DownloadDudsList();
             }
+
+            return System.IO.File.ReadAllText(acronymDuds);
         }
     }
 }

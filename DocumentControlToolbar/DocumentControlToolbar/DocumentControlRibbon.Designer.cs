@@ -37,9 +37,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DocumentControlRibbon));
             this.DocControl = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
+            this.textToolsGroup = this.Factory.CreateRibbonGroup();
+            this.group2 = this.Factory.CreateRibbonGroup();
+            this.acronymTableGroup = this.Factory.CreateRibbonGroup();
+            this.crossRefsGroup = this.Factory.CreateRibbonGroup();
             this.docPropUpdater = this.Factory.CreateRibbonButton();
             this.boilerplateFormat = this.Factory.CreateRibbonButton();
-            this.textToolsGroup = this.Factory.CreateRibbonGroup();
             this.headingsDropdown = this.Factory.CreateRibbonGallery();
             this.headingOne = this.Factory.CreateRibbonButton();
             this.headingTwo = this.Factory.CreateRibbonButton();
@@ -48,7 +51,6 @@
             this.headingFive = this.Factory.CreateRibbonButton();
             this.applyBodyStyle = this.Factory.CreateRibbonButton();
             this.keepWithNext = this.Factory.CreateRibbonButton();
-            this.group2 = this.Factory.CreateRibbonGroup();
             this.gallery2 = this.Factory.CreateRibbonGallery();
             this.levelOneU = this.Factory.CreateRibbonButton();
             this.levelTwoU = this.Factory.CreateRibbonButton();
@@ -59,11 +61,9 @@
             this.levelTwoO = this.Factory.CreateRibbonButton();
             this.defaultUL = this.Factory.CreateRibbonButton();
             this.defaultOL = this.Factory.CreateRibbonButton();
-            this.acronymTableGroup = this.Factory.CreateRibbonGroup();
             this.runAcronymTool = this.Factory.CreateRibbonButton();
             this.updateWordlist = this.Factory.CreateRibbonButton();
             this.updateDudsList = this.Factory.CreateRibbonButton();
-            this.crossRefsGroup = this.Factory.CreateRibbonGroup();
             this.figureRefButton = this.Factory.CreateRibbonButton();
             this.tableRefButton = this.Factory.CreateRibbonButton();
             this.updateAllFields = this.Factory.CreateRibbonButton();
@@ -92,6 +92,39 @@
             this.group1.Label = "General";
             this.group1.Name = "group1";
             // 
+            // textToolsGroup
+            // 
+            this.textToolsGroup.Items.Add(this.headingsDropdown);
+            this.textToolsGroup.Items.Add(this.applyBodyStyle);
+            this.textToolsGroup.Items.Add(this.keepWithNext);
+            this.textToolsGroup.Label = "Style Tools";
+            this.textToolsGroup.Name = "textToolsGroup";
+            // 
+            // group2
+            // 
+            this.group2.Items.Add(this.gallery2);
+            this.group2.Items.Add(this.gallery1);
+            this.group2.Items.Add(this.defaultUL);
+            this.group2.Items.Add(this.defaultOL);
+            this.group2.Label = "List Tools";
+            this.group2.Name = "group2";
+            // 
+            // acronymTableGroup
+            // 
+            this.acronymTableGroup.Items.Add(this.runAcronymTool);
+            this.acronymTableGroup.Items.Add(this.updateWordlist);
+            this.acronymTableGroup.Items.Add(this.updateDudsList);
+            this.acronymTableGroup.Label = "Acronym Table";
+            this.acronymTableGroup.Name = "acronymTableGroup";
+            // 
+            // crossRefsGroup
+            // 
+            this.crossRefsGroup.Items.Add(this.figureRefButton);
+            this.crossRefsGroup.Items.Add(this.tableRefButton);
+            this.crossRefsGroup.Items.Add(this.updateAllFields);
+            this.crossRefsGroup.Label = "Cross-references";
+            this.crossRefsGroup.Name = "crossRefsGroup";
+            // 
             // docPropUpdater
             // 
             this.docPropUpdater.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -110,14 +143,6 @@
             this.boilerplateFormat.Name = "boilerplateFormat";
             this.boilerplateFormat.ScreenTip = "Auto-formats boilerplate documents downloaded from our internal wiki.";
             this.boilerplateFormat.ShowImage = true;
-            // 
-            // textToolsGroup
-            // 
-            this.textToolsGroup.Items.Add(this.headingsDropdown);
-            this.textToolsGroup.Items.Add(this.applyBodyStyle);
-            this.textToolsGroup.Items.Add(this.keepWithNext);
-            this.textToolsGroup.Label = "Style Tools";
-            this.textToolsGroup.Name = "textToolsGroup";
             // 
             // headingsDropdown
             // 
@@ -178,15 +203,6 @@
             this.keepWithNext.Name = "keepWithNext";
             this.keepWithNext.ShowImage = true;
             this.keepWithNext.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.keepWithNext_Click);
-            // 
-            // group2
-            // 
-            this.group2.Items.Add(this.gallery2);
-            this.group2.Items.Add(this.gallery1);
-            this.group2.Items.Add(this.defaultUL);
-            this.group2.Items.Add(this.defaultOL);
-            this.group2.Label = "List Tools";
-            this.group2.Name = "group2";
             // 
             // gallery2
             // 
@@ -265,14 +281,6 @@
             this.defaultOL.ShowImage = true;
             this.defaultOL.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.defaultOL_Click);
             // 
-            // acronymTableGroup
-            // 
-            this.acronymTableGroup.Items.Add(this.runAcronymTool);
-            this.acronymTableGroup.Items.Add(this.updateWordlist);
-            this.acronymTableGroup.Items.Add(this.updateDudsList);
-            this.acronymTableGroup.Label = "Acronym Table";
-            this.acronymTableGroup.Name = "acronymTableGroup";
-            // 
             // runAcronymTool
             // 
             this.runAcronymTool.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -288,6 +296,7 @@
             this.updateWordlist.Label = " Update Wordlist ";
             this.updateWordlist.Name = "updateWordlist";
             this.updateWordlist.ShowImage = true;
+            this.updateWordlist.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.updateWordlist_Click);
             // 
             // updateDudsList
             // 
@@ -295,14 +304,7 @@
             this.updateDudsList.Label = " Update Duds List ";
             this.updateDudsList.Name = "updateDudsList";
             this.updateDudsList.ShowImage = true;
-            // 
-            // crossRefsGroup
-            // 
-            this.crossRefsGroup.Items.Add(this.figureRefButton);
-            this.crossRefsGroup.Items.Add(this.tableRefButton);
-            this.crossRefsGroup.Items.Add(this.updateAllFields);
-            this.crossRefsGroup.Label = "Cross-references";
-            this.crossRefsGroup.Name = "crossRefsGroup";
+            this.updateDudsList.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.updateDudsList_Click);
             // 
             // figureRefButton
             // 

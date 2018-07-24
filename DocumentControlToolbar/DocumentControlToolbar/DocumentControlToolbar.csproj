@@ -181,6 +181,7 @@
   <ItemGroup>
     <Compile Include="Acronym.cs" />
     <Compile Include="AcronymTableNotFoundException.cs" />
+    <Compile Include="DownloadWordlists.cs" />
     <Compile Include="Tools.cs" />
     <Compile Include="DocPropertiesUpdater.cs">
       <SubType>Form</SubType>

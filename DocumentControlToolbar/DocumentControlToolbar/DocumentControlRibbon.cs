@@ -114,5 +114,13 @@ namespace DocumentControlToolbar {
         private void levelFourU_Click(object sender, RibbonControlEventArgs e) {
             Tools.SetStyle("Body Text enumeration Point3");
         }
+
+        private void updateWordlist_Click(object sender, RibbonControlEventArgs e) {
+            WordList.DownloadAll();
+        }
+
+        private void updateDudsList_Click(object sender, RibbonControlEventArgs e) {
+            WordList.DownloadDudsList();
+        }
     }
 }
