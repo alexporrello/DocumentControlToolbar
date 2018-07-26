@@ -40,6 +40,7 @@
             this.textToolsGroup = this.Factory.CreateRibbonGroup();
             this.group2 = this.Factory.CreateRibbonGroup();
             this.acronymTableGroup = this.Factory.CreateRibbonGroup();
+            this.excelCheckBox = this.Factory.CreateRibbonCheckBox();
             this.crossRefsGroup = this.Factory.CreateRibbonGroup();
             this.docPropUpdater = this.Factory.CreateRibbonButton();
             this.boilerplateFormat = this.Factory.CreateRibbonButton();
@@ -51,6 +52,7 @@
             this.headingFive = this.Factory.CreateRibbonButton();
             this.applyBodyStyle = this.Factory.CreateRibbonButton();
             this.keepWithNext = this.Factory.CreateRibbonButton();
+            this.pageBreakBefore = this.Factory.CreateRibbonButton();
             this.gallery2 = this.Factory.CreateRibbonGallery();
             this.levelOneU = this.Factory.CreateRibbonButton();
             this.levelTwoU = this.Factory.CreateRibbonButton();
@@ -97,6 +99,7 @@
             this.textToolsGroup.Items.Add(this.headingsDropdown);
             this.textToolsGroup.Items.Add(this.applyBodyStyle);
             this.textToolsGroup.Items.Add(this.keepWithNext);
+            this.textToolsGroup.Items.Add(this.pageBreakBefore);
             this.textToolsGroup.Label = "Style Tools";
             this.textToolsGroup.Name = "textToolsGroup";
             // 
@@ -114,8 +117,15 @@
             this.acronymTableGroup.Items.Add(this.runAcronymTool);
             this.acronymTableGroup.Items.Add(this.updateWordlist);
             this.acronymTableGroup.Items.Add(this.updateDudsList);
+            this.acronymTableGroup.Items.Add(this.excelCheckBox);
             this.acronymTableGroup.Label = "Acronym Table";
             this.acronymTableGroup.Name = "acronymTableGroup";
+            // 
+            // excelCheckBox
+            // 
+            this.excelCheckBox.Label = "Open in Excel";
+            this.excelCheckBox.Name = "excelCheckBox";
+            this.excelCheckBox.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.excelCheckBox_Click);
             // 
             // crossRefsGroup
             // 
@@ -191,7 +201,7 @@
             // applyBodyStyle
             // 
             this.applyBodyStyle.Image = global::DocumentControlToolbar.Properties.Resources.apply_style_small_icon;
-            this.applyBodyStyle.Label = " Apply Body Style ";
+            this.applyBodyStyle.Label = "Apply Body Style ";
             this.applyBodyStyle.Name = "applyBodyStyle";
             this.applyBodyStyle.ShowImage = true;
             this.applyBodyStyle.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.applyBodyStyle_Click);
@@ -199,10 +209,18 @@
             // keepWithNext
             // 
             this.keepWithNext.Image = global::DocumentControlToolbar.Properties.Resources.apply_style_small_icon;
-            this.keepWithNext.Label = " Keep With Next ";
+            this.keepWithNext.Label = "Keep With Next ";
             this.keepWithNext.Name = "keepWithNext";
             this.keepWithNext.ShowImage = true;
             this.keepWithNext.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.keepWithNext_Click);
+            // 
+            // pageBreakBefore
+            // 
+            this.pageBreakBefore.Image = global::DocumentControlToolbar.Properties.Resources.apply_style_small_icon;
+            this.pageBreakBefore.Label = "Page Break Before ";
+            this.pageBreakBefore.Name = "pageBreakBefore";
+            this.pageBreakBefore.ShowImage = true;
+            this.pageBreakBefore.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.pageBreakBefore_Click);
             // 
             // gallery2
             // 
@@ -385,6 +403,8 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton levelTwoU;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton levelThreeU;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton levelFourU;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton pageBreakBefore;
+        internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox excelCheckBox;
     }
 
     partial class ThisRibbonCollection

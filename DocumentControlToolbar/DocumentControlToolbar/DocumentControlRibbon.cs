@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Office.Tools.Ribbon;
+using Microsoft.Office.Tools;
 using Word = Microsoft.Office.Interop.Word;
 using System.Diagnostics;
+using System.Collections;
 
 namespace DocumentControlToolbar {
     public partial class DocumentControlRibbon {
@@ -31,6 +33,11 @@ namespace DocumentControlToolbar {
             app.Selection.ParagraphFormat.KeepWithNext = -1;
         }
 
+        private void pageBreakBefore_Click(object sender, RibbonControlEventArgs e) {
+            Word.Application app = Globals.ThisAddIn.Application;
+            app.Selection.ParagraphFormat.PageBreakBefore = -1;
+        }
+
         /** ======================= List Tools Group ======================= **/
 
         private void defaultUL_Click(object sender, RibbonControlEventArgs e) {
@@ -44,7 +51,7 @@ namespace DocumentControlToolbar {
         /** ======================= Acronym Table Group ======================= **/
 
         private void runAcronymTool_Click(object sender, RibbonControlEventArgs e) {
-            new AcronymTableTool();
+            new AcronymTableTool(this.excelCheckBox);
         }
 
         /** ======================= Cross-references Group ======================= **/
@@ -121,6 +128,10 @@ namespace DocumentControlToolbar {
 
         private void updateDudsList_Click(object sender, RibbonControlEventArgs e) {
             WordList.DownloadDudsList();
+        }
+
+        private void excelCheckBox_Click(object sender, RibbonControlEventArgs e) {
+
         }
     }
 }
