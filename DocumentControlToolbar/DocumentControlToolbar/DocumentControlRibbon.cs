@@ -39,13 +39,29 @@ namespace DocumentControlToolbar {
         }
 
         private void formatTable_Click(object sender, RibbonControlEventArgs e) {
-            try {
-                Word.Application app = Globals.ThisAddIn.Application;
-                Word.Table table = app.Selection.Range.Tables[1];
+            Word.Application app = Globals.ThisAddIn.Application;
+            Word.Table table = app.Selection.Range.Tables[1];
 
-                table.set_Style(app.ActiveDocument.Styles["MasterTable"]);
-                table.AutoFitBehavior(Word.WdAutoFitBehavior.wdAutoFitWindow);
-            } catch (Exception) { }
+            for (int row = 1; row <= table.Rows.Count; row++) {
+                for (int col = 1; col <= table.Columns.Count; col++) {
+                    try {
+                        table.Cell(row, col).Range.Select();
+                        app.Selection.ClearFormatting();
+
+                        if (row == 1) {
+                            table.Cell(row, col).Range.set_Style(app.ActiveDocument.Styles["2016_TableHeader | 10pt bold"]);
+                        } else {
+                            table.Cell(row, col).Range.set_Style(app.ActiveDocument.Styles["2016_Table | 9pt"]);
+                        }
+                    } catch (Exception f) {
+                        Debug.Print(f.Message);
+                    }
+                }
+            }
+
+            table.set_Style(app.ActiveDocument.Styles["MasterTable"]);
+            table.AutoFitBehavior(Word.WdAutoFitBehavior.wdAutoFitContent);
+            table.AutoFitBehavior(Word.WdAutoFitBehavior.wdAutoFitWindow);
         }
 
         private void insertSectionBreak_Click(object sender, RibbonControlEventArgs e) {
