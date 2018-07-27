@@ -40,7 +40,6 @@
             this.textToolsGroup = this.Factory.CreateRibbonGroup();
             this.group2 = this.Factory.CreateRibbonGroup();
             this.acronymTableGroup = this.Factory.CreateRibbonGroup();
-            this.excelCheckBox = this.Factory.CreateRibbonCheckBox();
             this.crossRefsGroup = this.Factory.CreateRibbonGroup();
             this.docPropUpdater = this.Factory.CreateRibbonButton();
             this.boilerplateFormat = this.Factory.CreateRibbonButton();
@@ -117,15 +116,8 @@
             this.acronymTableGroup.Items.Add(this.runAcronymTool);
             this.acronymTableGroup.Items.Add(this.updateWordlist);
             this.acronymTableGroup.Items.Add(this.updateDudsList);
-            this.acronymTableGroup.Items.Add(this.excelCheckBox);
             this.acronymTableGroup.Label = "Acronym Table";
             this.acronymTableGroup.Name = "acronymTableGroup";
-            // 
-            // excelCheckBox
-            // 
-            this.excelCheckBox.Label = "Open in Excel";
-            this.excelCheckBox.Name = "excelCheckBox";
-            this.excelCheckBox.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.excelCheckBox_Click);
             // 
             // crossRefsGroup
             // 
@@ -404,7 +396,6 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton levelThreeU;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton levelFourU;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton pageBreakBefore;
-        internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox excelCheckBox;
     }
 
     partial class ThisRibbonCollection

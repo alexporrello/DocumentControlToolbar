@@ -33,7 +33,7 @@
     <PublishUrl>C:\Users\porrello\Desktop\</PublishUrl>
     <InstallUrl />
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>1.0.0.4</ApplicationVersion>
+    <ApplicationVersion>1.0.0.5</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
@@ -182,6 +182,12 @@
     <Compile Include="Acronym.cs" />
     <Compile Include="AcronymTableNotFoundException.cs" />
     <Compile Include="DownloadWordlists.cs" />
+    <Compile Include="AcronymTableLoadingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AcronymTableLoadingForm.Designer.cs">
+      <DependentUpon>AcronymTableLoadingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools.cs" />
     <Compile Include="DocPropertiesUpdater.cs">
       <SubType>Form</SubType>
@@ -194,6 +200,9 @@
     </Compile>
     <EmbeddedResource Include="DocPropertiesUpdater.resx">
       <DependentUpon>DocPropertiesUpdater.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AcronymTableLoadingForm.resx">
+      <DependentUpon>AcronymTableLoadingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

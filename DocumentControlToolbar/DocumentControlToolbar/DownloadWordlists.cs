@@ -52,6 +52,10 @@ namespace DocumentControlToolbar {
             foreach(String s in WordList.AllURLs) {
                 using (var client = new WebClient()) {
                     client.DownloadFile(s, Path.Combine(WordList.Folder, s.Substring(s.Length - 5)));
+
+                    if(!File.Exists(Path.Combine(WordList.Folder, s.Substring(s.Length - 5)))) {
+                        throw new CouldNotDownloadFileException("The wordlists failed to download.");
+                    }
                 }
             }
         }
@@ -60,6 +64,10 @@ namespace DocumentControlToolbar {
             using (var client = new WebClient()) {
                 String url = WordList.DudsListURL;
                 client.DownloadFile(url, Path.Combine(WordList.Folder, "acronym-duds.txt"));
+
+                if (!File.Exists(Path.Combine(WordList.Folder, "acronym-duds.txt"))) {
+                    throw new CouldNotDownloadFileException("The duds list failed to download.");
+                }
             }
         }
     }

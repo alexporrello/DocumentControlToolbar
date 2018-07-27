@@ -51,7 +51,9 @@ namespace DocumentControlToolbar {
         /** ======================= Acronym Table Group ======================= **/
 
         private void runAcronymTool_Click(object sender, RibbonControlEventArgs e) {
-            new AcronymTableTool(this.excelCheckBox);
+            using (AcronymTableLoadingForm frm = new AcronymTableLoadingForm(new AcronymTableTool(this.excelCheckBox).start)) {
+                frm.ShowDialog();
+            }
         }
 
         /** ======================= Cross-references Group ======================= **/
