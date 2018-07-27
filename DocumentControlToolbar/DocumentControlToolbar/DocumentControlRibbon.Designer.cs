@@ -70,6 +70,7 @@
             this.figureRefButton = this.Factory.CreateRibbonButton();
             this.tableRefButton = this.Factory.CreateRibbonButton();
             this.updateAllFields = this.Factory.CreateRibbonButton();
+            this.separator2 = this.Factory.CreateRibbonSeparator();
             this.DocControl.SuspendLayout();
             this.group1.SuspendLayout();
             this.textToolsGroup.SuspendLayout();
@@ -97,9 +98,9 @@
             // 
             // textToolsGroup
             // 
-            this.textToolsGroup.Items.Add(this.headingsDropdown);
-            this.textToolsGroup.Items.Add(this.formatTable);
             this.textToolsGroup.Items.Add(this.insertSectionBreak);
+            this.textToolsGroup.Items.Add(this.separator2);
+            this.textToolsGroup.Items.Add(this.headingsDropdown);
             this.textToolsGroup.Items.Add(this.applyBodyStyle);
             this.textToolsGroup.Items.Add(this.keepWithNext);
             this.textToolsGroup.Items.Add(this.pageBreakBefore);
@@ -117,10 +118,11 @@
             // 
             // acronymTableGroup
             // 
+            this.acronymTableGroup.Items.Add(this.formatTable);
             this.acronymTableGroup.Items.Add(this.runAcronymTool);
             this.acronymTableGroup.Items.Add(this.updateWordlist);
             this.acronymTableGroup.Items.Add(this.updateDudsList);
-            this.acronymTableGroup.Label = "Acronym Table";
+            this.acronymTableGroup.Label = "Table Tools";
             this.acronymTableGroup.Name = "acronymTableGroup";
             // 
             // crossRefsGroup
@@ -207,7 +209,7 @@
             // 
             this.insertSectionBreak.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
             this.insertSectionBreak.Image = global::DocumentControlToolbar.Properties.Resources.section_break_icon;
-            this.insertSectionBreak.Label = "Section Break";
+            this.insertSectionBreak.Label = "Insert Section Break";
             this.insertSectionBreak.Name = "insertSectionBreak";
             this.insertSectionBreak.ShowImage = true;
             this.insertSectionBreak.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.insertSectionBreak_Click);
@@ -317,7 +319,7 @@
             // 
             this.runAcronymTool.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
             this.runAcronymTool.Image = ((System.Drawing.Image)(resources.GetObject("runAcronymTool.Image")));
-            this.runAcronymTool.Label = "Run Acronym Tool";
+            this.runAcronymTool.Label = "Acronym Table Updater";
             this.runAcronymTool.Name = "runAcronymTool";
             this.runAcronymTool.ShowImage = true;
             this.runAcronymTool.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.runAcronymTool_Click);
@@ -361,6 +363,10 @@
             this.updateAllFields.Name = "updateAllFields";
             this.updateAllFields.ShowImage = true;
             this.updateAllFields.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.updateAllFields_Click);
+            // 
+            // separator2
+            // 
+            this.separator2.Name = "separator2";
             // 
             // DocumentControlRibbon
             // 
@@ -420,6 +426,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton pageBreakBefore;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton insertSectionBreak;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton formatTable;
+        internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator2;
     }
 
     partial class ThisRibbonCollection
