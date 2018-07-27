@@ -33,7 +33,7 @@
     <PublishUrl>C:\Users\porrello\Desktop\</PublishUrl>
     <InstallUrl />
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>1.0.0.6</ApplicationVersion>
+    <ApplicationVersion>1.0.0.7</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
@@ -217,6 +217,7 @@
     <EmbeddedResource Include="DocumentControlRibbon.resx">
       <DependentUpon>DocumentControlRibbon.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Batch\download-tempalte.bat" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

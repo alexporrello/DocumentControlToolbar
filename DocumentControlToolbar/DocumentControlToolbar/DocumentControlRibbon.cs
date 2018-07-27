@@ -8,6 +8,7 @@ using Microsoft.Office.Tools;
 using Word = Microsoft.Office.Interop.Word;
 using System.Diagnostics;
 using System.Collections;
+using System.Net;
 
 namespace DocumentControlToolbar {
     public partial class DocumentControlRibbon {
@@ -167,6 +168,32 @@ namespace DocumentControlToolbar {
 
         private void button1_Click(object sender, RibbonControlEventArgs e) {
 
+        }
+
+        private void importAllStyles_Click(object sender, RibbonControlEventArgs e) {            
+            Globals.ThisAddIn.Application.ActiveDocument.CopyStylesFromTemplate(
+                "C:\\Users\\porrello\\Documents\\GitHub\\TWBoilerplateMacros\\binaries\\Normal.dotm");
+        }
+
+        public static String Folder = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+            "DocumentControl");
+
+        private void downloadTemplate_Click(object sender, RibbonControlEventArgs e) {
+
+            Process proc = null;
+
+            try {
+                string batDir = string.Format(@"D:\");
+                proc = new Process();
+                proc.StartInfo.WorkingDirectory = batDir;
+                proc.StartInfo.FileName = "Batch\\download-template.bat";
+                proc.StartInfo.CreateNoWindow = false;
+                proc.Start();
+                proc.WaitForExit();
+            } catch (Exception ex) {
+                Console.WriteLine(ex.StackTrace.ToString());
+            }
         }
     }
 }
