@@ -38,6 +38,16 @@ namespace DocumentControlToolbar {
             app.Selection.ParagraphFormat.PageBreakBefore = -1;
         }
 
+        private void formatTable_Click(object sender, RibbonControlEventArgs e) {
+            try {
+                Word.Application app = Globals.ThisAddIn.Application;
+                Word.Table table = app.Selection.Range.Tables[1];
+
+                table.set_Style(app.ActiveDocument.Styles["MasterTable"]);
+                table.AutoFitBehavior(Word.WdAutoFitBehavior.wdAutoFitWindow);
+            } catch (Exception) { }
+        }
+
         private void insertSectionBreak_Click(object sender, RibbonControlEventArgs e) {
             Word.Application app = Globals.ThisAddIn.Application;
             app.Selection.InsertBreak(Word.WdBreakType.wdSectionBreakNextPage);
@@ -144,7 +154,5 @@ namespace DocumentControlToolbar {
         private void button1_Click(object sender, RibbonControlEventArgs e) {
 
         }
-
-
     }
 }

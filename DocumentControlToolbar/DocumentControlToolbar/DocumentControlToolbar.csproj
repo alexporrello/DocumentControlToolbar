@@ -307,6 +307,9 @@
   <ItemGroup>
     <None Include="Resources\page-break-before-small-icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\table-icon.png" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
