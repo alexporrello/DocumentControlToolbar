@@ -57,7 +57,7 @@ namespace DocumentControlToolbar {
                 String topLeft = table.Cell(1, 1).Range.Text;
 
                 foreach (String s in possibilities) {
-                    if (topLeft.Remove(topLeft.Length - 2).Equals(s)) {
+                    if (topLeft.Remove(topLeft.Length - 2).Trim().Equals(s)) {
                         return table;
                     }
                 }
