@@ -20,16 +20,16 @@ namespace DocumentControlToolbar {
 
     class AcronymTableTool {
         private Word.Application app = Globals.ThisAddIn.Application;
+
         private Word.Document doc = Globals.ThisAddIn.Application.ActiveDocument;
 
-        private HashSet<String> AllAcronyms = new HashSet<String>();
-        private HashSet<String> foundAcronyms = new HashSet<String>();
+        private HashSet<String> found = new HashSet<String>();
 
-        private ArrayList acronymsInTable = new ArrayList();
+        private ArrayList inTable = new ArrayList();
 
         public AcronymTableTool() { }
 
-        public void start() {
+        public void Start() {
             try {
                 Word.Table acronymTable = FindAcronymTable();
 
@@ -78,7 +78,7 @@ namespace DocumentControlToolbar {
                 definition = definition.Remove(definition.Length - 2);
                 SearchForEntry(rightCell, definition);
 
-                acronymsInTable.Add(acronym);
+                inTable.Add(acronym);
             }
         }
 
@@ -129,7 +129,7 @@ namespace DocumentControlToolbar {
             foreach (Word.Range word in doc.Words) {
                 if (IsValidWordFirstCheck(word.Text)) {
                     if (!app.CheckSpelling(word.Text.ToLower())) {
-                        foundAcronyms.Add(word.Text);
+                        found.Add(word.Text);
                     }
                 }
             }
@@ -145,11 +145,15 @@ namespace DocumentControlToolbar {
         private void AddFoundAcronymsToTable(Word.Table acronymTable) {
             String dudsList = GetDudsList();
 
-            foreach (String word in foundAcronyms) {
+            foreach (String word in found) {
                 String definition = "";
 
-                if (!acronymsInTable.Contains(word) && !dudsList.Contains(word)) {
+                if (!inTable.Contains(word) && !dudsList.Contains(word)) {
                     acronymTable.Rows.Add();
+
+                    Word.Cell acronymCell = acronymTable.Cell(acronymTable.Rows.Count, 1);
+                    acronymCell.Shading.ForegroundPatternColorIndex = Word.WdColorIndex.wdYellow;
+                    acronymCell.Range.Text = word;
 
                     String wordList = DownloadWordlist(word.ToLower().Substring(0, 1));
 
@@ -166,10 +170,6 @@ namespace DocumentControlToolbar {
                     Word.Cell defCell = acronymTable.Cell(acronymTable.Rows.Count, 2);
                     defCell.Shading.ForegroundPatternColorIndex = Word.WdColorIndex.wdYellow;
                     defCell.Range.Text = definition;
-
-                    Word.Cell acronymCell = acronymTable.Cell(acronymTable.Rows.Count, 1);
-                    acronymCell.Shading.ForegroundPatternColorIndex = Word.WdColorIndex.wdYellow;
-                    acronymCell.Range.Text = word;
                 }
             }
 
