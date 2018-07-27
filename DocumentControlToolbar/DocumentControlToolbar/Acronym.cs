@@ -68,14 +68,6 @@ namespace DocumentControlToolbar {
 
         /** Checks if the acronyms in the table appear in the rest of the document. **/
         private void CheckAcronymsInTable(Word.Table acronymTable) {
-            ArrayList allWords = new ArrayList();
-
-            foreach (Word.Range word in doc.Words) {
-                if (word.Text.Trim().Length > 1) {
-                    allWords.Add(word.Text.Trim());
-                }
-            }
-
             for (int i = 2; i <= acronymTable.Rows.Count; i++) {
                 Word.Cell leftCell = acronymTable.Cell(i, 1);
                 Word.Cell rightCell = acronymTable.Cell(i, 2);
@@ -145,7 +137,7 @@ namespace DocumentControlToolbar {
 
 
         /** Searches through the document for words it thinks might be an acronym. **/
-        private void GetAllAcronymsInDocument() {
+        private void GetAllAcronymsInDocument() { 
             foreach (Word.Range word in doc.Words) {
                 if (IsValidWordFirstCheck(word.Text)) {
                     if (!app.CheckSpelling(word.Text.ToLower())) {
@@ -158,7 +150,7 @@ namespace DocumentControlToolbar {
         /** The first check to determine if a given string is a valid acronym. **/
         private Boolean IsValidWordFirstCheck(String s) {
             //TODO this will not work for things like '3G'
-            return s.Trim().Length > 1 && s.Equals(s.ToUpper()) && Regex.IsMatch(s, @"^[a-zA-Z]+$");
+            return s != null && s.Trim().Length > 1 && s.Equals(s.ToUpper()) && Regex.IsMatch(s, @"^[a-zA-Z]+$");
         }
 
         /** Adds all found acronyms (that are not already in the table) to the table; then, sort. **/
