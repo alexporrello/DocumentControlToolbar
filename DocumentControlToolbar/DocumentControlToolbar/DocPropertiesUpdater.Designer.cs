@@ -328,6 +328,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Document Properties Editor";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.DocPropertiesUpdater_Load);

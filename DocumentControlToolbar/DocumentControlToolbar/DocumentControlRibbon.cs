@@ -38,6 +38,11 @@ namespace DocumentControlToolbar {
             app.Selection.ParagraphFormat.PageBreakBefore = -1;
         }
 
+        private void insertSectionBreak_Click(object sender, RibbonControlEventArgs e) {
+            Word.Application app = Globals.ThisAddIn.Application;
+            app.Selection.InsertBreak(Word.WdBreakType.wdSectionBreakNextPage);
+        }
+
         /** ======================= List Tools Group ======================= **/
 
         private void defaultUL_Click(object sender, RibbonControlEventArgs e) {
@@ -135,5 +140,11 @@ namespace DocumentControlToolbar {
         private void excelCheckBox_Click(object sender, RibbonControlEventArgs e) {
 
         }
+
+        private void button1_Click(object sender, RibbonControlEventArgs e) {
+
+        }
+
+
     }
 }

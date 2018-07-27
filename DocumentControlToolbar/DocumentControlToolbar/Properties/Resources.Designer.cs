@@ -143,9 +143,29 @@ namespace DocumentControlToolbar.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap page_break_before_small_icon {
+            get {
+                object obj = ResourceManager.GetObject("page-break-before-small-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap properties_icon_raw {
             get {
                 object obj = ResourceManager.GetObject("properties-icon-raw", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap section_break_icon {
+            get {
+                object obj = ResourceManager.GetObject("section_break_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
