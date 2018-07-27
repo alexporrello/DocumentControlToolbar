@@ -27,11 +27,7 @@ namespace DocumentControlToolbar {
 
         private ArrayList acronymsInTable = new ArrayList();
 
-        RibbonCheckBox checkBox;
-
-        public AcronymTableTool(RibbonCheckBox checkBox) {
-            this.checkBox = checkBox;
-        }
+        public AcronymTableTool() { }
 
         public void start() {
             try {
@@ -196,11 +192,7 @@ namespace DocumentControlToolbar {
             String acronymDuds = Path.Combine(WordList.Folder, "acronym-duds.txt");
 
             if (!File.Exists(acronymDuds)) {
-                try {
-                    WordList.DownloadDudsList();
-                } catch (Exception e) {
-
-                }
+                WordList.DownloadDudsList();
             }
 
             return System.IO.File.ReadAllText(acronymDuds);

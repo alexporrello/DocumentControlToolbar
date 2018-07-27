@@ -179,16 +179,16 @@
     can be found.
   -->
   <ItemGroup>
-    <Compile Include="Acronym.cs" />
-    <Compile Include="AcronymTableNotFoundException.cs" />
-    <Compile Include="DownloadWordlists.cs" />
+    <Compile Include="Classes\Acronym.cs" />
+    <Compile Include="Classes\CustomExceptions.cs" />
+    <Compile Include="Classes\DownloadWordlists.cs" />
     <Compile Include="AcronymTableLoadingForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AcronymTableLoadingForm.Designer.cs">
       <DependentUpon>AcronymTableLoadingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tools.cs" />
+    <Compile Include="Classes\Tools.cs" />
     <Compile Include="DocPropertiesUpdater.cs">
       <SubType>Form</SubType>
     </Compile>
