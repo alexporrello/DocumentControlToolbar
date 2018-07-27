@@ -82,9 +82,7 @@ namespace DocumentControlToolbar {
         /** ======================= Acronym Table Group ======================= **/
 
         private void runAcronymTool_Click(object sender, RibbonControlEventArgs e) {
-            using (AcronymTableLoadingForm frm = new AcronymTableLoadingForm(new AcronymTableTool().Start)) {
-                frm.ShowDialog();
-            }
+            new AcronymTableTool();
         }
 
         /** ======================= Cross-references Group ======================= **/

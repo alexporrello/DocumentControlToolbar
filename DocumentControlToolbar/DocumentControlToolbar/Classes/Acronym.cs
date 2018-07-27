@@ -27,22 +27,25 @@ namespace DocumentControlToolbar {
 
         private ArrayList inTable = new ArrayList();
 
-        public AcronymTableTool() { }
+        private Word.Table acronymTable;
 
-        public void Start() {
+        public AcronymTableTool() {
             try {
-                Word.Table acronymTable = FindAcronymTable();
+                acronymTable = FindAcronymTable();
 
-                CheckAcronymsInTable(acronymTable);
-                GetAllAcronymsInDocument();
-
-                AddFoundAcronymsToTable(acronymTable);
-
-                Debug.Print("Done");
+                using (AcronymTableLoadingForm frm = new AcronymTableLoadingForm(Start)) {
+                    frm.ShowDialog();
+                }
             } catch (CustomExceptions) {
                 MessageBox.Show("The acronym table could not be found.", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void Start() {
+            CheckAcronymsInTable();
+            GetAllAcronymsInDocument();
+            AddFoundAcronymsToTable();
         }
 
         /** Locates the acronym table in the document and returns it. **/
@@ -65,7 +68,7 @@ namespace DocumentControlToolbar {
         }
 
         /** Checks if the acronyms in the table appear in the rest of the document. **/
-        private void CheckAcronymsInTable(Word.Table acronymTable) {
+        private void CheckAcronymsInTable() {
             for (int i = 2; i <= acronymTable.Rows.Count; i++) {
                 Word.Cell leftCell = acronymTable.Cell(i, 1);
                 Word.Cell rightCell = acronymTable.Cell(i, 2);
@@ -142,7 +145,7 @@ namespace DocumentControlToolbar {
         }
 
         /** Adds all found acronyms (that are not already in the table) to the table; then, sort. **/
-        private void AddFoundAcronymsToTable(Word.Table acronymTable) {
+        private void AddFoundAcronymsToTable() {
             String dudsList = GetDudsList();
 
             foreach (String word in found) {
