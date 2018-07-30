@@ -91,10 +91,10 @@
             "The " + getVal("ca") + " " + getVal("da") + " " + getVal("dv") + " is ready for delivery to the client. The final documents can be found on SharePoint:<br><br>" +
             "<b>" + getVal("ca") + " - " + getVal("dn") + " " + docVer + "</b>" +
             "<ul>" +
-            "<li><b>PDF Deliverable:</b> " + makeHref(pdfDelName,pdfDelURL) + "</li>" +
-            "<li><b>Redline:</b> " + makeHref(rlfn,rlurl) + "</li>" +
-            "<li><b>Working Document:</b> " + makeHref(wdfn,wdurl) + "</li>" +
-            "<li><b>Comment Log:</b> " + makeHref(clfn,clurl) + "</li>" +
+            makeHref("PDF Deliverable", pdfDelName,pdfDelURL) +
+            makeHref("Redline", rlfn,rlurl) +
+            makeHref("Working Document", wdfn,wdurl) +
+            makeHref("Comment Log", clfn,clurl) +
             "</ul>Best,";
     }
         
@@ -102,12 +102,16 @@
         return document.getElementById(id).value;
     }
     
-    function makeHref(linkName, link) {
-        if(linkName.length > 0 && link.length > 0) {
-            return "<a href=\"" + link + "\">" + linkName + "</a>";
+    function makeHref(fieldName, linkName, link) {
+        let toReturn = "";
+        
+        if(linkName.length > 0 && link.length > 0 && link.includes("kibsi-am.kapschtraffic.com")) {
+            toReturn = "<li><b>" + fieldName + ": </b><a href=\"" + link + "\">" + linkName + "</a>" + "</li>";
         } else {
-            return "";
+            alert("The Filename or URL for the '" + fieldName + "' field may be incorrect.\n\nPlease verify the url before sending the email.")
         }
+        
+        return toReturn;
     }
         
     /** Opens the default email client and fills out sender, subject, and body **/
