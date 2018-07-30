@@ -103,7 +103,11 @@
     }
     
     function makeHref(linkName, link) {
-        return "<a href=\"" + link + "\">" + linkName + "</a>";
+        if(linkName.length > 0 && link.length > 0) {
+            return "<a href=\"" + link + "\">" + linkName + "</a>";
+        } else {
+            return "";
+        }
     }
         
     /** Opens the default email client and fills out sender, subject, and body **/
