@@ -42,6 +42,8 @@
             this.textToolsGroup = this.Factory.CreateRibbonGroup();
             this.insertSectionBreak = this.Factory.CreateRibbonButton();
             this.separator2 = this.Factory.CreateRibbonSeparator();
+            this.downloadTemplate = this.Factory.CreateRibbonButton();
+            this.separator1 = this.Factory.CreateRibbonSeparator();
             this.headingsDropdown = this.Factory.CreateRibbonGallery();
             this.headingOne = this.Factory.CreateRibbonButton();
             this.headingTwo = this.Factory.CreateRibbonButton();
@@ -71,16 +73,12 @@
             this.figureRefButton = this.Factory.CreateRibbonButton();
             this.tableRefButton = this.Factory.CreateRibbonButton();
             this.updateAllFields = this.Factory.CreateRibbonButton();
-            this.group3 = this.Factory.CreateRibbonGroup();
-            this.downloadTemplate = this.Factory.CreateRibbonButton();
-            this.importAllStyles = this.Factory.CreateRibbonButton();
             this.DocControl.SuspendLayout();
             this.group1.SuspendLayout();
             this.textToolsGroup.SuspendLayout();
             this.group2.SuspendLayout();
             this.acronymTableGroup.SuspendLayout();
             this.crossRefsGroup.SuspendLayout();
-            this.group3.SuspendLayout();
             this.SuspendLayout();
             // 
             // DocControl
@@ -90,7 +88,6 @@
             this.DocControl.Groups.Add(this.group2);
             this.DocControl.Groups.Add(this.acronymTableGroup);
             this.DocControl.Groups.Add(this.crossRefsGroup);
-            this.DocControl.Groups.Add(this.group3);
             this.DocControl.Label = "Doc Control";
             this.DocControl.Name = "DocControl";
             // 
@@ -124,6 +121,8 @@
             // 
             this.textToolsGroup.Items.Add(this.insertSectionBreak);
             this.textToolsGroup.Items.Add(this.separator2);
+            this.textToolsGroup.Items.Add(this.downloadTemplate);
+            this.textToolsGroup.Items.Add(this.separator1);
             this.textToolsGroup.Items.Add(this.headingsDropdown);
             this.textToolsGroup.Items.Add(this.applyBodyStyle);
             this.textToolsGroup.Items.Add(this.keepWithNext);
@@ -143,6 +142,19 @@
             // separator2
             // 
             this.separator2.Name = "separator2";
+            // 
+            // downloadTemplate
+            // 
+            this.downloadTemplate.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.downloadTemplate.Image = global::DocumentControlToolbar.Properties.Resources.import_styles;
+            this.downloadTemplate.Label = "Import All Styles";
+            this.downloadTemplate.Name = "downloadTemplate";
+            this.downloadTemplate.ShowImage = true;
+            this.downloadTemplate.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.downloadTemplate_Click);
+            // 
+            // separator1
+            // 
+            this.separator1.Name = "separator1";
             // 
             // headingsDropdown
             // 
@@ -373,25 +385,6 @@
             this.updateAllFields.ShowImage = true;
             this.updateAllFields.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.updateAllFields_Click);
             // 
-            // group3
-            // 
-            this.group3.Items.Add(this.downloadTemplate);
-            this.group3.Items.Add(this.importAllStyles);
-            this.group3.Label = "Template Tools";
-            this.group3.Name = "group3";
-            // 
-            // downloadTemplate
-            // 
-            this.downloadTemplate.Label = "Download Template ";
-            this.downloadTemplate.Name = "downloadTemplate";
-            this.downloadTemplate.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.downloadTemplate_Click);
-            // 
-            // importAllStyles
-            // 
-            this.importAllStyles.Label = "Import All Styles";
-            this.importAllStyles.Name = "importAllStyles";
-            this.importAllStyles.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.importAllStyles_Click);
-            // 
             // DocumentControlRibbon
             // 
             this.Name = "DocumentControlRibbon";
@@ -410,8 +403,6 @@
             this.acronymTableGroup.PerformLayout();
             this.crossRefsGroup.ResumeLayout(false);
             this.crossRefsGroup.PerformLayout();
-            this.group3.ResumeLayout(false);
-            this.group3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -419,6 +410,7 @@
         #endregion
         internal Microsoft.Office.Tools.Ribbon.RibbonTab DocControl;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup textToolsGroup;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton downloadTemplate;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton applyBodyStyle;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton keepWithNext;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup crossRefsGroup;
@@ -453,9 +445,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton insertSectionBreak;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton formatTable;
         internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator2;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup group3;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton downloadTemplate;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton importAllStyles;
+        internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator1;
     }
 
     partial class ThisRibbonCollection

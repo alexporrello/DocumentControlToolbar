@@ -1,1 +1,0 @@
-bitsadmin.exe /transfer "Install Macros" http://github.com/alexporrello/TWBoilerplateMacros/raw/master/binaries/Normal.dotm C:\Users\%USERNAME%\AppData\Roaming\DocumentControl\Normal.dotm

@@ -133,6 +133,16 @@ namespace DocumentControlToolbar.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap import_styles {
+            get {
+                object obj = ResourceManager.GetObject("import-styles", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap insert_ref_small_icon {
             get {
                 object obj = ResourceManager.GetObject("insert-ref-small-icon", resourceCulture);

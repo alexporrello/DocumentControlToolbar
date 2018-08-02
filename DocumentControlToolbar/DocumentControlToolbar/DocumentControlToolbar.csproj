@@ -217,7 +217,6 @@
     <EmbeddedResource Include="DocumentControlRibbon.resx">
       <DependentUpon>DocumentControlRibbon.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Batch\download-tempalte.bat" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -310,6 +309,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\table-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\import-styles.png" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

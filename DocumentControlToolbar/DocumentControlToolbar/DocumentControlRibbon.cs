@@ -9,6 +9,7 @@ using Word = Microsoft.Office.Interop.Word;
 using System.Diagnostics;
 using System.Collections;
 using System.Net;
+using System.Windows.Forms;
 
 namespace DocumentControlToolbar {
     public partial class DocumentControlRibbon {
@@ -162,38 +163,38 @@ namespace DocumentControlToolbar {
             WordList.DownloadDudsList();
         }
 
-        private void excelCheckBox_Click(object sender, RibbonControlEventArgs e) {
-
-        }
-
-        private void button1_Click(object sender, RibbonControlEventArgs e) {
-
-        }
-
-        private void importAllStyles_Click(object sender, RibbonControlEventArgs e) {            
-            Globals.ThisAddIn.Application.ActiveDocument.CopyStylesFromTemplate(
-                "C:\\Users\\porrello\\Documents\\GitHub\\TWBoilerplateMacros\\binaries\\Normal.dotm");
-        }
-
-        public static String Folder = Path.Combine(
-            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-            "DocumentControl");
-
         private void downloadTemplate_Click(object sender, RibbonControlEventArgs e) {
+            String folder = Path.Combine(
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "DocumentControl"), "Normal.dotm");
 
-            Process proc = null;
-
-            try {
-                string batDir = string.Format(@"D:\");
-                proc = new Process();
-                proc.StartInfo.WorkingDirectory = batDir;
-                proc.StartInfo.FileName = "Batch\\download-template.bat";
-                proc.StartInfo.CreateNoWindow = false;
-                proc.Start();
-                proc.WaitForExit();
-            } catch (Exception ex) {
-                Console.WriteLine(ex.StackTrace.ToString());
+            if (!File.Exists(folder)) {
+                DownloadTemplate(folder);
             }
+
+            if (!File.Exists(folder)) {
+                MessageBox.Show(
+                    "The Normal template failed to download. Please make sure " +
+                    "you're disconnected from the VPN and try again.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            Globals.ThisAddIn.Application.ActiveDocument.CopyStylesFromTemplate(folder);
+        }
+
+        private void DownloadTemplate(String downloadTo) {
+            var fileName = Guid.NewGuid().ToString() + ".bat";
+            var batchPath = Path.Combine(Environment.GetEnvironmentVariable("temp"), fileName);
+
+            var batchCode = "bitsadmin.exe /transfer \"Install Macros\" " +
+                "http://github.com/alexporrello/TWBoilerplateMacros/raw/master/binaries/Normal.dotm " +
+                downloadTo;
+
+            File.WriteAllText(batchPath, batchCode);
+
+            Process.Start(batchPath).WaitForExit();
+
+            File.Delete(batchPath);
+
         }
     }
 }
