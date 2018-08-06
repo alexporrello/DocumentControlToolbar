@@ -66,6 +66,24 @@ namespace DocumentControlToolbar {
             table.AutoFitBehavior(Word.WdAutoFitBehavior.wdAutoFitWindow);
         }
 
+        private void download_Click(object sender, RibbonControlEventArgs e) {
+            String folder = Path.Combine(
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "DocumentControl"), "Normal.dotm");
+
+            if (!File.Exists(folder)) {
+                DownloadTemplate(folder);
+            }
+
+            if (!File.Exists(folder)) {
+                MessageBox.Show(
+                    "The Normal template failed to download. Please make sure " +
+                    "you're disconnected from the VPN and try again.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            Globals.ThisAddIn.Application.ActiveDocument.CopyStylesFromTemplate(folder);
+        }
+
         private void insertSectionBreak_Click(object sender, RibbonControlEventArgs e) {
             Word.Application app = Globals.ThisAddIn.Application;
             app.Selection.InsertBreak(Word.WdBreakType.wdSectionBreakNextPage);

@@ -43,7 +43,7 @@
             this.textToolsGroup = this.Factory.CreateRibbonGroup();
             this.insertSectionBreak = this.Factory.CreateRibbonButton();
             this.separator2 = this.Factory.CreateRibbonSeparator();
-            this.downloadTemplate = this.Factory.CreateRibbonButton();
+            this.download = this.Factory.CreateRibbonButton();
             this.separator1 = this.Factory.CreateRibbonSeparator();
             this.headingsDropdown = this.Factory.CreateRibbonGallery();
             this.headingOne = this.Factory.CreateRibbonButton();
@@ -132,7 +132,7 @@
             // 
             this.textToolsGroup.Items.Add(this.insertSectionBreak);
             this.textToolsGroup.Items.Add(this.separator2);
-            this.textToolsGroup.Items.Add(this.downloadTemplate);
+            this.textToolsGroup.Items.Add(this.download);
             this.textToolsGroup.Items.Add(this.separator1);
             this.textToolsGroup.Items.Add(this.headingsDropdown);
             this.textToolsGroup.Items.Add(this.applyBodyStyle);
@@ -154,14 +154,14 @@
             // 
             this.separator2.Name = "separator2";
             // 
-            // downloadTemplate
+            // download
             // 
-            this.downloadTemplate.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.downloadTemplate.Image = global::DocumentControlToolbar.Properties.Resources.import_styles;
-            this.downloadTemplate.Label = "Import All Styles";
-            this.downloadTemplate.Name = "downloadTemplate";
-            this.downloadTemplate.ShowImage = true;
-            this.downloadTemplate.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.downloadTemplate_Click);
+            this.download.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.download.Image = global::DocumentControlToolbar.Properties.Resources.import_styles;
+            this.download.Label = "Import Template";
+            this.download.Name = "download";
+            this.download.ShowImage = true;
+            this.download.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.download_Click);
             // 
             // separator1
             // 
@@ -421,7 +421,6 @@
         #endregion
         internal Microsoft.Office.Tools.Ribbon.RibbonTab DocControl;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup textToolsGroup;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton downloadTemplate;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton applyBodyStyle;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton keepWithNext;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup crossRefsGroup;
@@ -458,6 +457,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator2;
         internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator1;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton acceptAllChanges;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton download;
     }
 
     partial class ThisRibbonCollection
