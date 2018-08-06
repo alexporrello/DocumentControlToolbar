@@ -63,6 +63,16 @@ namespace DocumentControlToolbar.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap accept_all_changes {
+            get {
+                object obj = ResourceManager.GetObject("accept-all-changes", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap apply_list_large_icon {
             get {
                 object obj = ResourceManager.GetObject("apply-list-large-icon", resourceCulture);

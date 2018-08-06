@@ -196,5 +196,10 @@ namespace DocumentControlToolbar {
             File.Delete(batchPath);
 
         }
+
+        private void acceptAllChanges_Click(object sender, RibbonControlEventArgs e) {
+            Word.Document doc = Globals.ThisAddIn.Application.ActiveDocument;
+            doc.Revisions.AcceptAll();
+        }
     }
 }

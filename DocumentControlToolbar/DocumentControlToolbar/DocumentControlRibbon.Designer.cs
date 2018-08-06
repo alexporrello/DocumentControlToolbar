@@ -39,6 +39,7 @@
             this.group1 = this.Factory.CreateRibbonGroup();
             this.docPropUpdater = this.Factory.CreateRibbonButton();
             this.boilerplateFormat = this.Factory.CreateRibbonButton();
+            this.acceptAllChanges = this.Factory.CreateRibbonButton();
             this.textToolsGroup = this.Factory.CreateRibbonGroup();
             this.insertSectionBreak = this.Factory.CreateRibbonButton();
             this.separator2 = this.Factory.CreateRibbonSeparator();
@@ -95,6 +96,7 @@
             // 
             this.group1.Items.Add(this.docPropUpdater);
             this.group1.Items.Add(this.boilerplateFormat);
+            this.group1.Items.Add(this.acceptAllChanges);
             this.group1.Label = "General";
             this.group1.Name = "group1";
             // 
@@ -116,6 +118,15 @@
             this.boilerplateFormat.Name = "boilerplateFormat";
             this.boilerplateFormat.ScreenTip = "Auto-formats boilerplate documents downloaded from our internal wiki.";
             this.boilerplateFormat.ShowImage = true;
+            // 
+            // acceptAllChanges
+            // 
+            this.acceptAllChanges.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.acceptAllChanges.Image = global::DocumentControlToolbar.Properties.Resources.accept_all_changes;
+            this.acceptAllChanges.Label = "Accept All Changes";
+            this.acceptAllChanges.Name = "acceptAllChanges";
+            this.acceptAllChanges.ShowImage = true;
+            this.acceptAllChanges.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.acceptAllChanges_Click);
             // 
             // textToolsGroup
             // 
@@ -446,6 +457,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton formatTable;
         internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator2;
         internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator1;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton acceptAllChanges;
     }
 
     partial class ThisRibbonCollection

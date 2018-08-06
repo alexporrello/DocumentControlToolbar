@@ -33,7 +33,7 @@
     <PublishUrl>C:\Users\porrello\Desktop\</PublishUrl>
     <InstallUrl />
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>1.0.0.7</ApplicationVersion>
+    <ApplicationVersion>1.0.0.8</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
@@ -312,6 +312,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\import-styles.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\accept-all-changes.png" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
