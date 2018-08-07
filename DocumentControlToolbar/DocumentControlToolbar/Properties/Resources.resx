@@ -130,8 +130,17 @@
   <data name="headings-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\headings-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="accept-all-changes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\accept-all-changes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="marking-style-small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\marking-style-small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="section_break_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\section-break-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="apply-list-large-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\apply-list-large-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="apply-o-list-large-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\apply-o-list-large-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,11 +148,8 @@
   <data name="format-icon-raw" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\format-icon-raw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="import-styles" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\import-styles.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="apply-list-large-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\apply-list-large-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="update-small-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\update-small-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="apply-list-small-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\apply-list-small-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -151,8 +157,8 @@
   <data name="table-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\table-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="update-small-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\update-small-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="import-styles" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\import-styles.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="insert-ref-small-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\insert-ref-small-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -160,7 +166,7 @@
   <data name="apply-style-small-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\apply-style-small-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="accept-all-changes" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\accept-all-changes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="keep-with-next-small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\keep-with-next-small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -41,9 +41,9 @@
             this.boilerplateFormat = this.Factory.CreateRibbonButton();
             this.acceptAllChanges = this.Factory.CreateRibbonButton();
             this.textToolsGroup = this.Factory.CreateRibbonGroup();
-            this.insertSectionBreak = this.Factory.CreateRibbonButton();
-            this.separator2 = this.Factory.CreateRibbonSeparator();
             this.download = this.Factory.CreateRibbonButton();
+            this.separator2 = this.Factory.CreateRibbonSeparator();
+            this.insertSectionBreak = this.Factory.CreateRibbonButton();
             this.separator1 = this.Factory.CreateRibbonSeparator();
             this.headingsDropdown = this.Factory.CreateRibbonGallery();
             this.headingOne = this.Factory.CreateRibbonButton();
@@ -52,6 +52,9 @@
             this.headingFour = this.Factory.CreateRibbonButton();
             this.headingFive = this.Factory.CreateRibbonButton();
             this.applyBodyStyle = this.Factory.CreateRibbonButton();
+            this.applyMarkingStyle = this.Factory.CreateRibbonButton();
+            this.applyFigureStyle = this.Factory.CreateRibbonButton();
+            this.separator3 = this.Factory.CreateRibbonSeparator();
             this.keepWithNext = this.Factory.CreateRibbonButton();
             this.pageBreakBefore = this.Factory.CreateRibbonButton();
             this.group2 = this.Factory.CreateRibbonGroup();
@@ -130,16 +133,32 @@
             // 
             // textToolsGroup
             // 
-            this.textToolsGroup.Items.Add(this.insertSectionBreak);
-            this.textToolsGroup.Items.Add(this.separator2);
             this.textToolsGroup.Items.Add(this.download);
+            this.textToolsGroup.Items.Add(this.separator2);
+            this.textToolsGroup.Items.Add(this.insertSectionBreak);
             this.textToolsGroup.Items.Add(this.separator1);
             this.textToolsGroup.Items.Add(this.headingsDropdown);
             this.textToolsGroup.Items.Add(this.applyBodyStyle);
+            this.textToolsGroup.Items.Add(this.applyMarkingStyle);
+            this.textToolsGroup.Items.Add(this.applyFigureStyle);
+            this.textToolsGroup.Items.Add(this.separator3);
             this.textToolsGroup.Items.Add(this.keepWithNext);
             this.textToolsGroup.Items.Add(this.pageBreakBefore);
             this.textToolsGroup.Label = "Style Tools";
             this.textToolsGroup.Name = "textToolsGroup";
+            // 
+            // download
+            // 
+            this.download.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.download.Image = global::DocumentControlToolbar.Properties.Resources.import_styles;
+            this.download.Label = "Import Styles";
+            this.download.Name = "download";
+            this.download.ShowImage = true;
+            this.download.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.download_Click);
+            // 
+            // separator2
+            // 
+            this.separator2.Name = "separator2";
             // 
             // insertSectionBreak
             // 
@@ -149,19 +168,6 @@
             this.insertSectionBreak.Name = "insertSectionBreak";
             this.insertSectionBreak.ShowImage = true;
             this.insertSectionBreak.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.insertSectionBreak_Click);
-            // 
-            // separator2
-            // 
-            this.separator2.Name = "separator2";
-            // 
-            // download
-            // 
-            this.download.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.download.Image = global::DocumentControlToolbar.Properties.Resources.import_styles;
-            this.download.Label = "Import Template";
-            this.download.Name = "download";
-            this.download.ShowImage = true;
-            this.download.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.download_Click);
             // 
             // separator1
             // 
@@ -177,7 +183,7 @@
             this.headingsDropdown.ColumnCount = 1;
             this.headingsDropdown.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
             this.headingsDropdown.Image = global::DocumentControlToolbar.Properties.Resources.headings_icon;
-            this.headingsDropdown.Label = "Apply Headings";
+            this.headingsDropdown.Label = "Headings";
             this.headingsDropdown.Name = "headingsDropdown";
             this.headingsDropdown.ShowImage = true;
             // 
@@ -214,14 +220,34 @@
             // applyBodyStyle
             // 
             this.applyBodyStyle.Image = global::DocumentControlToolbar.Properties.Resources.apply_style_small_icon;
-            this.applyBodyStyle.Label = "Apply Body Style ";
+            this.applyBodyStyle.Label = "Body";
             this.applyBodyStyle.Name = "applyBodyStyle";
             this.applyBodyStyle.ShowImage = true;
             this.applyBodyStyle.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.applyBodyStyle_Click);
             // 
+            // applyMarkingStyle
+            // 
+            this.applyMarkingStyle.Image = global::DocumentControlToolbar.Properties.Resources.marking_style_small;
+            this.applyMarkingStyle.Label = "Marking";
+            this.applyMarkingStyle.Name = "applyMarkingStyle";
+            this.applyMarkingStyle.ShowImage = true;
+            this.applyMarkingStyle.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.applyMarkingStyle_Click);
+            // 
+            // applyFigureStyle
+            // 
+            this.applyFigureStyle.Image = global::DocumentControlToolbar.Properties.Resources.insert_ref_small_icon;
+            this.applyFigureStyle.Label = "Figure";
+            this.applyFigureStyle.Name = "applyFigureStyle";
+            this.applyFigureStyle.ShowImage = true;
+            this.applyFigureStyle.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.applyFigureStyle_Click);
+            // 
+            // separator3
+            // 
+            this.separator3.Name = "separator3";
+            // 
             // keepWithNext
             // 
-            this.keepWithNext.Image = global::DocumentControlToolbar.Properties.Resources.apply_style_small_icon;
+            this.keepWithNext.Image = global::DocumentControlToolbar.Properties.Resources.keep_with_next_small;
             this.keepWithNext.Label = "Keep With Next ";
             this.keepWithNext.Name = "keepWithNext";
             this.keepWithNext.ShowImage = true;
@@ -458,6 +484,9 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator1;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton acceptAllChanges;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton download;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton applyMarkingStyle;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton applyFigureStyle;
+        internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator3;
     }
 
     partial class ThisRibbonCollection

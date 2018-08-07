@@ -163,6 +163,26 @@ namespace DocumentControlToolbar.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap keep_with_next_small {
+            get {
+                object obj = ResourceManager.GetObject("keep-with-next-small", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap marking_style_small {
+            get {
+                object obj = ResourceManager.GetObject("marking-style-small", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap page_break_before_small_icon {
             get {
                 object obj = ResourceManager.GetObject("page-break-before-small-icon", resourceCulture);
