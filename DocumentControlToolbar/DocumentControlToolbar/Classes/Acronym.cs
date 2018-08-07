@@ -29,11 +29,13 @@ namespace DocumentControlToolbar {
 
         private Word.Table acronymTable;
 
+        private AcronymTableLoadingForm frm;
+
         public AcronymTableTool() {
             try {
                 acronymTable = FindAcronymTable();
 
-                using (AcronymTableLoadingForm frm = new AcronymTableLoadingForm(Start)) {
+                using (frm = new AcronymTableLoadingForm(Start)) {
                     frm.ShowDialog();
                 }
             } catch (CustomExceptions) {
@@ -69,7 +71,15 @@ namespace DocumentControlToolbar {
 
         /** Checks if the acronyms in the table appear in the rest of the document. **/
         private void CheckAcronymsInTable() {
-            for (int i = 2; i <= acronymTable.Rows.Count; i++) {
+
+            frm.SetMainText("Checking acronyms in the table.");
+
+            int numRows = acronymTable.Rows.Count;
+            int currentItem = 0;
+
+            for (int i = 2; i <= numRows; i++) {
+                SetNumber(currentItem++, numRows);
+
                 Word.Cell leftCell = acronymTable.Cell(i, 1);
                 Word.Cell rightCell = acronymTable.Cell(i, 2);
 
@@ -129,7 +139,15 @@ namespace DocumentControlToolbar {
 
         /** Searches through the document for words it thinks might be an acronym. **/
         private void GetAllAcronymsInDocument() {
+
+            frm.SetMainText("Checking all words in document.");
+
+            int allWords = doc.Words.Count;
+            int currentItem = 0;
+
             foreach (Word.Range word in doc.Words) {
+                SetNumber(currentItem++, allWords);
+
                 if (IsValidWordFirstCheck(word.Text)) {
                     if (!app.CheckSpelling(word.Text.ToLower())) {
                         found.Add(word.Text);
@@ -146,9 +164,16 @@ namespace DocumentControlToolbar {
 
         /** Adds all found acronyms (that are not already in the table) to the table; then, sort. **/
         private void AddFoundAcronymsToTable() {
+            frm.SetMainText("Adding all found acronyms to the table.");
+
             String dudsList = GetDudsList();
 
+            int allFoundWords = found.Count;
+            int currentItem = 0;
+
             foreach (String word in found) {
+                SetNumber(currentItem++, allFoundWords);
+                
                 String definition = "";
 
                 if (!inTable.Contains(word) && !dudsList.Contains(word)) {
@@ -199,6 +224,10 @@ namespace DocumentControlToolbar {
             }
 
             return System.IO.File.ReadAllText(acronymDuds);
+        }
+
+        private void SetNumber(int current, int total) {
+            frm.SetNumberingUpdate(current + " of " + total);
         }
     }
 }

@@ -34,8 +34,24 @@ namespace DocumentControlToolbar {
 
         }
 
-        private void label1_Click(object sender, EventArgs e) {
+        delegate void SetTextCallback(string text);
 
+        public void SetMainText(string text) {
+            if (this.acronymStatus.InvokeRequired) {
+                SetTextCallback d = new SetTextCallback(SetMainText);
+                this.Invoke(d, new object[] { text });
+            } else {
+                this.acronymStatus.Text = text;
+            }
+        }
+
+        public void SetNumberingUpdate(string text) {
+            if (this.numberUpdate.InvokeRequired) {
+                SetTextCallback d = new SetTextCallback(SetNumberingUpdate);
+                this.Invoke(d, new object[] { text });
+            } else {
+                this.numberUpdate.Text = text;
+            }
         }
     }
 }
