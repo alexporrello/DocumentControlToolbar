@@ -139,8 +139,8 @@
             this.textToolsGroup.Items.Add(this.separator1);
             this.textToolsGroup.Items.Add(this.headingsDropdown);
             this.textToolsGroup.Items.Add(this.applyBodyStyle);
-            this.textToolsGroup.Items.Add(this.applyMarkingStyle);
             this.textToolsGroup.Items.Add(this.applyFigureStyle);
+            this.textToolsGroup.Items.Add(this.applyMarkingStyle);
             this.textToolsGroup.Items.Add(this.separator3);
             this.textToolsGroup.Items.Add(this.keepWithNext);
             this.textToolsGroup.Items.Add(this.pageBreakBefore);
