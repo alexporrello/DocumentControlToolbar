@@ -322,6 +322,36 @@
   <ItemGroup>
     <None Include="Resources\keep-with-next-small.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\figure-style-small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\show-markup-small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\insert-figure-ref-small-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\insert-table-ref-small-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\level_one_ol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\level_two_ol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\level_one_ul.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\level_two_ul.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\level_three_ul.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\level_four_ul.png" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

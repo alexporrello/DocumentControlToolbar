@@ -123,6 +123,16 @@ namespace DocumentControlToolbar.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap figure_style_small {
+            get {
+                object obj = ResourceManager.GetObject("figure-style-small", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap format_icon_raw {
             get {
                 object obj = ResourceManager.GetObject("format-icon-raw", resourceCulture);
@@ -153,6 +163,16 @@ namespace DocumentControlToolbar.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap insert_figure_ref_small_icon {
+            get {
+                object obj = ResourceManager.GetObject("insert-figure-ref-small-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap insert_ref_small_icon {
             get {
                 object obj = ResourceManager.GetObject("insert-ref-small-icon", resourceCulture);
@@ -163,9 +183,89 @@ namespace DocumentControlToolbar.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap insert_table_ref_small_icon {
+            get {
+                object obj = ResourceManager.GetObject("insert-table-ref-small-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap keep_with_next_small {
             get {
                 object obj = ResourceManager.GetObject("keep-with-next-small", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap level_four_ul {
+            get {
+                object obj = ResourceManager.GetObject("level_four_ul", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap level_one_ol {
+            get {
+                object obj = ResourceManager.GetObject("level_one_ol", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap level_one_ul {
+            get {
+                object obj = ResourceManager.GetObject("level_one_ul", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap level_three_ul {
+            get {
+                object obj = ResourceManager.GetObject("level_three_ul", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap level_three_ul1 {
+            get {
+                object obj = ResourceManager.GetObject("level_three_ul1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap level_two_ol {
+            get {
+                object obj = ResourceManager.GetObject("level_two_ol", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap level_two_ul {
+            get {
+                object obj = ResourceManager.GetObject("level_two_ul", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -206,6 +306,16 @@ namespace DocumentControlToolbar.Properties {
         internal static System.Drawing.Bitmap section_break_icon {
             get {
                 object obj = ResourceManager.GetObject("section_break_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap show_markup_small {
+            get {
+                object obj = ResourceManager.GetObject("show-markup-small", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

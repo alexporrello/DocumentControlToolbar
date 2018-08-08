@@ -26,8 +26,6 @@ namespace DocumentControlToolbar {
             new DocPropertiesEditor().Show();
         }
 
-        //TODO Boilerplate Formatter
-
         private void acceptAllChanges_Click(object sender, RibbonControlEventArgs e) {
             Word.Document doc = Globals.ThisAddIn.Application.ActiveDocument;
 
@@ -37,13 +35,18 @@ namespace DocumentControlToolbar {
             doc.TrackRevisions = trackChanges;
         }
 
+        private void showMarkup_Click(object sender, RibbonControlEventArgs e) {
+            Word.Document doc = Globals.ThisAddIn.Application.ActiveDocument;
+            doc.ActiveWindow.ActivePane.View.ShowAll = showMarkup.Checked;
+        }
+
         /** ======================= Style Tools Group ======================= **/
 
         private void insertSectionBreak_Click(object sender, RibbonControlEventArgs e) {
             app.Selection.InsertBreak(Word.WdBreakType.wdSectionBreakNextPage);
         }
 
-        private void download_Click(object sender, RibbonControlEventArgs e) {
+        private void headings_Click(object sender, RibbonControlEventArgs e) {
             String folder = Path.Combine(
                 Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "DocumentControl"), 
                 "Normal.dotm");
@@ -185,31 +188,31 @@ namespace DocumentControlToolbar {
             Tools.SetStyle("Heading 5,2016_Überschrift 5,Headline 5");
         }
 
-        /** ======================= Ordered List Dropdown ======================= **/
+        /** ======================= Ordered List Dropdown v2.0 ======================= **/
 
-        private void levelOneO_Click(object sender, RibbonControlEventArgs e) {
+        private void level_one_ol_Click(object sender, RibbonControlEventArgs e) {
             Tools.SetStyle("Body Text enumeration1 1. 2. 3.");
         }
 
-        private void levelTwoO_Click(object sender, RibbonControlEventArgs e) {
+        private void level_two_ol_Click(object sender, RibbonControlEventArgs e) {
             Tools.SetStyle("Body Text enumeration2 a)b)c)");
         }
 
-        /** ======================= Unordered List Dropdown ======================= **/
+        /** ======================= Unordered List Dropdown v2.0 ======================= **/
 
-        private void levelOneU_Click(object sender, RibbonControlEventArgs e) {
+        private void level_one_uo_Click(object sender, RibbonControlEventArgs e) {
             Tools.SetStyle("Body Text enumeration Arrow 2016 black");
         }
 
-        private void levelTwoU_Click(object sender, RibbonControlEventArgs e) {
+        private void level_two_uo_Click(object sender, RibbonControlEventArgs e) {
             Tools.SetStyle("Body Text enumeration Line1");
         }
 
-        private void levelThreeU_Click(object sender, RibbonControlEventArgs e) {
+        private void level_three_uo_Click(object sender, RibbonControlEventArgs e) {
             Tools.SetStyle("Body Text enumeration Line3");
         }
 
-        private void levelFourU_Click(object sender, RibbonControlEventArgs e) {
+        private void level_four_uo_Click(object sender, RibbonControlEventArgs e) {
             Tools.SetStyle("Body Text enumeration Point3");
         }
     }
