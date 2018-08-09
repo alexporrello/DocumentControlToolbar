@@ -215,5 +215,14 @@ namespace DocumentControlToolbar {
         private void level_four_uo_Click(object sender, RibbonControlEventArgs e) {
             Tools.SetStyle("Body Text enumeration Point3");
         }
+
+        private void formatAllFigures_Click(object sender, RibbonControlEventArgs e) {
+            Word.Document doc = Globals.ThisAddIn.Application.ActiveDocument;
+
+            foreach(Word.InlineShape shape in doc.InlineShapes) {
+                shape.Select();
+                Tools.SetStyle("2016_Figure");
+            }
+        }
     }
 }

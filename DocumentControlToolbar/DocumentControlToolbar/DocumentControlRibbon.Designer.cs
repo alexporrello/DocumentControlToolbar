@@ -42,11 +42,11 @@
             this.separator1 = this.Factory.CreateRibbonSeparator();
             this.group2 = this.Factory.CreateRibbonGroup();
             this.box1 = this.Factory.CreateRibbonBox();
+            this.unorderedDropdown = this.Factory.CreateRibbonGallery();
             this.box2 = this.Factory.CreateRibbonBox();
+            this.orderedListGallery = this.Factory.CreateRibbonGallery();
             this.acronymTableGroup = this.Factory.CreateRibbonGroup();
             this.crossRefsGroup = this.Factory.CreateRibbonGroup();
-            this.unorderedDropdown = this.Factory.CreateRibbonGallery();
-            this.orderedListGallery = this.Factory.CreateRibbonGallery();
             this.docPropUpdater = this.Factory.CreateRibbonButton();
             this.download = this.Factory.CreateRibbonButton();
             this.acceptAllChanges = this.Factory.CreateRibbonButton();
@@ -63,6 +63,7 @@
             this.applyMarkingStyle = this.Factory.CreateRibbonButton();
             this.keepWithNext = this.Factory.CreateRibbonButton();
             this.pageBreakBefore = this.Factory.CreateRibbonButton();
+            this.formatAllFigures = this.Factory.CreateRibbonButton();
             this.defaultUL = this.Factory.CreateRibbonButton();
             this.level_one_uo = this.Factory.CreateRibbonButton();
             this.level_two_uo = this.Factory.CreateRibbonButton();
@@ -121,6 +122,7 @@
             this.textToolsGroup.Items.Add(this.applyFigureStyle);
             this.textToolsGroup.Items.Add(this.applyMarkingStyle);
             this.textToolsGroup.Items.Add(this.keepWithNext);
+            this.textToolsGroup.Items.Add(this.formatAllFigures);
             this.textToolsGroup.Items.Add(this.pageBreakBefore);
             this.textToolsGroup.Label = "Style";
             this.textToolsGroup.Name = "textToolsGroup";
@@ -142,11 +144,27 @@
             this.box1.Items.Add(this.unorderedDropdown);
             this.box1.Name = "box1";
             // 
+            // unorderedDropdown
+            // 
+            this.unorderedDropdown.Buttons.Add(this.level_one_uo);
+            this.unorderedDropdown.Buttons.Add(this.level_two_uo);
+            this.unorderedDropdown.Buttons.Add(this.level_three_uo);
+            this.unorderedDropdown.Buttons.Add(this.level_four_uo);
+            this.unorderedDropdown.Label = " Apply UL";
+            this.unorderedDropdown.Name = "unorderedDropdown";
+            // 
             // box2
             // 
             this.box2.Items.Add(this.defaultOL);
             this.box2.Items.Add(this.orderedListGallery);
             this.box2.Name = "box2";
+            // 
+            // orderedListGallery
+            // 
+            this.orderedListGallery.Buttons.Add(this.level_one_ol);
+            this.orderedListGallery.Buttons.Add(this.level_two_ol);
+            this.orderedListGallery.Label = " Apply OL";
+            this.orderedListGallery.Name = "orderedListGallery";
             // 
             // acronymTableGroup
             // 
@@ -164,22 +182,6 @@
             this.crossRefsGroup.Items.Add(this.updateAllFields);
             this.crossRefsGroup.Label = "Cross-references";
             this.crossRefsGroup.Name = "crossRefsGroup";
-            // 
-            // unorderedDropdown
-            // 
-            this.unorderedDropdown.Buttons.Add(this.level_one_uo);
-            this.unorderedDropdown.Buttons.Add(this.level_two_uo);
-            this.unorderedDropdown.Buttons.Add(this.level_three_uo);
-            this.unorderedDropdown.Buttons.Add(this.level_four_uo);
-            this.unorderedDropdown.Label = " Apply UL";
-            this.unorderedDropdown.Name = "unorderedDropdown";
-            // 
-            // orderedListGallery
-            // 
-            this.orderedListGallery.Buttons.Add(this.level_one_ol);
-            this.orderedListGallery.Buttons.Add(this.level_two_ol);
-            this.orderedListGallery.Label = " Apply OL";
-            this.orderedListGallery.Name = "orderedListGallery";
             // 
             // docPropUpdater
             // 
@@ -310,6 +312,14 @@
             this.pageBreakBefore.Name = "pageBreakBefore";
             this.pageBreakBefore.ShowImage = true;
             this.pageBreakBefore.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.pageBreakBefore_Click);
+            // 
+            // formatAllFigures
+            // 
+            this.formatAllFigures.Image = global::DocumentControlToolbar.Properties.Resources.format_all_figures;
+            this.formatAllFigures.Label = "Format All Figures";
+            this.formatAllFigures.Name = "formatAllFigures";
+            this.formatAllFigures.ShowImage = true;
+            this.formatAllFigures.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.formatAllFigures_Click);
             // 
             // defaultUL
             // 
@@ -505,6 +515,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonGallery orderedListGallery;
         private Microsoft.Office.Tools.Ribbon.RibbonButton level_one_ol;
         private Microsoft.Office.Tools.Ribbon.RibbonButton level_two_ol;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton formatAllFigures;
     }
 
     partial class ThisRibbonCollection
