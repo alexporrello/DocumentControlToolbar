@@ -29,10 +29,22 @@ namespace DocumentControlToolbar {
         private void acceptAllChanges_Click(object sender, RibbonControlEventArgs e) {
             Word.Document doc = Globals.ThisAddIn.Application.ActiveDocument;
 
+            DocControlLoadingForm form;
+
             Boolean trackChanges = doc.TrackRevisions;
             doc.TrackRevisions = false;
-            doc.Revisions.AcceptAll();
+
+            using (form = new DocControlLoadingForm(AcceptAllRevisions, "Accepting All Changes")) {
+                form.ShowDialog();
+            }
+
             doc.TrackRevisions = trackChanges;
+        }
+
+        private void AcceptAllRevisions() {
+            app.Application.ScreenUpdating = false;
+            Globals.ThisAddIn.Application.ActiveDocument.Revisions.AcceptAll();
+            app.Application.ScreenUpdating = true;
         }
 
         private void showMarkup_Click(object sender, RibbonControlEventArgs e) {
@@ -81,6 +93,27 @@ namespace DocumentControlToolbar {
             app.Selection.ParagraphFormat.KeepWithNext = -1;
         }
 
+        private void formatAllFigures_Click(object sender, RibbonControlEventArgs e) {
+            DocControlLoadingForm form;
+
+            using (form = new DocControlLoadingForm(FormatAllFigures, "Formatting all figures.")) {
+                form.ShowDialog();
+            }
+        }
+
+        private void FormatAllFigures() {
+            app.Application.ScreenUpdating = false;
+
+            Word.Document doc = Globals.ThisAddIn.Application.ActiveDocument;
+
+            foreach (Word.InlineShape shape in doc.InlineShapes) {
+                shape.Select();
+                Tools.SetStyle("2016_Figure");
+            }
+
+            app.Application.ScreenUpdating = true;
+        }
+
         private void pageBreakBefore_Click(object sender, RibbonControlEventArgs e) {
             app.Selection.ParagraphFormat.PageBreakBefore = -1;
         }
@@ -98,6 +131,16 @@ namespace DocumentControlToolbar {
         /** ======================= Acronym Table Group ======================= **/
 
         private void formatTable_Click(object sender, RibbonControlEventArgs e) {
+            DocControlLoadingForm form;
+
+            using (form = new DocControlLoadingForm(FormatTable, "Formatting table.")) {
+                form.ShowDialog();
+            }
+        }
+
+        private void FormatTable() {
+            app.Application.ScreenUpdating = false;
+
             Word.Table table = app.Selection.Range.Tables[1];
 
             for (int row = 1; row <= table.Rows.Count; row++) {
@@ -120,6 +163,8 @@ namespace DocumentControlToolbar {
             table.set_Style(app.ActiveDocument.Styles["MasterTable"]);
             table.AutoFitBehavior(Word.WdAutoFitBehavior.wdAutoFitContent);
             table.AutoFitBehavior(Word.WdAutoFitBehavior.wdAutoFitWindow);
+
+            app.Application.ScreenUpdating = true;
         }
 
         private void runAcronymTool_Click(object sender, RibbonControlEventArgs e) {
@@ -135,7 +180,11 @@ namespace DocumentControlToolbar {
             MessageBox.Show("Please disconnect from VPN before continuing.", "Warning",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-            WordList.DownloadAll();
+            DocControlLoadingForm form;
+
+            using (form = new DocControlLoadingForm(WordList.DownloadAll, "Downloading all wordlists.")) {
+                form.ShowDialog();
+            }
         }
 
         private void updateDudsList_Click(object sender, RibbonControlEventArgs e) {
@@ -158,12 +207,24 @@ namespace DocumentControlToolbar {
         }
 
         private void updateAllFields_Click(object sender, RibbonControlEventArgs e) {
+            DocControlLoadingForm form;
+
+            using (form = new DocControlLoadingForm(UpdateAllFields, "Updating all fields.")) {
+                form.ShowDialog();
+            }
+        }
+
+        private void UpdateAllFields() {
+            app.Application.ScreenUpdating = false;
+
             Word.Document doc = Globals.ThisAddIn.Application.ActiveDocument;
 
             Boolean trackChanges = doc.TrackRevisions;
             doc.TrackRevisions = false;
             Tools.UpdateAllFields();
             doc.TrackRevisions = trackChanges;
+
+            app.Application.ScreenUpdating = true;
         }
 
         /** ======================= Headings Dropdown ======================= **/
@@ -214,15 +275,6 @@ namespace DocumentControlToolbar {
 
         private void level_four_uo_Click(object sender, RibbonControlEventArgs e) {
             Tools.SetStyle("Body Text enumeration Point3");
-        }
-
-        private void formatAllFigures_Click(object sender, RibbonControlEventArgs e) {
-            Word.Document doc = Globals.ThisAddIn.Application.ActiveDocument;
-
-            foreach(Word.InlineShape shape in doc.InlineShapes) {
-                shape.Select();
-                Tools.SetStyle("2016_Figure");
-            }
         }
     }
 }
