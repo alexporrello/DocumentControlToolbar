@@ -163,6 +163,8 @@ namespace DocumentControlToolbar {
             table.set_Style(app.ActiveDocument.Styles["MasterTable"]);
             table.AutoFitBehavior(Word.WdAutoFitBehavior.wdAutoFitContent);
             table.AutoFitBehavior(Word.WdAutoFitBehavior.wdAutoFitWindow);
+            table.Cell(1, 1).Row.HeadingFormat = (int) Word.WdConstants.wdToggle;
+            table.ApplyStyleHeadingRows = true;
 
             app.Application.ScreenUpdating = true;
         }
