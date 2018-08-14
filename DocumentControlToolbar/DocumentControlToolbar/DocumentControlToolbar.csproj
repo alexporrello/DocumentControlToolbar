@@ -364,6 +364,9 @@
   <ItemGroup>
     <None Include="Resources\format-all-figures.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spell-check-small.png" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

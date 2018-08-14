@@ -37,21 +37,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DocumentControlRibbon));
             this.DocControl = this.Factory.CreateRibbonTab();
             this.Document = this.Factory.CreateRibbonGroup();
-            this.separator2 = this.Factory.CreateRibbonSeparator();
-            this.textToolsGroup = this.Factory.CreateRibbonGroup();
-            this.separator1 = this.Factory.CreateRibbonSeparator();
-            this.group2 = this.Factory.CreateRibbonGroup();
-            this.box1 = this.Factory.CreateRibbonBox();
-            this.box2 = this.Factory.CreateRibbonBox();
-            this.acronymTableGroup = this.Factory.CreateRibbonGroup();
-            this.crossRefsGroup = this.Factory.CreateRibbonGroup();
-            this.unorderedDropdown = this.Factory.CreateRibbonGallery();
-            this.orderedListGallery = this.Factory.CreateRibbonGallery();
             this.docPropUpdater = this.Factory.CreateRibbonButton();
             this.download = this.Factory.CreateRibbonButton();
             this.acceptAllChanges = this.Factory.CreateRibbonButton();
+            this.separator2 = this.Factory.CreateRibbonSeparator();
             this.showMarkup = this.Factory.CreateRibbonToggleButton();
+            this.showSpellingErrors = this.Factory.CreateRibbonToggleButton();
+            this.textToolsGroup = this.Factory.CreateRibbonGroup();
             this.insertSectionBreak = this.Factory.CreateRibbonButton();
+            this.separator1 = this.Factory.CreateRibbonSeparator();
             this.headingsDropdown = this.Factory.CreateRibbonGallery();
             this.headingOne = this.Factory.CreateRibbonButton();
             this.headingTwo = this.Factory.CreateRibbonButton();
@@ -64,18 +58,25 @@
             this.keepWithNext = this.Factory.CreateRibbonButton();
             this.formatAllFigures = this.Factory.CreateRibbonButton();
             this.pageBreakBefore = this.Factory.CreateRibbonButton();
+            this.group2 = this.Factory.CreateRibbonGroup();
+            this.box1 = this.Factory.CreateRibbonBox();
             this.defaultUL = this.Factory.CreateRibbonButton();
+            this.unorderedDropdown = this.Factory.CreateRibbonGallery();
             this.level_one_uo = this.Factory.CreateRibbonButton();
             this.level_two_uo = this.Factory.CreateRibbonButton();
             this.level_three_uo = this.Factory.CreateRibbonButton();
             this.level_four_uo = this.Factory.CreateRibbonButton();
+            this.box2 = this.Factory.CreateRibbonBox();
             this.defaultOL = this.Factory.CreateRibbonButton();
+            this.orderedListGallery = this.Factory.CreateRibbonGallery();
             this.level_one_ol = this.Factory.CreateRibbonButton();
             this.level_two_ol = this.Factory.CreateRibbonButton();
+            this.acronymTableGroup = this.Factory.CreateRibbonGroup();
             this.formatTable = this.Factory.CreateRibbonButton();
             this.runAcronymTool = this.Factory.CreateRibbonButton();
             this.updateWordlist = this.Factory.CreateRibbonButton();
             this.updateDudsList = this.Factory.CreateRibbonButton();
+            this.crossRefsGroup = this.Factory.CreateRibbonGroup();
             this.figureRefButton = this.Factory.CreateRibbonButton();
             this.tableRefButton = this.Factory.CreateRibbonButton();
             this.updateAllFields = this.Factory.CreateRibbonButton();
@@ -106,84 +107,9 @@
             this.Document.Items.Add(this.acceptAllChanges);
             this.Document.Items.Add(this.separator2);
             this.Document.Items.Add(this.showMarkup);
+            this.Document.Items.Add(this.showSpellingErrors);
             this.Document.Label = "Document";
             this.Document.Name = "Document";
-            // 
-            // separator2
-            // 
-            this.separator2.Name = "separator2";
-            // 
-            // textToolsGroup
-            // 
-            this.textToolsGroup.Items.Add(this.insertSectionBreak);
-            this.textToolsGroup.Items.Add(this.separator1);
-            this.textToolsGroup.Items.Add(this.headingsDropdown);
-            this.textToolsGroup.Items.Add(this.applyBodyStyle);
-            this.textToolsGroup.Items.Add(this.applyFigureStyle);
-            this.textToolsGroup.Items.Add(this.applyMarkingStyle);
-            this.textToolsGroup.Items.Add(this.keepWithNext);
-            this.textToolsGroup.Items.Add(this.formatAllFigures);
-            this.textToolsGroup.Items.Add(this.pageBreakBefore);
-            this.textToolsGroup.Label = "Style";
-            this.textToolsGroup.Name = "textToolsGroup";
-            // 
-            // separator1
-            // 
-            this.separator1.Name = "separator1";
-            // 
-            // group2
-            // 
-            this.group2.Items.Add(this.box1);
-            this.group2.Items.Add(this.box2);
-            this.group2.Label = "List";
-            this.group2.Name = "group2";
-            // 
-            // box1
-            // 
-            this.box1.Items.Add(this.defaultUL);
-            this.box1.Items.Add(this.unorderedDropdown);
-            this.box1.Name = "box1";
-            // 
-            // box2
-            // 
-            this.box2.Items.Add(this.defaultOL);
-            this.box2.Items.Add(this.orderedListGallery);
-            this.box2.Name = "box2";
-            // 
-            // acronymTableGroup
-            // 
-            this.acronymTableGroup.Items.Add(this.formatTable);
-            this.acronymTableGroup.Items.Add(this.runAcronymTool);
-            this.acronymTableGroup.Items.Add(this.updateWordlist);
-            this.acronymTableGroup.Items.Add(this.updateDudsList);
-            this.acronymTableGroup.Label = "Table";
-            this.acronymTableGroup.Name = "acronymTableGroup";
-            // 
-            // crossRefsGroup
-            // 
-            this.crossRefsGroup.Items.Add(this.figureRefButton);
-            this.crossRefsGroup.Items.Add(this.tableRefButton);
-            this.crossRefsGroup.Items.Add(this.updateAllFields);
-            this.crossRefsGroup.Label = "Cross-references";
-            this.crossRefsGroup.Name = "crossRefsGroup";
-            // 
-            // unorderedDropdown
-            // 
-            this.unorderedDropdown.Buttons.Add(this.level_one_uo);
-            this.unorderedDropdown.Buttons.Add(this.level_two_uo);
-            this.unorderedDropdown.Buttons.Add(this.level_three_uo);
-            this.unorderedDropdown.Buttons.Add(this.level_four_uo);
-            this.unorderedDropdown.Label = " Apply UL";
-            this.unorderedDropdown.Name = "unorderedDropdown";
-            this.unorderedDropdown.ScreenTip = "Provides an easy and consistent way to set unordered list levels. ";
-            // 
-            // orderedListGallery
-            // 
-            this.orderedListGallery.Buttons.Add(this.level_one_ol);
-            this.orderedListGallery.Buttons.Add(this.level_two_ol);
-            this.orderedListGallery.Label = " Apply OL";
-            this.orderedListGallery.Name = "orderedListGallery";
-            this.orderedListGallery.ScreenTip = "Provides an easy and consistent way to set ordered list levels.";
             // 
             // docPropUpdater
             // 
@@ -216,6 +142,10 @@
             this.acceptAllChanges.ShowImage = true;
             this.acceptAllChanges.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.acceptAllChanges_Click);
             // 
+            // separator2
+            // 
+            this.separator2.Name = "separator2";
+            // 
             // showMarkup
             // 
             this.showMarkup.Image = global::DocumentControlToolbar.Properties.Resources.show_markup_small;
@@ -224,6 +154,29 @@
             this.showMarkup.ShowImage = true;
             this.showMarkup.ShowLabel = false;
             this.showMarkup.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.showMarkup_Click);
+            // 
+            // showSpellingErrors
+            // 
+            this.showSpellingErrors.Image = global::DocumentControlToolbar.Properties.Resources.spell_check_small;
+            this.showSpellingErrors.Label = "toggleButton1";
+            this.showSpellingErrors.Name = "showSpellingErrors";
+            this.showSpellingErrors.ShowImage = true;
+            this.showSpellingErrors.ShowLabel = false;
+            this.showSpellingErrors.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.showSpellingErrors_Click_1);
+            // 
+            // textToolsGroup
+            // 
+            this.textToolsGroup.Items.Add(this.insertSectionBreak);
+            this.textToolsGroup.Items.Add(this.separator1);
+            this.textToolsGroup.Items.Add(this.headingsDropdown);
+            this.textToolsGroup.Items.Add(this.applyBodyStyle);
+            this.textToolsGroup.Items.Add(this.applyFigureStyle);
+            this.textToolsGroup.Items.Add(this.applyMarkingStyle);
+            this.textToolsGroup.Items.Add(this.keepWithNext);
+            this.textToolsGroup.Items.Add(this.formatAllFigures);
+            this.textToolsGroup.Items.Add(this.pageBreakBefore);
+            this.textToolsGroup.Label = "Style";
+            this.textToolsGroup.Name = "textToolsGroup";
             // 
             // insertSectionBreak
             // 
@@ -234,6 +187,10 @@
             this.insertSectionBreak.ScreenTip = "Inserts a section break before the cursor\'s position in the document.";
             this.insertSectionBreak.ShowImage = true;
             this.insertSectionBreak.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.insertSectionBreak_Click);
+            // 
+            // separator1
+            // 
+            this.separator1.Name = "separator1";
             // 
             // headingsDropdown
             // 
@@ -334,6 +291,19 @@
             this.pageBreakBefore.ShowImage = true;
             this.pageBreakBefore.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.pageBreakBefore_Click);
             // 
+            // group2
+            // 
+            this.group2.Items.Add(this.box1);
+            this.group2.Items.Add(this.box2);
+            this.group2.Label = "List";
+            this.group2.Name = "group2";
+            // 
+            // box1
+            // 
+            this.box1.Items.Add(this.defaultUL);
+            this.box1.Items.Add(this.unorderedDropdown);
+            this.box1.Name = "box1";
+            // 
             // defaultUL
             // 
             this.defaultUL.Image = global::DocumentControlToolbar.Properties.Resources.apply_list_small_icon;
@@ -344,6 +314,16 @@
             this.defaultUL.ShowImage = true;
             this.defaultUL.ShowLabel = false;
             this.defaultUL.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.defaultUL_Click);
+            // 
+            // unorderedDropdown
+            // 
+            this.unorderedDropdown.Buttons.Add(this.level_one_uo);
+            this.unorderedDropdown.Buttons.Add(this.level_two_uo);
+            this.unorderedDropdown.Buttons.Add(this.level_three_uo);
+            this.unorderedDropdown.Buttons.Add(this.level_four_uo);
+            this.unorderedDropdown.Label = " Apply UL";
+            this.unorderedDropdown.Name = "unorderedDropdown";
+            this.unorderedDropdown.ScreenTip = "Provides an easy and consistent way to set unordered list levels. ";
             // 
             // level_one_uo
             // 
@@ -377,6 +357,12 @@
             this.level_four_uo.ShowImage = true;
             this.level_four_uo.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.level_four_uo_Click);
             // 
+            // box2
+            // 
+            this.box2.Items.Add(this.defaultOL);
+            this.box2.Items.Add(this.orderedListGallery);
+            this.box2.Name = "box2";
+            // 
             // defaultOL
             // 
             this.defaultOL.Image = global::DocumentControlToolbar.Properties.Resources.apply_o_list_small_icon;
@@ -386,6 +372,14 @@
             this.defaultOL.ShowImage = true;
             this.defaultOL.ShowLabel = false;
             this.defaultOL.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.defaultOL_Click);
+            // 
+            // orderedListGallery
+            // 
+            this.orderedListGallery.Buttons.Add(this.level_one_ol);
+            this.orderedListGallery.Buttons.Add(this.level_two_ol);
+            this.orderedListGallery.Label = " Apply OL";
+            this.orderedListGallery.Name = "orderedListGallery";
+            this.orderedListGallery.ScreenTip = "Provides an easy and consistent way to set ordered list levels.";
             // 
             // level_one_ol
             // 
@@ -402,6 +396,15 @@
             this.level_two_ol.Name = "level_two_ol";
             this.level_two_ol.ShowImage = true;
             this.level_two_ol.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.level_two_ol_Click);
+            // 
+            // acronymTableGroup
+            // 
+            this.acronymTableGroup.Items.Add(this.formatTable);
+            this.acronymTableGroup.Items.Add(this.runAcronymTool);
+            this.acronymTableGroup.Items.Add(this.updateWordlist);
+            this.acronymTableGroup.Items.Add(this.updateDudsList);
+            this.acronymTableGroup.Label = "Table";
+            this.acronymTableGroup.Name = "acronymTableGroup";
             // 
             // formatTable
             // 
@@ -442,6 +445,14 @@
             this.updateDudsList.ScreenTip = "Downloads the latest lists of false-positive acronyms from GitHub.";
             this.updateDudsList.ShowImage = true;
             this.updateDudsList.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.updateDudsList_Click);
+            // 
+            // crossRefsGroup
+            // 
+            this.crossRefsGroup.Items.Add(this.figureRefButton);
+            this.crossRefsGroup.Items.Add(this.tableRefButton);
+            this.crossRefsGroup.Items.Add(this.updateAllFields);
+            this.crossRefsGroup.Label = "Cross-references";
+            this.crossRefsGroup.Name = "crossRefsGroup";
             // 
             // figureRefButton
             // 
@@ -541,6 +552,7 @@
         private Microsoft.Office.Tools.Ribbon.RibbonButton level_one_ol;
         private Microsoft.Office.Tools.Ribbon.RibbonButton level_two_ol;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton formatAllFigures;
+        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton showSpellingErrors;
     }
 
     partial class ThisRibbonCollection

@@ -102,7 +102,7 @@ namespace DocumentControlToolbar {
         }
 
         private void FormatAllFigures() {
-            app.Application.ScreenUpdating = false;
+            Tools.StartWait();
 
             Word.Document doc = Globals.ThisAddIn.Application.ActiveDocument;
 
@@ -111,7 +111,7 @@ namespace DocumentControlToolbar {
                 Tools.SetStyle("2016_Figure");
             }
 
-            app.Application.ScreenUpdating = true;
+            Tools.EndWait();
         }
 
         private void pageBreakBefore_Click(object sender, RibbonControlEventArgs e) {
@@ -131,16 +131,18 @@ namespace DocumentControlToolbar {
         /** ======================= Acronym Table Group ======================= **/
 
         private void formatTable_Click(object sender, RibbonControlEventArgs e) {
+            Tools.StartWait();
+
             DocControlLoadingForm form;
 
             using (form = new DocControlLoadingForm(FormatTable, "Formatting table.")) {
                 form.ShowDialog();
             }
+
+            Tools.EndWait();
         }
 
-        private void FormatTable() {
-            app.Application.ScreenUpdating = false;
-
+        private void FormatTable() { 
             Word.Table table = app.Selection.Range.Tables[1];
 
             for (int row = 1; row <= table.Rows.Count; row++) {
@@ -163,10 +165,11 @@ namespace DocumentControlToolbar {
             table.set_Style(app.ActiveDocument.Styles["MasterTable"]);
             table.AutoFitBehavior(Word.WdAutoFitBehavior.wdAutoFitContent);
             table.AutoFitBehavior(Word.WdAutoFitBehavior.wdAutoFitWindow);
-            table.Cell(1, 1).Row.HeadingFormat = (int) Word.WdConstants.wdToggle;
-            table.ApplyStyleHeadingRows = true;
 
-            app.Application.ScreenUpdating = true;
+            try {
+                table.Cell(1, 1).Row.HeadingFormat = (int)Word.WdConstants.wdToggle;
+                table.ApplyStyleHeadingRows = true;
+            } catch(Exception) { };
         }
 
         private void runAcronymTool_Click(object sender, RibbonControlEventArgs e) {
@@ -182,11 +185,15 @@ namespace DocumentControlToolbar {
             MessageBox.Show("Please disconnect from VPN before continuing.", "Warning",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
+            Tools.StartWait();
+
             DocControlLoadingForm form;
 
             using (form = new DocControlLoadingForm(WordList.DownloadAll, "Downloading all wordlists.")) {
                 form.ShowDialog();
             }
+
+            Tools.EndWait();
         }
 
         private void updateDudsList_Click(object sender, RibbonControlEventArgs e) {
@@ -209,24 +216,24 @@ namespace DocumentControlToolbar {
         }
 
         private void updateAllFields_Click(object sender, RibbonControlEventArgs e) {
+            Tools.StartWait();
+
             DocControlLoadingForm form;
 
             using (form = new DocControlLoadingForm(UpdateAllFields, "Updating all fields.")) {
                 form.ShowDialog();
             }
+
+            Tools.EndWait();
         }
 
         private void UpdateAllFields() {
-            app.Application.ScreenUpdating = false;
-
             Word.Document doc = Globals.ThisAddIn.Application.ActiveDocument;
 
             Boolean trackChanges = doc.TrackRevisions;
             doc.TrackRevisions = false;
             Tools.UpdateAllFields();
             doc.TrackRevisions = trackChanges;
-
-            app.Application.ScreenUpdating = true;
         }
 
         /** ======================= Headings Dropdown ======================= **/
@@ -277,6 +284,11 @@ namespace DocumentControlToolbar {
 
         private void level_four_uo_Click(object sender, RibbonControlEventArgs e) {
             Tools.SetStyle("Body Text enumeration Point3");
+        }
+
+        private void showSpellingErrors_Click_1(object sender, RibbonControlEventArgs e) {
+            Word.Document doc = Globals.ThisAddIn.Application.ActiveDocument;
+            doc.ShowSpellingErrors = this.showSpellingErrors.Checked;
         }
     }
 }

@@ -10,6 +10,17 @@ using Word = Microsoft.Office.Interop.Word;
 
 namespace DocumentControlToolbar {
     class Tools {
+
+        public static void StartWait() {
+            Globals.ThisAddIn.Application.System.Cursor = Word.WdCursorType.wdCursorWait;
+            Globals.ThisAddIn.Application.Application.ScreenUpdating = false;
+        }
+
+        public static void EndWait() {
+            Globals.ThisAddIn.Application.Application.ScreenUpdating = true;
+            Globals.ThisAddIn.Application.System.Cursor = Word.WdCursorType.wdCursorNormal;
+        }
+
         public static void SetStyle(String style) {
             try {
                 Word.Application app = Globals.ThisAddIn.Application;

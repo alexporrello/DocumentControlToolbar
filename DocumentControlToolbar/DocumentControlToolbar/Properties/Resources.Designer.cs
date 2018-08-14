@@ -333,6 +333,16 @@ namespace DocumentControlToolbar.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap spell_check_small {
+            get {
+                object obj = ResourceManager.GetObject("spell-check-small", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap table_icon {
             get {
                 object obj = ResourceManager.GetObject("table-icon", resourceCulture);
