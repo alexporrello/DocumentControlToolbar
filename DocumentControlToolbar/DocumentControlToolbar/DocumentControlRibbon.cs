@@ -290,5 +290,9 @@ namespace DocumentControlToolbar {
             Word.Document doc = Globals.ThisAddIn.Application.ActiveDocument;
             doc.ShowSpellingErrors = this.showSpellingErrors.Checked;
         }
+
+        private void insertCrossReference_Click(object sender, RibbonControlEventArgs e) {
+            app.Dialogs[Word.WdWordDialog.wdDialogInsertCrossReference].Show();
+        }
     }
 }

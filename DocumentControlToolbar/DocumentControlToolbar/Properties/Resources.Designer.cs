@@ -173,6 +173,16 @@ namespace DocumentControlToolbar.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap insert_cross_reference_large {
+            get {
+                object obj = ResourceManager.GetObject("insert-cross-reference-large", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap insert_figure_ref_small_icon {
             get {
                 object obj = ResourceManager.GetObject("insert-figure-ref-small-icon", resourceCulture);

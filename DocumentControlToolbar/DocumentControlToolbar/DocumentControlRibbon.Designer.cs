@@ -77,6 +77,7 @@
             this.updateWordlist = this.Factory.CreateRibbonButton();
             this.updateDudsList = this.Factory.CreateRibbonButton();
             this.crossRefsGroup = this.Factory.CreateRibbonGroup();
+            this.insertCrossReference = this.Factory.CreateRibbonButton();
             this.figureRefButton = this.Factory.CreateRibbonButton();
             this.tableRefButton = this.Factory.CreateRibbonButton();
             this.updateAllFields = this.Factory.CreateRibbonButton();
@@ -448,11 +449,21 @@
             // 
             // crossRefsGroup
             // 
+            this.crossRefsGroup.Items.Add(this.insertCrossReference);
             this.crossRefsGroup.Items.Add(this.figureRefButton);
             this.crossRefsGroup.Items.Add(this.tableRefButton);
             this.crossRefsGroup.Items.Add(this.updateAllFields);
             this.crossRefsGroup.Label = "Cross-references";
             this.crossRefsGroup.Name = "crossRefsGroup";
+            // 
+            // insertCrossReference
+            // 
+            this.insertCrossReference.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.insertCrossReference.Image = global::DocumentControlToolbar.Properties.Resources.insert_cross_reference_large;
+            this.insertCrossReference.Label = "Cross- reference";
+            this.insertCrossReference.Name = "insertCrossReference";
+            this.insertCrossReference.ShowImage = true;
+            this.insertCrossReference.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.insertCrossReference_Click);
             // 
             // figureRefButton
             // 
@@ -553,6 +564,7 @@
         private Microsoft.Office.Tools.Ribbon.RibbonButton level_two_ol;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton formatAllFigures;
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton showSpellingErrors;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton insertCrossReference;
     }
 
     partial class ThisRibbonCollection
