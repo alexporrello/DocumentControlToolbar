@@ -43,6 +43,7 @@
             this.separator2 = this.Factory.CreateRibbonSeparator();
             this.showMarkup = this.Factory.CreateRibbonToggleButton();
             this.showSpellingErrors = this.Factory.CreateRibbonToggleButton();
+            this.openParagraphFormatter = this.Factory.CreateRibbonButton();
             this.textToolsGroup = this.Factory.CreateRibbonGroup();
             this.insertSectionBreak = this.Factory.CreateRibbonButton();
             this.separator1 = this.Factory.CreateRibbonSeparator();
@@ -109,6 +110,7 @@
             this.Document.Items.Add(this.separator2);
             this.Document.Items.Add(this.showMarkup);
             this.Document.Items.Add(this.showSpellingErrors);
+            this.Document.Items.Add(this.openParagraphFormatter);
             this.Document.Label = "Document";
             this.Document.Name = "Document";
             // 
@@ -164,6 +166,15 @@
             this.showSpellingErrors.ShowImage = true;
             this.showSpellingErrors.ShowLabel = false;
             this.showSpellingErrors.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.showSpellingErrors_Click_1);
+            // 
+            // openParagraphFormatter
+            // 
+            this.openParagraphFormatter.Image = global::DocumentControlToolbar.Properties.Resources.show_markup_small;
+            this.openParagraphFormatter.Label = "button1";
+            this.openParagraphFormatter.Name = "openParagraphFormatter";
+            this.openParagraphFormatter.ShowImage = true;
+            this.openParagraphFormatter.ShowLabel = false;
+            this.openParagraphFormatter.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.openParagraphFormatter_Click);
             // 
             // textToolsGroup
             // 
@@ -565,6 +576,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton formatAllFigures;
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton showSpellingErrors;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton insertCrossReference;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton openParagraphFormatter;
     }
 
     partial class ThisRibbonCollection

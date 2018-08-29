@@ -31,19 +31,16 @@ namespace DocumentControlToolbar {
 
             DocControlLoadingForm form;
 
-            Boolean trackChanges = doc.TrackRevisions;
-            doc.TrackRevisions = false;
-
             using (form = new DocControlLoadingForm(AcceptAllRevisions, "Accepting All Changes")) {
                 form.ShowDialog();
             }
 
-            doc.TrackRevisions = trackChanges;
+            doc.TrackRevisions = false;
         }
 
         private void AcceptAllRevisions() {
             app.Application.ScreenUpdating = false;
-            Globals.ThisAddIn.Application.ActiveDocument.Revisions.AcceptAll();
+            Globals.ThisAddIn.Application.ActiveDocument.AcceptAllRevisions();
             app.Application.ScreenUpdating = true;
         }
 
@@ -293,6 +290,10 @@ namespace DocumentControlToolbar {
 
         private void insertCrossReference_Click(object sender, RibbonControlEventArgs e) {
             app.Dialogs[Word.WdWordDialog.wdDialogInsertCrossReference].Show();
+        }
+
+        private void openParagraphFormatter_Click(object sender, RibbonControlEventArgs e) {
+            app.Dialogs[Word.WdWordDialog.wdDialogFormatParagraph].Show();
         }
     }
 }
