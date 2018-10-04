@@ -21,3 +21,5 @@ PDU
 RAM
 WT
 QA
+TX
+CVS
