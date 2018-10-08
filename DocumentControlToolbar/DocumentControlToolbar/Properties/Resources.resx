@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="insert-cross-reference-large" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\insert-cross-reference-large.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="level_three_ul" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\level_three_ul.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -136,8 +139,8 @@
   <data name="insert-figure-ref-small-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\insert-figure-ref-small-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="properties-icon-raw" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\properties-icon-raw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="show-markup-small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\show-markup-small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="page-break-before-small-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\page-break-before-small-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -181,11 +184,11 @@
   <data name="import-styles" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\import-styles.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="open-paragraph-dialog" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\open-paragraph-dialog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="level_four_ul" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\level_four_ul.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="show-markup-small" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\show-markup-small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="level_three_ul1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\level_three_ul.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -199,6 +202,9 @@
   <data name="insert-table-ref-small-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\insert-table-ref-small-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="properties-icon-raw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\properties-icon-raw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="keep-with-next-small" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\keep-with-next-small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -208,7 +214,7 @@
   <data name="level_two_ol" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\level_two_ol.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="insert-cross-reference-large" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\insert-cross-reference-large.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="open-paragraph-dialog1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\open-paragraph-dialog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

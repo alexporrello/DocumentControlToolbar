@@ -33,7 +33,7 @@
     <PublishUrl>C:\Users\porrello\Desktop\</PublishUrl>
     <InstallUrl />
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>2.0.0.4</ApplicationVersion>
+    <ApplicationVersion>2.0.0.5</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
@@ -369,6 +369,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\insert-cross-reference-large.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open-paragraph-dialog.png" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

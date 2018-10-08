@@ -303,6 +303,26 @@ namespace DocumentControlToolbar.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap open_paragraph_dialog {
+            get {
+                object obj = ResourceManager.GetObject("open-paragraph-dialog", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap open_paragraph_dialog1 {
+            get {
+                object obj = ResourceManager.GetObject("open-paragraph-dialog1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap page_break_before_small_icon {
             get {
                 object obj = ResourceManager.GetObject("page-break-before-small-icon", resourceCulture);

@@ -169,7 +169,7 @@
             // 
             // openParagraphFormatter
             // 
-            this.openParagraphFormatter.Image = global::DocumentControlToolbar.Properties.Resources.show_markup_small;
+            this.openParagraphFormatter.Image = global::DocumentControlToolbar.Properties.Resources.open_paragraph_dialog1;
             this.openParagraphFormatter.Label = "button1";
             this.openParagraphFormatter.Name = "openParagraphFormatter";
             this.openParagraphFormatter.ShowImage = true;
@@ -538,7 +538,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton tableRefButton;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton docPropUpdater;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton runAcronymTool;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton updateAllFields;
+        
         internal Microsoft.Office.Tools.Ribbon.RibbonButton defaultUL;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton defaultOL;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group2;
@@ -577,6 +577,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton showSpellingErrors;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton insertCrossReference;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton openParagraphFormatter;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton updateAllFields;
     }
 
     partial class ThisRibbonCollection
