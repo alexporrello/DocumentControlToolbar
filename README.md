@@ -105,7 +105,7 @@ This button applies the default level one unordered list style to a selected par
 
 ![](readme_screenshots/apply-ul-dropdown.PNG)
 
-By using this dropdown, users can easily and uniformally apply unordered list levels one through five to a selected paragraph or selected paragraphs.
+By using this dropdown, users can easily and uniformally apply unordered list levels one through four to a selected paragraph or selected paragraphs.
 
 ### 3.3. _Apply Default Ordered List_ Button
 
@@ -140,21 +140,21 @@ Clicking on the _Format Table_ Button after clicking into a table will format th
 
 ![](readme_screenshots/acronym-table-updater_Button.PNG)
 
-Clicking on the _Acronym table Updater_ Button kicks off the following events:
+Clicking on the _Acronym Table Updater_ Button executes the following events:
 
-1. The app locates the _Acronym_ or _Abbreviation_ Table.
-2. The app checks that all acronyms and definitions exist in the document body. Any that it cannot find in the document's body are highlighted in red.
-3. The app then looks at each word in the document and, using the following criteria, determines if it is an acronym:
-    * Is the word a known acronym? (If it is, insert it and its definition into the table and highlight the cells in yellow.)
+1. The application locates the document's _Acronyms_ or _Abbreviations_ Table.
+2. The application searches the document for all of the acronyms and definitions that are currently in the table, highlighting in red any that are **not** found in the document.
+3. The application visits each word in the document and, using the following criteria, determines which (if any) are acronyms:
+    * Is the word a known acronym?
     * Are all of the letters in the word capitalized?
-    * Is the character length of the word greater than one and less than eight?
+    * Is the word's character length greater than one and less than eight?
     * Is the word composed entirely of alphabetical characters?
     * Is the word not in the system dictionary?
-    * Is this word not a known false-positive?
-4. If the word satisfies all of the requirements, it is inserted into the table and highlighted in yellow.
-5. After all of the found acronyms are added to the table, the app sorts the table alphabetically.
+    * Is the word not a known false-positive?
+4. All unique words that satisfy the requirements are inserted into the _Acronyms_ or _Abbreviations_ Table and highlighted in yellow.
+5. After all of the found acronyms are added to the table, the application sorts the table alphabetically.
 
-**Note:** The top left cell of the acronym table must read _Acronym_, _Acronyms_, _Abbreviation_, or _Abbreviations_. If the top left of the table is not one of these four options, the tool will be unable to locate the table and will throw an error.
+**Note:** The top left cell of the acronym table must contain one of the following: _Acronym_, _Acronyms_, _Abbreviation_, or _Abbreviations_; otherwise, the application will be unable to locate the _Acronyms_ or _Abbreviations_ Table and will throw an error.
 
 ### 4.3. _Update Wordlist_ and _Update Duds List_ Buttons
 
