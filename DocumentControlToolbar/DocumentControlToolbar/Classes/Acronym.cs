@@ -25,6 +25,8 @@ namespace DocumentControlToolbar {
 
         private HashSet<String> found = new HashSet<String>();
 
+        private HashSet<String> notAcronyms = new HashSet<String>();
+
         private ArrayList inTable = new ArrayList();
 
         private Word.Table acronymTable;
@@ -139,21 +141,32 @@ namespace DocumentControlToolbar {
 
         /** Searches through the document for words it thinks might be an acronym. **/
         private void GetAllAcronymsInDocument() {
+            //Stopwatch stopWatch = new Stopwatch();
+            //stopWatch.Start();
 
             frm.SetMainText("Checking all words in document.");
-
+            
             int allWords = doc.Words.Count;
             int currentItem = 0;
 
             foreach (Word.Range word in doc.Words) {
                 SetNumber(currentItem++, allWords);
 
-                if (IsValidWordFirstCheck(word.Text)) {
-                    if (!app.CheckSpelling(word.Text.ToLower())) {
-                        found.Add(word.Text);
+                if (!notAcronyms.Contains(word.Text)) {
+                    if (IsValidWordFirstCheck(word.Text)) {
+                        if (!app.CheckSpelling(word.Text.ToLower())) {
+                            found.Add(word.Text);
+                        } else {
+                            notAcronyms.Add(word.Text);
+                        }
+                    } else {
+                        notAcronyms.Add(word.Text);
                     }
                 }
             }
+
+            //stopWatch.Stop();
+            //Debug.Print(stopWatch.ElapsedMilliseconds.ToString());
         }
 
         /** The first check to determine if a given string is a valid acronym. **/
