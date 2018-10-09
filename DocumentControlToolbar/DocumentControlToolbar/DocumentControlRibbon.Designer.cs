@@ -1,15 +1,61 @@
 ﻿namespace DocumentControlToolbar
 {
-    partial class DocumentControlRibbon : Microsoft.Office.Tools.Ribbon.RibbonBase
-    {
+    partial class DocumentControlRibbon : Microsoft.Office.Tools.Ribbon.RibbonBase {
         /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        public DocumentControlRibbon()
-            : base(Globals.Factory.GetRibbonFactory())
-        {
+        internal Microsoft.Office.Tools.Ribbon.RibbonTab DocControl;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup textToolsGroup;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton applyBodyStyle;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup crossRefsGroup;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton figureRefButton;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton tableRefButton;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton docPropUpdater;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton runAcronymTool;
+
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton defaultUL;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton defaultOL;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup group2;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup acronymTableGroup;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton updateWordlist;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton updateDudsList;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGallery headingsDropdown;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton headingOne;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton headingTwo;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton headingThree;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton headingFour;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton headingFive;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton insertSectionBreak;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton formatTable;
+        internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator1;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton acceptAllChanges;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton download;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton applyMarkingStyle;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton applyFigureStyle;
+        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton showMarkup;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup Document;
+        internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator2;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton keepWithNext;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton pageBreakBefore;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGallery unorderedDropdown;
+        private Microsoft.Office.Tools.Ribbon.RibbonButton level_one_uo;
+        private Microsoft.Office.Tools.Ribbon.RibbonButton level_two_uo;
+        internal Microsoft.Office.Tools.Ribbon.RibbonBox box1;
+        private Microsoft.Office.Tools.Ribbon.RibbonButton level_three_uo;
+        private Microsoft.Office.Tools.Ribbon.RibbonButton level_four_uo;
+        internal Microsoft.Office.Tools.Ribbon.RibbonBox box2;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGallery orderedListGallery;
+        private Microsoft.Office.Tools.Ribbon.RibbonButton level_one_ol;
+        private Microsoft.Office.Tools.Ribbon.RibbonButton level_two_ol;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton formatAllFigures;
+        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton showSpellingErrors;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton insertCrossReference;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton openParagraphFormatter;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton updateAllFields;
+
+        public DocumentControlRibbon() : base(Globals.Factory.GetRibbonFactory()) {
             InitializeComponent();
         }
 
@@ -17,12 +63,11 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
+        protected override void Dispose(bool disposing) {
+            if (disposing && (components != null)) {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -32,9 +77,9 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DocumentControlRibbon));
+
             this.DocControl = this.Factory.CreateRibbonTab();
             this.Document = this.Factory.CreateRibbonGroup();
             this.docPropUpdater = this.Factory.CreateRibbonButton();
@@ -120,8 +165,7 @@
             this.docPropUpdater.Image = global::DocumentControlToolbar.Properties.Resources.properties_icon_raw;
             this.docPropUpdater.Label = "Document Properties Editor";
             this.docPropUpdater.Name = "docPropUpdater";
-            this.docPropUpdater.ScreenTip = "The Document Properties Editor is a window that allows you to easily edit the com" +
-    "pany\'s custom document properties.";
+            this.docPropUpdater.ScreenTip = "The Document Properties Editor is a window that allows you to easily edit the company\'s custom document properties.";
             this.docPropUpdater.ShowImage = true;
             this.docPropUpdater.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.docPropUpdater_Click);
             // 
@@ -131,7 +175,7 @@
             this.download.Image = global::DocumentControlToolbar.Properties.Resources.import_styles;
             this.download.Label = "Import Styles";
             this.download.Name = "download";
-            this.download.ScreenTip = "Imports all missing styles into the document and resets any customized styles. ";
+            this.download.ScreenTip = "Imports all missing styles into the document and resets any customized styles.";
             this.download.ShowImage = true;
             this.download.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.headings_Click);
             // 
@@ -321,8 +365,7 @@
             this.defaultUL.Image = global::DocumentControlToolbar.Properties.Resources.apply_list_small_icon;
             this.defaultUL.Label = "Apply Default UL";
             this.defaultUL.Name = "defaultUL";
-            this.defaultUL.ScreenTip = "Applies the default unordered list to a selected paragraph or selected paragraphs" +
-    ".";
+            this.defaultUL.ScreenTip = "Applies the default unordered list to a selected paragraph or selected paragraphs.";
             this.defaultUL.ShowImage = true;
             this.defaultUL.ShowLabel = false;
             this.defaultUL.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.defaultUL_Click);
@@ -435,8 +478,8 @@
             this.runAcronymTool.Label = "Acronym Table Updater";
             this.runAcronymTool.Name = "runAcronymTool";
             this.runAcronymTool.ScreenTip = "Proofs the document\'s acronym table. Acronyms that do not appear in the document " +
-    "are highlighted in red. Acronyms found in the document are added to the table an" +
-    "d highlighted in yellow.";
+            "are highlighted in red. Acronyms found in the document are added to the table an" +
+            "d highlighted in yellow.";
             this.runAcronymTool.ShowImage = true;
             this.runAcronymTool.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.runAcronymTool_Click);
             // 
@@ -529,55 +572,7 @@
 
         }
 
-        #endregion
-        internal Microsoft.Office.Tools.Ribbon.RibbonTab DocControl;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup textToolsGroup;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton applyBodyStyle;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup crossRefsGroup;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton figureRefButton;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton tableRefButton;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton docPropUpdater;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton runAcronymTool;
-        
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton defaultUL;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton defaultOL;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup group2;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup acronymTableGroup;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton updateWordlist;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton updateDudsList;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGallery headingsDropdown;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton headingOne;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton headingTwo;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton headingThree;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton headingFour;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton headingFive;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton insertSectionBreak;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton formatTable;
-        internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator1;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton acceptAllChanges;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton download;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton applyMarkingStyle;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton applyFigureStyle;
-        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton showMarkup;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup Document;
-        internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator2;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton keepWithNext;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton pageBreakBefore;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGallery unorderedDropdown;
-        private Microsoft.Office.Tools.Ribbon.RibbonButton level_one_uo;
-        private Microsoft.Office.Tools.Ribbon.RibbonButton level_two_uo;
-        internal Microsoft.Office.Tools.Ribbon.RibbonBox box1;
-        private Microsoft.Office.Tools.Ribbon.RibbonButton level_three_uo;
-        private Microsoft.Office.Tools.Ribbon.RibbonButton level_four_uo;
-        internal Microsoft.Office.Tools.Ribbon.RibbonBox box2;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGallery orderedListGallery;
-        private Microsoft.Office.Tools.Ribbon.RibbonButton level_one_ol;
-        private Microsoft.Office.Tools.Ribbon.RibbonButton level_two_ol;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton formatAllFigures;
-        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton showSpellingErrors;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton insertCrossReference;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton openParagraphFormatter;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton updateAllFields;
+       
     }
 
     partial class ThisRibbonCollection
