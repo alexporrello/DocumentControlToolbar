@@ -30,6 +30,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton insertSectionBreak;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton formatTable;
         internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator1;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton acceptAllChanges;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton download;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton applyMarkingStyle;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton applyFigureStyle;
@@ -78,10 +79,12 @@
         /// </summary>
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DocumentControlRibbon));
+
             this.DocControl = this.Factory.CreateRibbonTab();
             this.Document = this.Factory.CreateRibbonGroup();
             this.docPropUpdater = this.Factory.CreateRibbonButton();
             this.download = this.Factory.CreateRibbonButton();
+            this.acceptAllChanges = this.Factory.CreateRibbonButton();
             this.separator2 = this.Factory.CreateRibbonSeparator();
             this.showMarkup = this.Factory.CreateRibbonToggleButton();
             this.showSpellingErrors = this.Factory.CreateRibbonToggleButton();
@@ -148,6 +151,7 @@
             // 
             this.Document.Items.Add(this.docPropUpdater);
             this.Document.Items.Add(this.download);
+            this.Document.Items.Add(this.acceptAllChanges);
             this.Document.Items.Add(this.separator2);
             this.Document.Items.Add(this.showMarkup);
             this.Document.Items.Add(this.showSpellingErrors);
@@ -161,8 +165,7 @@
             this.docPropUpdater.Image = global::DocumentControlToolbar.Properties.Resources.properties_icon_raw;
             this.docPropUpdater.Label = "Document Properties Editor";
             this.docPropUpdater.Name = "docPropUpdater";
-            this.docPropUpdater.ScreenTip = "The Document Properties Editor is a window that allows you to easily edit the com" +
-    "pany\'s custom document properties.";
+            this.docPropUpdater.ScreenTip = "The Document Properties Editor is a window that allows you to easily edit the company\'s custom document properties.";
             this.docPropUpdater.ShowImage = true;
             this.docPropUpdater.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.docPropUpdater_Click);
             // 
@@ -175,6 +178,16 @@
             this.download.ScreenTip = "Imports all missing styles into the document and resets any customized styles.";
             this.download.ShowImage = true;
             this.download.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.headings_Click);
+            // 
+            // acceptAllChanges
+            // 
+            this.acceptAllChanges.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.acceptAllChanges.Image = global::DocumentControlToolbar.Properties.Resources.accept_all_changes;
+            this.acceptAllChanges.Label = "Accept All Changes";
+            this.acceptAllChanges.Name = "acceptAllChanges";
+            this.acceptAllChanges.ScreenTip = "Accepts all the changes in the document body.";
+            this.acceptAllChanges.ShowImage = true;
+            this.acceptAllChanges.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.acceptAllChanges_Click);
             // 
             // separator2
             // 
@@ -352,8 +365,7 @@
             this.defaultUL.Image = global::DocumentControlToolbar.Properties.Resources.apply_list_small_icon;
             this.defaultUL.Label = "Apply Default UL";
             this.defaultUL.Name = "defaultUL";
-            this.defaultUL.ScreenTip = "Applies the default unordered list to a selected paragraph or selected paragraphs" +
-    ".";
+            this.defaultUL.ScreenTip = "Applies the default unordered list to a selected paragraph or selected paragraphs.";
             this.defaultUL.ShowImage = true;
             this.defaultUL.ShowLabel = false;
             this.defaultUL.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.defaultUL_Click);
@@ -466,8 +478,8 @@
             this.runAcronymTool.Label = "Acronym Table Updater";
             this.runAcronymTool.Name = "runAcronymTool";
             this.runAcronymTool.ScreenTip = "Proofs the document\'s acronym table. Acronyms that do not appear in the document " +
-    "are highlighted in red. Acronyms found in the document are added to the table an" +
-    "d highlighted in yellow.";
+            "are highlighted in red. Acronyms found in the document are added to the table an" +
+            "d highlighted in yellow.";
             this.runAcronymTool.ShowImage = true;
             this.runAcronymTool.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.runAcronymTool_Click);
             // 
@@ -571,4 +583,3 @@
         }
     }
 }
-#endregion

@@ -56,7 +56,22 @@ namespace DocumentControlToolbar {
         }
 
         private void headings_Click(object sender, RibbonControlEventArgs e) {
-            Globals.ThisAddIn.Application.ActiveDocument.CopyStylesFromTemplate(Path.Combine("Templates", "Normal.dotm"));
+            String folder = Path.Combine(
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "DocumentControl"), 
+                "Normal.dotm");
+
+            if (!File.Exists(folder)) {
+                Tools.DownloadTemplateTo(folder);
+            }
+
+            if (!File.Exists(folder)) {
+                MessageBox.Show(
+                    "The Normal template failed to download. Please make sure " +
+                    "you're disconnected from the VPN and try again.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } else {
+                Globals.ThisAddIn.Application.ActiveDocument.CopyStylesFromTemplate(folder);
+            }
         }
 
         private void applyBodyStyle_Click(object sender, RibbonControlEventArgs e) {
