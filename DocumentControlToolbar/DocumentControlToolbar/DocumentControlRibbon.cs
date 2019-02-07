@@ -56,21 +56,63 @@ namespace DocumentControlToolbar {
         }
 
         private void headings_Click(object sender, RibbonControlEventArgs e) {
-            String folder = Path.Combine(
-                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "DocumentControl"), 
-                "Normal.dotm");
 
-            if (!File.Exists(folder)) {
-                Tools.DownloadTemplateTo(folder);
+            String dataFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "DocumentControl");
+            String confURL    = Path.Combine(dataFolder, "template.conf");
+
+            if(File.Exists(confURL)) {
+                String readFile = File.ReadAllText(confURL);
+
+                if(File.Exists(readFile)) {
+                    loadNormalTemplate(readFile);
+                } else {
+                    locateNormalTemplate(dataFolder, confURL);
+                }
+            } else {
+                locateNormalTemplate(dataFolder, confURL);
+            }
+        }
+
+        private void locateNormalTemplate(String dataFolder, String confURL) {
+            try {
+                // Prompt the user to locate the normal template.
+                String url = locateFile("Please locate the standard template.");
+
+                // Create the appdata directory.
+                //System.IO.Directory.CreateDirectory(dataFolder);
+                // Create the .conf file where the URL will be stored for future use.
+                //File.Create(confURL);
+                // Write the url to the .conf file.
+                //File.WriteAllText(url, confURL);
+
+                //using (StreamWriter w = File.AppendText(confURL)) {
+                //    w.WriteLine(url);
+                //}
+
+                loadNormalTemplate(url);
+            } catch(Exception e) {
+                Debug.Print(e.StackTrace);
+            }
+        }
+
+        private String locateFile(String title) {
+            OpenFileDialog file = new OpenFileDialog();
+            file.Title = title;
+
+            if (file.ShowDialog() == DialogResult.OK) {
+                return file.FileName;
             }
 
-            if (!File.Exists(folder)) {
-                MessageBox.Show(
-                    "The Normal template failed to download. Please make sure " +
-                    "you're disconnected from the VPN and try again.", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            throw new Exception("The user did not select a file.");
+        }
+
+        private void loadNormalTemplate(String url) {
+            if (File.Exists(url)) {
+                Globals.ThisAddIn.Application.ActiveDocument.CopyStylesFromTemplate(url);
             } else {
-                Globals.ThisAddIn.Application.ActiveDocument.CopyStylesFromTemplate(folder);
+                MessageBox.Show(
+                    "We failed to load the Normal Template. Please try again.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
