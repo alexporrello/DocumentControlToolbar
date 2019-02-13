@@ -56,42 +56,11 @@ namespace DocumentControlToolbar {
         }
 
         private void headings_Click(object sender, RibbonControlEventArgs e) {
-
-            String dataFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "DocumentControl");
-            String confURL    = Path.Combine(dataFolder, "template.conf");
-
-            if(File.Exists(confURL)) {
-                String readFile = File.ReadAllText(confURL);
-
-                if(File.Exists(readFile)) {
-                    loadNormalTemplate(readFile);
-                } else {
-                    locateNormalTemplate(dataFolder, confURL);
-                }
-            } else {
-                locateNormalTemplate(dataFolder, confURL);
-            }
-        }
-
-        private void locateNormalTemplate(String dataFolder, String confURL) {
             try {
-                // Prompt the user to locate the normal template.
                 String url = locateFile("Please locate the standard template.");
-
-                // Create the appdata directory.
-                //System.IO.Directory.CreateDirectory(dataFolder);
-                // Create the .conf file where the URL will be stored for future use.
-                //File.Create(confURL);
-                // Write the url to the .conf file.
-                //File.WriteAllText(url, confURL);
-
-                //using (StreamWriter w = File.AppendText(confURL)) {
-                //    w.WriteLine(url);
-                //}
-
                 loadNormalTemplate(url);
-            } catch(Exception e) {
-                Debug.Print(e.StackTrace);
+            } catch (Exception f) {
+                Debug.Print(f.StackTrace);
             }
         }
 
@@ -336,6 +305,10 @@ namespace DocumentControlToolbar {
 
         private void openParagraphFormatter_Click(object sender, RibbonControlEventArgs e) {
             app.Dialogs[Word.WdWordDialog.wdDialogFormatParagraph].Show();
+        }
+
+        private void button1_Click(object sender, RibbonControlEventArgs e) {
+
         }
     }
 }
