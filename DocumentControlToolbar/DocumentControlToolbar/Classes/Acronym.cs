@@ -25,13 +25,13 @@ namespace DocumentControlToolbar {
 
         private HashSet<String> found = new HashSet<String>();
 
-        private HashSet<String> notAcronyms = new HashSet<String>();
-
         private ArrayList inTable = new ArrayList();
 
         private Word.Table acronymTable;
 
         private AcronymTableLoadingForm frm;
+
+        private Dictionary<string, String> wordlist = new Dictionary<string, String>();
 
         public AcronymTableTool() {
             try {
@@ -47,9 +47,20 @@ namespace DocumentControlToolbar {
         }
 
         private void Start() {
+            LoadAllWordlists();
+
             CheckAcronymsInTable();
             GetAllAcronymsInDocument();
             AddFoundAcronymsToTable();
+        }
+
+        private void LoadAllWordlists() {
+            for (int i = 97; i <= 122; i++) {
+                char character = (char)i;
+                String text = character.ToString();
+
+                wordlist.Add(text, DownloadWordlist(text));
+            }
         }
 
         /** Locates the acronym table in the document and returns it. **/
@@ -141,45 +152,45 @@ namespace DocumentControlToolbar {
 
         /** Searches through the document for words it thinks might be an acronym. **/
         private void GetAllAcronymsInDocument() {
-            //Stopwatch stopWatch = new Stopwatch();
-            //stopWatch.Start();
+            frm.SetMainText("Processing all words.");
 
-            frm.SetMainText("Checking all words in document.");
-            
-            int allWords = doc.Words.Count;
+            HashSet<string> words = new HashSet<string>();
             int currentItem = 0;
 
             foreach (Word.Range word in doc.Words) {
-                SetNumber(currentItem++, allWords);
-
-                if (!notAcronyms.Contains(word.Text)) {
-                    if (IsValidWordFirstCheck(word.Text)) {
-                        if (!app.CheckSpelling(word.Text.ToLower())) {
-                            found.Add(word.Text);
-                        } else {
-                            notAcronyms.Add(word.Text);
-                        }
-                    } else {
-                        notAcronyms.Add(word.Text);
-                    }
-                }
+                words.Add(word.Text);
+                SetNumber(currentItem++, doc.Words.Count);
             }
 
-            //stopWatch.Stop();
-            //Debug.Print(stopWatch.ElapsedMilliseconds.ToString());
+            frm.SetMainText("Checking all words in document.");
+
+            currentItem = 0;
+
+            foreach (String word in words) {
+                CheckWord(word);
+                SetNumber(currentItem++, words.Count);
+            }
+        }
+
+        private void CheckWord(String w) {
+            if (IsValidWordFirstCheck(w)) {
+                if (!app.CheckSpelling(w.ToLower())) {
+                    found.Add(w);
+                }
+            }
         }
 
         /** The first check to determine if a given string is a valid acronym. **/
         private Boolean IsValidWordFirstCheck(String s) {
             //TODO this will not work for things like '3G'
-            return s != null && s.Trim().Length > 1 && s.Equals(s.ToUpper()) && Regex.IsMatch(s, @"^[a-zA-Z]+$");
+            return s != null && s.Trim().Length > 1 && s.ToUpper().Equals(s);
         }
 
         /** Adds all found acronyms (that are not already in the table) to the table; then, sort. **/
         private void AddFoundAcronymsToTable() {
             frm.SetMainText("Adding all found acronyms to the table.");
 
-            String dudsList = GetDudsList();
+            String dudsList = ""; //GetDudsList();
 
             int allFoundWords = found.Count;
             int currentItem = 0;
@@ -195,11 +206,13 @@ namespace DocumentControlToolbar {
                     Word.Cell acronymCell = acronymTable.Cell(acronymTable.Rows.Count, 1);
                     acronymCell.Shading.ForegroundPatternColorIndex = Word.WdColorIndex.wdYellow;
                     acronymCell.Range.Text = word;
+                    
+                    // TODO This does not work. "Contains" does not return true.
 
-                    String wordList = DownloadWordlist(word.ToLower().Substring(0, 1));
-
-                    if (wordList.Contains(word)) {
-                        foreach (string s in wordList.Split('\n')) {
+                    String letter = word.ToLower().Substring(0, 1);
+                    
+                    if (wordlist[letter].Contains(word)) {
+                        foreach (string s in wordlist[letter].Split('\n')) {
                             String[] split = s.Split(',');
 
                             if (split[0].Equals(word)) {
@@ -217,26 +230,20 @@ namespace DocumentControlToolbar {
             acronymTable.SortAscending();
         }
 
-        /** Downloads a wordlist from the online database **/
+        
+
+        /** Loads a wordlist from its location in AppData. **/
         private String DownloadWordlist(String beginningLetter) {
-            String wordList = Path.Combine(WordList.Folder, beginningLetter + ".csv");
+            String appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            String docCont = Path.Combine(appData, "DocumentControl");
+            String wordLoc = Path.Combine(docCont, beginningLetter + ".csv");
 
-            if (!File.Exists(wordList)) {
-                WordList.DownloadAll();
-            }
-
-            return System.IO.File.ReadAllText(wordList);
+            return System.IO.File.ReadAllText(wordLoc);
         }
 
-        /** Downloads a wordlist from the online database **/
+        /** Loads the duds list from its location in AppData. **/
         private String GetDudsList() {
-            String acronymDuds = Path.Combine(WordList.Folder, "acronym-duds.txt");
-
-            if (!File.Exists(acronymDuds)) {
-                WordList.DownloadDudsList();
-            }
-
-            return System.IO.File.ReadAllText(acronymDuds);
+            return DownloadWordlist("acronym-duds");
         }
 
         private void SetNumber(int current, int total) {

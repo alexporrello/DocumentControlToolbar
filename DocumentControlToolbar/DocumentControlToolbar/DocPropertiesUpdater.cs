@@ -48,8 +48,6 @@ namespace DocumentControlToolbar {
             UpdateDocumentProperty("SolutionAcronym", this.solutionAcronym);
             UpdateDocumentProperty("ClientAcronym", this.clientAcronym);
             UpdateDocumentProperty("Client", this.client);
-
-            Tools.UpdateAllFields();
         }
 
         private void demoButton_Click(object sender, EventArgs e) {
