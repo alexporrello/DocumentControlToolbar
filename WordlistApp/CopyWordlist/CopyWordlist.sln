@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopyWordlist", "CopyWordlist\CopyWordlist.csproj", "{492477E1-EA98-438E-8094-2630846ABCAC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{492477E1-EA98-438E-8094-2630846ABCAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{492477E1-EA98-438E-8094-2630846ABCAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{492477E1-EA98-438E-8094-2630846ABCAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{492477E1-EA98-438E-8094-2630846ABCAC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {328B733E-F064-4E52-A199-32E20F90ECC6}
+	EndGlobalSection
+EndGlobal
