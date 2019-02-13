@@ -26,24 +26,6 @@ namespace DocumentControlToolbar {
             new DocPropertiesEditor().Show();
         }
 
-        private void acceptAllChanges_Click(object sender, RibbonControlEventArgs e) {
-            Word.Document doc = Globals.ThisAddIn.Application.ActiveDocument;
-
-            DocControlLoadingForm form;
-
-            using (form = new DocControlLoadingForm(AcceptAllRevisions, "Accepting All Changes")) {
-                form.ShowDialog();
-            }
-
-            doc.TrackRevisions = false;
-        }
-
-        private void AcceptAllRevisions() {
-            app.Application.ScreenUpdating = false;
-            Globals.ThisAddIn.Application.ActiveDocument.AcceptAllRevisions();
-            app.Application.ScreenUpdating = true;
-        }
-
         private void showMarkup_Click(object sender, RibbonControlEventArgs e) {
             Word.Document doc = Globals.ThisAddIn.Application.ActiveDocument;
             doc.ActiveWindow.ActivePane.View.ShowAll = showMarkup.Checked;
@@ -57,31 +39,10 @@ namespace DocumentControlToolbar {
 
         private void headings_Click(object sender, RibbonControlEventArgs e) {
             try {
-                String url = locateFile("Please locate the standard template.");
-                loadNormalTemplate(url);
+                String url = Tools.LocateFile("Please locate the standard template.");
+                Tools.LoadNormalTemplate(url);
             } catch (Exception f) {
                 Debug.Print(f.StackTrace);
-            }
-        }
-
-        private String locateFile(String title) {
-            OpenFileDialog file = new OpenFileDialog();
-            file.Title = title;
-
-            if (file.ShowDialog() == DialogResult.OK) {
-                return file.FileName;
-            }
-
-            throw new Exception("The user did not select a file.");
-        }
-
-        private void loadNormalTemplate(String url) {
-            if (File.Exists(url)) {
-                Globals.ThisAddIn.Application.ActiveDocument.CopyStylesFromTemplate(url);
-            } else {
-                MessageBox.Show(
-                    "We failed to load the Normal Template. Please try again.", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -143,41 +104,11 @@ namespace DocumentControlToolbar {
 
             DocControlLoadingForm form;
 
-            using (form = new DocControlLoadingForm(FormatTable, "Formatting table.")) {
+            using (form = new DocControlLoadingForm(Tools.FormatTable, "Formatting table.")) {
                 form.ShowDialog();
             }
 
             Tools.EndWait();
-        }
-
-        private void FormatTable() { 
-            Word.Table table = app.Selection.Range.Tables[1];
-
-            for (int row = 1; row <= table.Rows.Count; row++) {
-                for (int col = 1; col <= table.Columns.Count; col++) {
-                    try {
-                        table.Cell(row, col).Range.Select();
-                        app.Selection.ClearFormatting();
-
-                        if (row == 1) {
-                            table.Cell(row, col).Range.set_Style(app.ActiveDocument.Styles["2016_TableHeader | 10pt bold"]);
-                        } else {
-                            table.Cell(row, col).Range.set_Style(app.ActiveDocument.Styles["2016_Table | 9pt"]);
-                        }
-                    } catch (Exception f) {
-                        Debug.Print(f.Message);
-                    }
-                }
-            }
-
-            table.set_Style(app.ActiveDocument.Styles["MasterTable"]);
-            table.AutoFitBehavior(Word.WdAutoFitBehavior.wdAutoFitContent);
-            table.AutoFitBehavior(Word.WdAutoFitBehavior.wdAutoFitWindow);
-
-            try {
-                table.Cell(1, 1).Row.HeadingFormat = (int)Word.WdConstants.wdToggle;
-                table.ApplyStyleHeadingRows = true;
-            } catch(Exception) { };
         }
 
         private void runAcronymTool_Click(object sender, RibbonControlEventArgs e) {
@@ -187,28 +118,6 @@ namespace DocumentControlToolbar {
             doc.TrackRevisions = false;
             new AcronymTableTool();
             doc.TrackRevisions = trackChanges;
-        }
-
-        private void updateWordlist_Click(object sender, RibbonControlEventArgs e) {
-            MessageBox.Show("Please disconnect from VPN before continuing.", "Warning",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-            Tools.StartWait();
-
-            DocControlLoadingForm form;
-
-            using (form = new DocControlLoadingForm(WordList.DownloadAll, "Downloading all wordlists.")) {
-                form.ShowDialog();
-            }
-
-            Tools.EndWait();
-        }
-
-        private void updateDudsList_Click(object sender, RibbonControlEventArgs e) {
-            MessageBox.Show("Please disconnect from VPN before continuing.", "Warning",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-            WordList.DownloadDudsList();
         }
 
         /** ======================= Cross-references Group ======================= **/
@@ -221,27 +130,6 @@ namespace DocumentControlToolbar {
         private void figureRefButton_Click(object sender, RibbonControlEventArgs e) {
             app.Selection.InsertCaption("Figure", "", "InsertCaption2", Word.WdCaptionPosition.wdCaptionPositionAbove, 0);
             app.Selection.ParagraphFormat.set_Style(app.ActiveDocument.Styles["2016_Marking"]);
-        }
-
-        private void updateAllFields_Click(object sender, RibbonControlEventArgs e) {
-            Tools.StartWait();
-
-            DocControlLoadingForm form;
-
-            using (form = new DocControlLoadingForm(UpdateAllFields, "Updating all fields.")) {
-                form.ShowDialog();
-            }
-
-            Tools.EndWait();
-        }
-
-        private void UpdateAllFields() {
-            Word.Document doc = Globals.ThisAddIn.Application.ActiveDocument;
-
-            Boolean trackChanges = doc.TrackRevisions;
-            doc.TrackRevisions = false;
-            Tools.UpdateAllFields();
-            doc.TrackRevisions = trackChanges;
         }
 
         /** ======================= Headings Dropdown ======================= **/
@@ -305,10 +193,6 @@ namespace DocumentControlToolbar {
 
         private void openParagraphFormatter_Click(object sender, RibbonControlEventArgs e) {
             app.Dialogs[Word.WdWordDialog.wdDialogFormatParagraph].Show();
-        }
-
-        private void button1_Click(object sender, RibbonControlEventArgs e) {
-
         }
     }
 }
