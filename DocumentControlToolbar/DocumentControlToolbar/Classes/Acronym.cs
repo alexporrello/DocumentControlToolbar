@@ -25,7 +25,7 @@ namespace DocumentControlToolbar {
 
         private HashSet<String> found = new HashSet<String>();
 
-        private ArrayList inTable = new ArrayList();
+        private HashSet<String> inTable = new HashSet<String>();
 
         private Word.Table acronymTable;
 
@@ -46,23 +46,6 @@ namespace DocumentControlToolbar {
             }
         }
 
-        private void Start() {
-            LoadAllWordlists();
-
-            CheckAcronymsInTable();
-            GetAllAcronymsInDocument();
-            AddFoundAcronymsToTable();
-        }
-
-        private void LoadAllWordlists() {
-            for (int i = 97; i <= 122; i++) {
-                char character = (char)i;
-                String text = character.ToString();
-
-                wordlist.Add(text, DownloadWordlist(text));
-            }
-        }
-
         /** Locates the acronym table in the document and returns it. **/
         private Word.Table FindAcronymTable() {
             Word.Range word = doc.Words[1];
@@ -80,6 +63,20 @@ namespace DocumentControlToolbar {
             }
 
             throw new CustomExceptions("The acronym table could not be found.");
+        }
+
+        private void Start() {
+            // Load all of the wordlists for later use.
+            for (int i = 97; i <= 122; i++) {
+                char character = (char)i;
+                String text = character.ToString();
+
+                wordlist.Add(text, DownloadWordlist(text));
+            }
+
+            CheckAcronymsInTable();
+            GetAllAcronymsInDocument();
+            AddFoundAcronymsToTable();
         }
 
         /** Checks if the acronyms in the table appear in the rest of the document. **/
@@ -135,20 +132,6 @@ namespace DocumentControlToolbar {
 
             return thisFind.Execute();
         }
-
-        /** Counts how many times a collection contains an object **/
-        private int NumberOfInstances(ArrayList collection, String query) {
-            int toReturn = 0;
-
-            foreach (String s in collection) {
-                if (s.Contains(query)) {
-                    toReturn += 1;
-                }
-            }
-
-            return toReturn;
-        }
-
 
         /** Searches through the document for words it thinks might be an acronym. **/
         private void GetAllAcronymsInDocument() {
