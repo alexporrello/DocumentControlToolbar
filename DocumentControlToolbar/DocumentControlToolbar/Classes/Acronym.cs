@@ -206,17 +206,15 @@ namespace DocumentControlToolbar {
                     Word.Cell acronymCell = acronymTable.Cell(acronymTable.Rows.Count, 1);
                     acronymCell.Shading.ForegroundPatternColorIndex = Word.WdColorIndex.wdYellow;
                     acronymCell.Range.Text = word;
-                    
-                    // TODO This does not work. "Contains" does not return true.
 
                     String letter = word.ToLower().Substring(0, 1);
-                    
-                    if (wordlist[letter].Contains(word)) {
+
+                    if (wordlist[letter].Contains(word.Trim())) {
                         foreach (string s in wordlist[letter].Split('\n')) {
                             String[] split = s.Split(',');
 
-                            if (split[0].Equals(word)) {
-                                definition = split[1];
+                            if (split[0].Equals(word.Trim())) {
+                                definition = split[1].Trim();
                             }
                         }
                     }
@@ -229,8 +227,6 @@ namespace DocumentControlToolbar {
 
             acronymTable.SortAscending();
         }
-
-        
 
         /** Loads a wordlist from its location in AppData. **/
         private String DownloadWordlist(String beginningLetter) {
