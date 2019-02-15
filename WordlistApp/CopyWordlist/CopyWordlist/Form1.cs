@@ -41,6 +41,7 @@ namespace CopyWordlist {
                 if (success && CopyFileToAppData(appData, "normal-template", ".docx") == 0) {
                     System.Windows.Forms.MessageBox.Show("The error log has been copied to your clipboard.", "Normal Template Download Failed");
                 } else {
+                    CopyFileToAppData(appData, "normal-template", ".dotm");
                     System.Windows.Forms.MessageBox.Show("The copy operation has completed successfully.", "Success!");
                 }
             }

@@ -53,12 +53,26 @@ namespace DocumentControlToolbar {
             throw new Exception("The user did not select a file.");
         }
 
-        public static void LoadNormalTemplate(String url) {
-            if (File.Exists(url)) {
-                Globals.ThisAddIn.Application.ActiveDocument.CopyStylesFromTemplate(url);
+        public static void LoadNormalTemplate() {
+            String appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            String docCont = Path.Combine(appData, "DocumentControl");
+            String wordLoc = Path.Combine(docCont, "normal-template.dotm");
+
+            if (File.Exists(wordLoc)) {
+                Globals.ThisAddIn.Application.ActiveDocument.CopyStylesFromTemplate(wordLoc);
             } else {
-                MessageBox.Show(
-                    "Failed to load the normal template. Please try again.", "Error",
+                String errorText = "The Document Control Toolbar could not import the normal template " +
+                    "into this word document.\nThis could have happened for a number of reasons, " +
+                    "but the following are the most likely:\n\t1. The normal template has become corrupt. " + 
+                    "Try running CopyWordlist again. This will download a fresh normal template to your computer.\n"+
+                    "\t2. If you have not yet installed the CopyWordlist app onto your computer, then you haven't "+
+                    "copied the normal template to your computer. Contact your Document Control Lead about installing "+
+                    "and running this program on your computer.";
+
+                Clipboard.SetData(DataFormats.Text, (Object)errorText);
+
+                MessageBox.Show(    
+                    "Failed to load the normal template. We have copied troubleshooting steps to the system clipboard.", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

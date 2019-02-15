@@ -38,12 +38,7 @@ namespace DocumentControlToolbar {
         }
 
         private void headings_Click(object sender, RibbonControlEventArgs e) {
-            try {
-                String url = Tools.LocateFile("Please locate the standard template.");
-                Tools.LoadNormalTemplate(url);
-            } catch (Exception f) {
-                Debug.Print(f.StackTrace);
-            }
+            Tools.LoadNormalTemplate();
         }
 
         private void applyBodyStyle_Click(object sender, RibbonControlEventArgs e) {
