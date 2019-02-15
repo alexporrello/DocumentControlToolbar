@@ -23,6 +23,9 @@ namespace DocumentControlToolbar {
 
         private Word.Document doc = Globals.ThisAddIn.Application.ActiveDocument;
 
+        private Dictionary<string, String> wordlist = new Dictionary<string, String>();
+
+        /** This is a test of javadoc. **/
         private HashSet<String> found = new HashSet<String>();
 
         private HashSet<String> inTable = new HashSet<String>();
@@ -30,8 +33,6 @@ namespace DocumentControlToolbar {
         private Word.Table acronymTable;
 
         private AcronymTableLoadingForm frm;
-
-        private Dictionary<string, String> wordlist = new Dictionary<string, String>();
 
         public AcronymTableTool() {
             try {

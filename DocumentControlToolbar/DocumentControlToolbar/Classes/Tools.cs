@@ -53,13 +53,15 @@ namespace DocumentControlToolbar {
             throw new Exception("The user did not select a file.");
         }
 
+
         public static void LoadNormalTemplate() {
             String appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             String docCont = Path.Combine(appData, "DocumentControl");
             String wordLoc = Path.Combine(docCont, "normal-template.dotm");
 
             if (File.Exists(wordLoc)) {
-                Globals.ThisAddIn.Application.ActiveDocument.CopyStylesFromTemplate(wordLoc);
+                Globals.ThisAddIn.Application.ActiveDocument.UpdateStylesOnOpen = true;
+                Globals.ThisAddIn.Application.ActiveDocument.set_AttachedTemplate(wordLoc);
             } else {
                 String errorText = "The Document Control Toolbar could not import the normal template " +
                     "into this word document.\nThis could have happened for a number of reasons, " +
