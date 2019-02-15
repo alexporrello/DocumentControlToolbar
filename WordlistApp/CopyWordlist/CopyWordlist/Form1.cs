@@ -28,30 +28,39 @@ namespace CopyWordlist {
                 char character = (char)i;
                 String text = character.ToString();
                 if (CopyFileToAppData(appData, text) == 0) {
-                    System.Windows.Forms.MessageBox.Show("The error log has been copied to your clipboard.", "Download Failed");
+                    System.Windows.Forms.MessageBox.Show("The error log has been copied to your clipboard.", "Wordlists Download Failed");
                     success = false;
                     break;
                 }
             }
 
             if (success && CopyFileToAppData(appData, "acronym-duds") == 0) {
-                System.Windows.Forms.MessageBox.Show("The error log has been copied to your clipboard.", "Download Failed");
+                System.Windows.Forms.MessageBox.Show("The error log has been copied to your clipboard.", "Duds List Download Failed");
+                success = false;
             } else {
-                System.Windows.Forms.MessageBox.Show("The copy operation has completed successfully.", "Success!");
+                if (success && CopyFileToAppData(appData, "normal-template", ".docx") == 0) {
+                    System.Windows.Forms.MessageBox.Show("The error log has been copied to your clipboard.", "Normal Template Download Failed");
+                } else {
+                    System.Windows.Forms.MessageBox.Show("The copy operation has completed successfully.", "Success!");
+                }
             }
         }
 
-        private int CopyFileToAppData(String appData, String text) {
+        private int CopyFileToAppData(String appdata, String text) {
+            return CopyFileToAppData(appdata, text, ".csv");
+        }
+
+        private int CopyFileToAppData(String appData, String text, String extension) {
             if (!Directory.Exists(Path.Combine(appData, "DocumentControl"))) {
                 Directory.CreateDirectory(Path.Combine(appData, "DocumentControl"));
             }
 
-            if (File.Exists(Path.Combine(appData, Path.Combine("DocumentControl", text + ".csv")))) {
-                File.Delete(Path.Combine(appData, Path.Combine("DocumentControl", text + ".csv")));
+            if (File.Exists(Path.Combine(appData, Path.Combine("DocumentControl", text + extension)))) {
+                File.Delete(Path.Combine(appData, Path.Combine("DocumentControl", text + extension)));
             }
 
             try {
-                File.Copy(@"Resources/" + text + ".csv", Path.Combine(appData, Path.Combine("DocumentControl", text + ".csv")));
+                File.Copy(@"Resources/" + text + extension, Path.Combine(appData, Path.Combine("DocumentControl", text + extension)));
             } catch(Exception e) {
                 Clipboard.SetData(DataFormats.Text, e.StackTrace);
                 return 0;
