@@ -173,7 +173,7 @@ namespace DocumentControlToolbar {
         private void AddFoundAcronymsToTable() {
             frm.SetMainText("Adding all found acronyms to the table.");
 
-            String dudsList = ""; //GetDudsList();
+            String dudsList = GetDudsList();
 
             int allFoundWords = found.Count;
             int currentItem = 0;
@@ -183,7 +183,7 @@ namespace DocumentControlToolbar {
                 
                 String definition = "";
 
-                if (!inTable.Contains(word) && !dudsList.Contains(word)) {
+                if (!inTable.Contains(word) && !dudsList.Contains(word.Trim())) {
                     acronymTable.Rows.Add();
 
                     Word.Cell acronymCell = acronymTable.Cell(acronymTable.Rows.Count, 1);
