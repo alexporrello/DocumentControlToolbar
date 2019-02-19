@@ -28,6 +28,8 @@ namespace DocumentControlToolbar {
         /** This is a test of javadoc. **/
         private HashSet<String> found = new HashSet<String>();
 
+        private HashSet<String> notAcronyms = new HashSet<String>();
+
         private HashSet<String> inTable = new HashSet<String>();
 
         private Word.Table acronymTable;
@@ -102,7 +104,7 @@ namespace DocumentControlToolbar {
                 definition = definition.Remove(definition.Length - 2);
                 SearchForEntry(rightCell, definition);
 
-                inTable.Add(acronym);
+                inTable.Add(acronym.Trim());
             }
         }
 
@@ -136,30 +138,36 @@ namespace DocumentControlToolbar {
 
         /** Searches through the document for words it thinks might be an acronym. **/
         private void GetAllAcronymsInDocument() {
-            frm.SetMainText("Processing all words.");
-
-            HashSet<string> words = new HashSet<string>();
-            int currentItem = 0;
-
-            foreach (Word.Range word in doc.Words) {
-                words.Add(word.Text);
-                SetNumber(currentItem++, doc.Words.Count);
-            }
+            //Stopwatch stopWatch = new Stopwatch();
+            //stopWatch.Start();
 
             frm.SetMainText("Checking all words in document.");
 
-            currentItem = 0;
 
-            foreach (String word in words) {
-                CheckWord(word);
-                SetNumber(currentItem++, words.Count);
-            }
-        }
+            int allWords = doc.Words.Count;
+            int currentItem = 0;
 
-        private void CheckWord(String w) {
-            if (IsValidWordFirstCheck(w)) {
-                if (!app.CheckSpelling(w.ToLower())) {
-                    found.Add(w);
+            foreach (Word.Range word in doc.Words) {
+                SetNumber(currentItem++, allWords);
+
+                if (IsValidWordFirstCheck(word.Text)) {
+                    if (!app.CheckSpelling(word.Text.ToLower())) {
+                        found.Add(word.Text.Trim());
+                        if (!notAcronyms.Contains(word.Text)) {
+                            if (IsValidWordFirstCheck(word.Text)) {
+                                if (!app.CheckSpelling(word.Text.ToLower())) {
+                                    found.Add(word.Text.Trim());
+                                } else {
+                                    notAcronyms.Add(word.Text);
+                                }
+                            } else {
+                                notAcronyms.Add(word.Text);
+                            }
+                        }
+                    }
+
+                    //stopWatch.Stop();
+                    //Debug.Print(stopWatch.ElapsedMilliseconds.ToString());
                 }
             }
         }
@@ -184,7 +192,7 @@ namespace DocumentControlToolbar {
                 
                 String definition = "";
 
-                if (!inTable.Contains(word) && !dudsList.Contains(word.Trim())) {
+                if (!inTable.Contains(word.Trim()) && !dudsList.Contains(word.Trim())) {
                     acronymTable.Rows.Add();
 
                     Word.Cell acronymCell = acronymTable.Cell(acronymTable.Rows.Count, 1);
